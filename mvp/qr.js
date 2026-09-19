@@ -289,4 +289,4 @@ const QR = (function () {
   return {gerar, svg, lerDeVolta, fluxoDe};
 })();
 
-if (typeof module !== "undefined") module.exports = QR;
+

@@ -75,9 +75,11 @@ def faixa_titulo(s, eyebrow, titulo, sub=None):
         caixa(s, 0.85, 2.12, 11.2, 0.8, sub, 16, CINZA, False, TXT, espaco=1.25)
 
 
-def rodape(s, n):
+_pag = [1]
+def rodape(s, n=None):
+    _pag[0] += 1
     caixa(s, 0.85, 6.92, 7, 0.28, "SOU+OLÍMPIA · GRUPO 4 · IDEATHON OLIMPIALAB 2026", 9, CINZA2, False, TIT, espaco=1)
-    caixa(s, 11.0, 6.92, 1.5, 0.28, str(n), 9, CINZA2, False, TIT, align=PP_ALIGN.RIGHT, espaco=1)
+    caixa(s, 11.0, 6.92, 1.5, 0.28, str(_pag[0]), 9, CINZA2, False, TIT, align=PP_ALIGN.RIGHT, espaco=1)
 
 
 # ══════════════════════ 1 · CAPA ══════════════════════
@@ -122,7 +124,7 @@ caixa(s, 0.85, 5.85, 11.6, 0.8,
       "Índice sazonal do ISS, 2023–2025, série que nós construímos a partir da API do Tesouro Nacional.\n"
       "Janeiro vale 1,96× maio. Oito dos doze meses ficam abaixo da média do próprio ano.",
       14, CINZA, False, TXT, espaco=1.3)
-rodape(s, 2)
+rodape(s)
 
 # ══════════════════════ 3 · CAUSA RAIZ ══════════════════════
 s = slide(FUNDO)
@@ -147,7 +149,7 @@ retangulo(s, 0.85, y+0.12, 11.6, 0.78, AZUL, None, 0.16)
 caixa(s, 1.15, y+0.3, 11.0, 0.42,
       "Causa raiz: falta uma camada de confiança entre os negócios locais. É exatamente o Desafio 2.",
       17, BRANCO, True, TXT, espaco=1)
-rodape(s, 3)
+rodape(s)
 
 # ══════════════════════ 4 · A SOLUÇÃO ══════════════════════
 s = slide(BRANCO)
@@ -167,7 +169,7 @@ for i,(t,d,cor) in enumerate(pilares):
     topo.fill.solid(); topo.fill.fore_color.rgb = cor; topo.line.fill.background(); topo.shadow.inherit=False
     caixa(s, x+0.3, 3.85, 3.05, 0.4, t, 20, TINTA, True, TIT, espaco=1)
     caixa(s, x+0.3, 4.4, 3.05, 1.3, d, 13.5, CINZA, False, TXT, espaco=1.3)
-rodape(s, 4)
+rodape(s)
 
 # ══════════════════════ 5 · COMO FUNCIONA ══════════════════════
 s = slide(FUNDO)
@@ -190,7 +192,7 @@ caixa(s, 1.2, 5.25, 11.0, 0.9,
       "O ponto está no terceiro quadro: a Loja B confia num registro emitido pela Loja A sem precisar confiar na Loja A,\n"
       "e sem que exista uma planilha central que alguém precise manter. É isso que substitui o grupo de WhatsApp.",
       15, AZUL_ESC, False, TXT, espaco=1.3)
-rodape(s, 5)
+rodape(s)
 
 # ══════════════════════ 6 · O DIFERENCIAL ══════════════════════
 s = slide(BRANCO)
@@ -208,7 +210,7 @@ caixa(s, 7.2, 3.85, 4.95, 1.7,
 caixa(s, 0.85, 6.05, 11.6, 0.6,
       "O vale é em reais, não em percentual: R$ 30 é legível para quem tem mediana de admissão de R$ 2.100.",
       14, CINZA, False, TXT, espaco=1.2)
-rodape(s, 6)
+rodape(s)
 
 # ══════════════════════ 7 · SEGURANÇA ══════════════════════
 s = slide(FUNDO)
@@ -231,7 +233,7 @@ caixa(s, 0.85, y+0.1, 11.6, 0.9,
       "Assinatura ECDSA P-256 gerada no próprio navegador · verificação offline · credencial revogável a qualquer momento\n"
       "· vale com número de série que só pode ser resgatado uma vez.",
       14, CINZA, False, TXT, espaco=1.3)
-rodape(s, 7)
+rodape(s)
 
 # ══════════════════════ 8 · ACESSIBILIDADE ══════════════════════
 s = slide(BRANCO)
@@ -254,7 +256,7 @@ for i, it in enumerate(itens):
     mk.fill.solid(); mk.fill.fore_color.rgb = VERDE; mk.line.fill.background(); mk.shadow.inherit=False
     caixa(s, x, yy+0.09, 0.28, 0.25, "✓", 11, BRANCO, True, TIT, align=PP_ALIGN.CENTER, espaco=1)
     caixa(s, x+0.45, yy, 5.1, 0.8, it, 14.5, TINTA, False, TXT, espaco=1.3)
-rodape(s, 8)
+rodape(s)
 
 # ══════════════════════ 9 · DEMONSTRAÇÃO ══════════════════════
 s = slide(FUNDO)
@@ -280,7 +282,7 @@ for i, d in enumerate(demo):
 caixa(s, 0.85, y+0.15, 11.6, 0.5,
       "Os dois últimos passos são os que provam a tese: a rede recusa o que não deveria aceitar.",
       14, CINZA, False, TXT, espaco=1.2)
-rodape(s, 9)
+rodape(s)
 
 # ══════════════════════ 10 · GOVERNANÇA ══════════════════════
 s = slide(BRANCO)
@@ -301,7 +303,7 @@ caixa(s, 1.2, 5.28, 11.0, 0.95,
       "cuja finalidade é produzir e integrar informação estratégica.\nO programa entra como módulo de varejo — "
       "estender uma lei que existe, em vez de aprovar uma nova. A confirmar com a procuradoria.",
       14.5, AZUL_ESC, False, TXT, espaco=1.3)
-rodape(s, 10)
+rodape(s)
 
 # ══════════════════════ 11 · HONESTIDADE ══════════════════════
 s = slide(FUNDO)
@@ -326,7 +328,89 @@ for t, d in lim:
 caixa(s, 0.85, y+0.1, 11.6, 0.5,
       "Dizer isso pontua mais do que fingir certeza — e é o que separa diagnóstico de chute.",
       14, CINZA, False, TXT, espaco=1.2)
-rodape(s, 11)
+rodape(s)
+
+# ══════════════════════ ECONOMIA 1 · PONTO DE EQUILÍBRIO ══════════════════════
+s = slide(BRANCO)
+faixa_titulo(s, "Quanto isso rende", "O desenho do vale decide\nse o comerciante ganha")
+caixa(s, 0.85, 2.25, 11.6, 0.6,
+      "Incrementalidade mínima para a loja não perder dinheiro — quanto das visitas precisa ser movimento que não existiria sem o programa.",
+      15, CINZA, False, TXT, espaco=1.25)
+cols = ["Desenho da cartela", "Ticket R$ 40", "Ticket R$ 60", "Ticket R$ 90"]
+larguras = [4.6, 2.33, 2.33, 2.34]
+linhas_be = [
+    ("3 carimbos · vale R$ 30", "60%", "45%", "30%", VERMELHO),
+    ("3 carimbos · vale R$ 15", "33%", "22%", "15%", CINZA),
+    ("5 carimbos · vale R$ 30", "41%", "30%", "20%", CINZA),
+    ("5 carimbos · vale R$ 20", "30%", "20%", "13%", VERDE),
+    ("5 carimbos · vale R$ 15", "22%", "15%", "10%", CINZA),
+]
+y = 2.92
+x = 0.85
+for i, c in enumerate(cols):
+    caixa(s, x, y, larguras[i], 0.3, c.upper(), 9.5, CINZA2, True, TIT,
+          align=PP_ALIGN.LEFT if i == 0 else PP_ALIGN.CENTER, espaco=1)
+    x += larguras[i]
+reg = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, In(0.85), In(y+0.36), In(11.6), In(0.02))
+reg.fill.solid(); reg.fill.fore_color.rgb = TINTA; reg.line.fill.background(); reg.shadow.inherit = False
+y += 0.5
+for nome, a, b, c, cor in linhas_be:
+    destaque = cor in (VERDE, VERMELHO)
+    if destaque:
+        retangulo(s, 0.8, y-0.07, 11.7, 0.5,
+                  C(0xED,0xF7,0xF0) if cor == VERDE else C(0xFB,0xEC,0xEC), None, 0.16)
+    x = 0.85
+    caixa(s, x, y, larguras[0], 0.34, nome, 14.5, TINTA, destaque, TXT, espaco=1)
+    x += larguras[0]
+    for j, v in enumerate((a, b, c)):
+        caixa(s, x, y, larguras[j+1], 0.34, v, 15, cor if destaque else TINTA, True, TIT,
+              align=PP_ALIGN.CENTER, espaco=1)
+        x += larguras[j+1]
+    y += 0.52
+retangulo(s, 0.85, y+0.1, 11.6, 0.88, AZUL_CLARO, None, 0.1)
+caixa(s, 1.2, y+0.26, 11.0, 0.6,
+      "Programa de fidelidade costuma entregar de 10% a 30% de incrementalidade. O desenho de 3 carimbos com vale de R$ 30\n"
+      "precisaria de 45% — não fecha. Cartela de 5 com vale de R$ 20 precisa de 20%, que está dentro do plausível.",
+      14.5, AZUL_ESC, False, TXT, espaco=1.3)
+rodape(s)
+
+# ══════════════════════ ECONOMIA 2 · MONTE CARLO ══════════════════════
+s = slide(FUNDO)
+faixa_titulo(s, "Simulação", "20 mil cenários: 30 lojas,\ncartela de 5 e vale de R$ 20")
+for i, (n, t) in enumerate([("81%", "das simulações dão lucro\npara a loja participante"),
+                            ("R$ 4,82", "de receita incremental para\ncada real concedido em vale"),
+                            ("20%", "de incrementalidade é\no ponto de virada")]):
+    x = 0.85 + i*3.95
+    retangulo(s, x, 2.2, 3.65, 1.25, BRANCO, LINHA, 0.08, 1.0)
+    caixa(s, x+0.3, 2.38, 3.05, 0.45, n, 26, AZUL_ESC, True, TIT, espaco=1)
+    caixa(s, x+0.3, 2.88, 3.15, 0.5, t, 12, CINZA, False, TXT, espaco=1.2)
+
+caixa(s, 0.85, 3.72, 11.6, 0.3, "Faixas de resultado por mês — P10 é o cenário pessimista, P90 o otimista.",
+      13.5, CINZA, False, TXT, espaco=1)
+mc = [
+    ("Cartelas fechadas na cidade", "256", "484", "838"),
+    ("Visitas geradas pelo programa", "1.533", "2.905", "5.031"),
+    ("Receita incremental da rede", "R$ 21.638", "R$ 46.691", "R$ 94.997"),
+    ("Valor concedido em vales", "R$ 5.111", "R$ 9.683", "R$ 16.769"),
+    ("Lucro líquido da rede", "R$ -1.361", "R$ 3.509", "R$ 13.382"),
+    ("Lucro líquido por loja", "R$ -45", "R$ 117", "R$ 446"),
+]
+caixa(s, 0.85, 4.15, 5.3, 0.28, "MÉTRICA", 9.5, CINZA2, True, TIT, espaco=1)
+for i, c in enumerate(("P10", "MEDIANA", "P90")):
+    caixa(s, 6.15 + i*2.1, 4.15, 2.1, 0.28, c, 9.5, CINZA2, True, TIT, align=PP_ALIGN.CENTER, espaco=1)
+reg = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, In(0.85), In(4.48), In(11.6), In(0.02))
+reg.fill.solid(); reg.fill.fore_color.rgb = TINTA; reg.line.fill.background(); reg.shadow.inherit = False
+y = 4.6
+for i, (rot, a, b, c) in enumerate(mc):
+    if i == len(mc)-1:
+        retangulo(s, 0.8, y-0.06, 11.7, 0.46, C(0xED,0xF7,0xF0), None, 0.16)
+    caixa(s, 0.85, y, 5.3, 0.3, rot, 13.5, TINTA, i == len(mc)-1, TXT, espaco=1)
+    for j, v in enumerate((a, b, c)):
+        caixa(s, 6.15 + j*2.1, y, 2.1, 0.3, v, 13.5,
+              VERDE if (i == len(mc)-1 and j > 0) else TINTA, j == 1, TIT,
+              align=PP_ALIGN.CENTER, espaco=1)
+    y += 0.38
+rodape(s)
 
 # ══════════════════════ 12 · CAPTURA PRINCIPAL ══════════════════════
 CAP = Path.home()/"Ideathon/mvp/capturas"
@@ -337,7 +421,7 @@ if (CAP/"mvp-verifica.png").exists():
 caixa(s, 0.85, 6.45, 11.6, 0.5,
       "Sem servidor, sem internet e sem planilha: a validação usa só a chave pública da prefeitura, no próprio aparelho.",
       14, CINZA, False, TXT, align=PP_ALIGN.CENTER, espaco=1.2)
-rodape(s, 12)
+rodape(s)
 
 # ══════════════════════ 13 · PLANO B ══════════════════════
 s = slide(BRANCO)
@@ -348,7 +432,7 @@ if (CAP/"mvp-carteira.png").exists():
     s.shapes.add_picture(str(CAP/"mvp-carteira.png"), In(6.85), In(2.45), width=In(5.6))
 caixa(s, 0.85, 6.25, 5.6, 0.4, "Credenciamento dos negócios pela prefeitura", 13, CINZA, False, TXT, align=PP_ALIGN.CENTER, espaco=1)
 caixa(s, 6.85, 6.25, 5.6, 0.4, "Carteira do morador, sem nome e sem CPF", 13, CINZA, False, TXT, align=PP_ALIGN.CENTER, espaco=1)
-rodape(s, 13)
+rodape(s)
 
 # ══════════════════════ 14 · FECHAMENTO ══════════════════════
 s = slide(BRANCO)

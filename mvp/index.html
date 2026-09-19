@@ -186,9 +186,9 @@ thead th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transf
     <h2 id="h-roteiro">Roteiro da demonstração</h2>
     <ol class="passos" id="passos">
       <li data-passo="credenciar">A prefeitura credencia os negócios</li>
-      <li data-passo="carimbo1">A Padaria carimba a carteira do morador</li>
-      <li data-passo="verificar">A Farmácia verifica o carimbo da Padaria sozinha</li>
-      <li data-passo="cartela">Três lojas distintas fecham a cartela</li>
+      <li data-passo="carimbo1">A Cantina carimba a carteira do morador</li>
+      <li data-passo="verificar">O Tempero Caseiro verifica o carimbo da Cantina sozinha</li>
+      <li data-passo="cartela">Três restaurantes distintos fecham a cartela</li>
       <li data-passo="resgate">O vale é resgatado uma única vez</li>
       <li data-passo="fraude">A rede rejeita carimbo adulterado</li>
     </ol>
@@ -220,7 +220,7 @@ thead th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transf
   <!-- ============ LOJA ============ -->
   <section class="painel" role="tabpanel" id="p-loja" aria-labelledby="t-loja" hidden tabindex="0">
     <h3>Ponto de venda</h3>
-    <p class="sub">A tela que o comerciante usa. Carimba a carteira do cliente e verifica vale — sem consultar as outras lojas.</p>
+    <p class="sub">A tela que o comerciante usa. Carimba a carteira do cliente e verifica vale — sem consultar os outros restaurantes.</p>
 
     <div class="grade" style="align-items:end">
       <div class="campo">
@@ -316,7 +316,7 @@ thead th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transf
     <div class="log" id="log" role="log" aria-live="polite" aria-relevant="additions"></div>
     <div class="linha-acoes">
       <button class="btn perigo pequeno" id="btn-adulterar" type="button">Simular fraude: adulterar um carimbo</button>
-      <button class="btn perigo pequeno" id="btn-revogar" type="button">Revogar credencial da Padaria</button>
+      <button class="btn perigo pequeno" id="btn-revogar" type="button">Revogar credencial da Cantina</button>
     </div>
   </section>
 </div>
@@ -324,7 +324,7 @@ thead th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transf
 <footer class="rodape">
   <h4>Sobre este protótipo</h4>
   <p>Demonstração funcional da camada de interoperabilidade do <strong>Sou+Olímpia</strong>, construída para o Desafio 2 do Ideathon OlimpiaLab 2026 pelo Grupo 4. Toda a criptografia roda no navegador, sem servidor e sem conexão — a rede funciona offline por construção.</p>
-  <p>O programa de carimbos é o primeiro caso de uso da rede: a recompensa cresce com o número de <em>lojas diferentes</em> visitadas, não com o valor gasto, para espalhar o movimento em vez de concentrá-lo.</p>
+  <p>O programa de carimbos é o primeiro caso de uso da rede: a recompensa cresce com o número de <em>restaurantes diferentes</em> visitadas, não com o valor gasto, para espalhar o movimento em vez de concentrá-lo.</p>
 </footer>
 
 <script>
@@ -338,10 +338,10 @@ thead th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transf
 
 const CORES = { padaria:"#D62718", farmacia:"#128040", livraria:"#E07A00", mercado:"#0E6FD8" };
 const NEGOCIOS_BASE = [
-  { id:"padaria",  nome:"Padaria Central",    ramo:"Panificação",     ini:"PC" },
-  { id:"farmacia", nome:"Farmácia São Jorge", ramo:"Farmácia",        ini:"FS" },
-  { id:"livraria", nome:"Livraria da Praça",  ramo:"Livros e papelaria", ini:"LP" },
-  { id:"mercado",  nome:"Mercado do Bairro",  ramo:"Alimentos",       ini:"MB" }
+  { id:"padaria",  nome:"Cantina da Praça",    ramo:"Massas e pizzas",     ini:"CP" },
+  { id:"farmacia", nome:"Tempero Caseiro", ramo:"Comida por quilo",        ini:"TC" },
+  { id:"livraria", nome:"Beira-Rio Peixaria",  ramo:"Peixes e frutos do rio", ini:"BR" },
+  { id:"mercado",  nome:"Burger da Esquina",  ramo:"Hamburgueria",       ini:"BE" }
 ];
 const META_LOJAS = 3;      // lojas distintas para fechar a cartela
 const VALOR_VALE = 30;     // R$, valor fixo — legível para qualquer renda
@@ -442,7 +442,7 @@ async function carimbar(){
 
   if (loja.revogado) return mostrar(false, `${loja.nome} está com a credencial revogada. Carimbo recusado.`);
   if (S.carteira.carimbos.some(c => c.corpo.negocio === id))
-    return mostrar(false, `A carteira já tem um carimbo da ${loja.nome}. Cada loja carimba uma vez por cartela — é assim que a cartela obriga a circular.`);
+    return mostrar(false, `A carteira já tem um carimbo da ${loja.nome}. Cada restaurante carimba uma vez por cartela — é assim que a cartela obriga a circular.`);
 
   const corpo = {
     tipo:"carimbo", negocio:id, carteira:S.carteira.id,
@@ -463,7 +463,7 @@ async function verificarTudo(){
   const idAtual = $("#sel-loja").value;
   if (!S.carteira.carimbos.length) return mostrar(false, "A carteira deste cliente ainda não tem nenhum carimbo.");
 
-  log(`<b>${S.negocios[idAtual].nome}</b> vai verificar os carimbos sem consultar as outras lojas…`);
+  log(`<b>${S.negocios[idAtual].nome}</b> vai verificar os carimbos sem consultar os outros restaurantes…`);
   const linhas = [];
   let todosOk = true;
 
@@ -519,7 +519,7 @@ async function emitirVale(){
 async function resgatar(){
   const id = $("#sel-loja").value;
   const loja = S.negocios[id];
-  if (!S.vale) return mostrar(false, "Este cliente ainda não tem vale. A cartela precisa de três lojas diferentes.");
+  if (!S.vale) return mostrar(false, "Este cliente ainda não tem vale. A cartela precisa de três restaurantes diferentes.");
 
   const valido = await conferir(S.raiz.pub, S.vale.corpo, S.vale.assinatura);
   if (!valido){
@@ -557,11 +557,11 @@ async function adulterar(){
 async function revogar(){
   S.negocios.padaria.revogado = !S.negocios.padaria.revogado;
   log(S.negocios.padaria.revogado
-      ? "Prefeitura REVOGOU a credencial da Padaria Central"
-      : "Prefeitura reativou a credencial da Padaria Central",
+      ? "Prefeitura REVOGOU a credencial da Cantina da Praça"
+      : "Prefeitura reativou a credencial da Cantina da Praça",
       S.negocios.padaria.revogado ? "no" : "ok");
   $("#btn-revogar").textContent = S.negocios.padaria.revogado
-    ? "Reativar credencial da Padaria" : "Revogar credencial da Padaria";
+    ? "Reativar credencial da Cantina" : "Revogar credencial da Cantina";
   desenhar();
 }
 
@@ -600,8 +600,8 @@ function desenhar(){
 
   const distintas = new Set(S.carteira.carimbos.map(c => c.corpo.negocio)).size;
   $("#cartela-txt").textContent = distintas >= META_LOJAS
-    ? `Cartela completa: ${distintas} lojas diferentes. O vale foi liberado.`
-    : `${distintas} de ${META_LOJAS} lojas diferentes. Faltam ${META_LOJAS - distintas} — e precisa ser em lojas que ainda não carimbaram.`;
+    ? `Cartela completa: ${distintas} restaurantes diferentes. O vale foi liberado.`
+    : `${distintas} de ${META_LOJAS} restaurantes diferentes. Faltam ${META_LOJAS - distintas} — e precisa ser em restaurantes que ainda não carimbaram.`;
 
   $("#area-vale").innerHTML = S.vale
     ? `<div class="vale ${S.vale.usado ? "usado" : ""}">
@@ -609,7 +609,7 @@ function desenhar(){
          <span class="info"><strong>Série ${S.vale.corpo.serie}</strong><br>
          ${S.vale.usado ? "Já resgatado em " + S.vale.onde : "Válido em qualquer negócio da rede, no mês seguinte"}</span>
        </div>`
-    : `<p class="sub" style="margin:0">Nenhum vale ainda. Junte carimbos de ${META_LOJAS} lojas diferentes.</p>`;
+    : `<p class="sub" style="margin:0">Nenhum vale ainda. Junte carimbos de ${META_LOJAS} restaurantes diferentes.</p>`;
 
   $$("#passos li").forEach(li => {
     li.dataset.feito = S.passos[li.dataset.passo] ? "1" : "0";

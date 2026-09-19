@@ -4,358 +4,209 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0E6FD8">
-<title>Carteira Sou+Olímpia</title>
+<title>Sou+Olímpia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root{
   color-scheme: light;
   --azul:#0E6FD8; --azul-esc:#0A4C96; --azul-claro:#E7F1FD;
-  --amarelo:#F5C400; --vermelho:#D62718; --verde:#128040; --laranja:#E07A00;
+  --roxo:#5B3FD6; --roxo-claro:#EEEAFC;
+  --vermelho:#D62718; --verde:#128040; --laranja:#E07A00;
   --tinta:#10151C; --tinta2:#49535F; --tinta3:#6E7884;
-  --papel:#FFFFFF; --fundo:#F4F6FA; --linha:#E1E7EF;
+  --papel:#FFF; --fundo:#F4F6FA; --linha:#E1E7EF;
   --ok:#0E7A38; --erro:#C21F12;
   --mono:"IBM Plex Mono",ui-monospace,monospace;
   --sans:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
-  --nav:68px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0;height:100%}
-body{
-  background:var(--fundo);color:var(--tinta);
-  font-family:var(--sans);font-size:16px;line-height:1.5;
-}
+body{background:var(--fundo);color:var(--tinta);font-family:var(--sans);font-size:16px;line-height:1.5}
 button{font-family:var(--sans);cursor:pointer;border:none;background:none;color:inherit;font-size:16px}
 :focus-visible{outline:3px solid var(--azul);outline-offset:2px;border-radius:8px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-.sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.oculto{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-/* ───────── moldura: celular no desktop, tela cheia no telefone ───────── */
-.palco{min-height:100%;display:block}
-.aparelho{
-  position:relative;height:100dvh;width:100%;overflow:hidden;background:var(--fundo);
-  display:flex;flex-direction:column
-}
-.guia{display:none}
+.troca{display:flex;gap:6px;padding:10px 12px;background:var(--papel);border-bottom:1px solid var(--linha)}
+.troca button{flex:1;padding:11px;border-radius:11px;font-weight:800;font-size:14.5px;
+  border:2px solid var(--linha);color:var(--tinta2);min-height:48px}
+.troca button[aria-pressed="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.troca button[data-papel="rest"][aria-pressed="true"]{background:var(--roxo);border-color:var(--roxo)}
 
-@media (min-width:860px){
-  body{background:linear-gradient(140deg,#0A4C96 0%,#0E6FD8 55%,#1687E8 100%)}
-  .palco{
-    min-height:100vh;display:flex;align-items:center;justify-content:center;
-    gap:48px;padding:32px;flex-wrap:wrap
-  }
-  .aparelho{
-    height:844px;width:390px;flex:none;border-radius:46px;border:13px solid #0B0F14;
-    box-shadow:0 34px 70px rgba(0,0,0,.42);overflow:hidden
-  }
-  .aparelho::before{
-    content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
-    width:132px;height:26px;background:#0B0F14;border-radius:0 0 16px 16px;z-index:60
-  }
-  /* especificidade maior que a regra base .topo, que vem depois na folha */
-  .aparelho .topo{padding-top:36px}
-  .guia{
-    display:block;width:min(420px,40vw);color:#fff
-  }
-  .guia h2{font-size:26px;font-weight:900;margin:0 0 6px;letter-spacing:-.01em}
-  .guia p{margin:0 0 20px;color:#CFE2FA;font-size:15px;line-height:1.55}
+.palco{display:flex;flex-direction:column;height:100dvh}
+.aparelho{position:relative;flex:1;overflow:hidden;background:var(--fundo);display:flex;flex-direction:column;min-height:0}
+.aparelho[hidden]{display:none}
+.guia,.etiqueta{display:none}
+
+@media (min-width:1180px){
+  body{background:linear-gradient(140deg,#0A4C96 0%,#0E6FD8 52%,#1687E8 100%);min-height:100vh}
+  .troca{display:none}
+  .palco{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center;
+    gap:40px;padding:30px;height:auto;min-height:100vh}
+  .coluna{display:flex;flex-direction:column;align-items:center;gap:14px}
+  .etiqueta{display:flex;align-items:center;gap:9px;color:#fff;font-weight:800;font-size:15px;
+    background:rgba(255,255,255,.14);padding:8px 16px;border-radius:99px}
+  .etiqueta .pt{width:9px;height:9px;border-radius:50%;background:#7FD1A0}
+  .aparelho{flex:none;height:812px;width:376px;border-radius:44px;border:12px solid #0B0F14;
+    box-shadow:0 30px 64px rgba(0,0,0,.42)}
+  .aparelho[hidden]{display:flex}
+  .aparelho::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:126px;height:25px;background:#0B0F14;border-radius:0 0 15px 15px;z-index:60}
+  .aparelho .topo{padding-top:35px}
+  .guia{display:block;width:min(350px,28vw);color:#fff}
+  .guia h2{font-size:24px;font-weight:900;margin:0 0 6px;letter-spacing:-.01em}
+  .guia p{margin:0 0 18px;color:#CFE2FA;font-size:14.5px;line-height:1.55}
   .guia ol{margin:0;padding-left:0;list-style:none;counter-reset:g}
-  .guia li{
-    counter-increment:g;position:relative;padding:10px 0 10px 40px;
-    border-top:1px solid rgba(255,255,255,.18);font-size:14.5px;line-height:1.45
-  }
-  .guia li::before{
-    content:counter(g);position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:50%;
-    background:rgba(255,255,255,.16);font-family:var(--mono);font-size:12px;font-weight:600;
-    display:flex;align-items:center;justify-content:center
-  }
+  .guia li{counter-increment:g;position:relative;padding:10px 0 10px 38px;
+    border-top:1px solid rgba(255,255,255,.18);font-size:14.5px;line-height:1.45}
+  .guia li::before{content:counter(g);position:absolute;left:0;top:10px;width:25px;height:25px;border-radius:50%;
+    background:rgba(255,255,255,.16);font-family:var(--mono);font-size:11.5px;font-weight:600;
+    display:flex;align-items:center;justify-content:center}
   .guia li b{color:#fff}
-  .guia .selo{
-    display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-    background:rgba(255,255,255,.16);padding:5px 11px;border-radius:20px;margin-bottom:14px
-  }
+  .guia .selo{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+    text-transform:uppercase;background:rgba(255,255,255,.16);padding:5px 11px;border-radius:20px;margin-bottom:13px}
 }
 
-/* ───────── cabeçalho ───────── */
-.topo{
-  background:var(--papel);padding:calc(env(safe-area-inset-top) + 14px) 18px 12px;
-  display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--linha);flex:none;z-index:20
-}
-.topo img{height:34px;width:auto;display:block}
+.topo{background:var(--papel);padding:calc(env(safe-area-inset-top) + 13px) 16px 11px;
+  display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--linha);flex:none}
+.topo img{height:31px;width:auto;display:block}
 .topo .quem{flex:1;min-width:0}
-.topo .quem .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta3)}
-.topo .quem .val{font-family:var(--mono);font-size:11px;color:var(--tinta2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.icone{
-  width:42px;height:42px;border-radius:12px;background:var(--fundo);display:flex;align-items:center;
-  justify-content:center;font-size:19px;flex:none;border:1px solid var(--linha)
-}
-.icone:active{background:var(--azul-claro)}
+.topo .quem .lbl{font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta3)}
+.topo .quem .val{font-family:var(--mono);font-size:10.5px;color:var(--tinta2);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.crachá{font-family:var(--mono);font-size:9px;letter-spacing:.09em;text-transform:uppercase;
+  padding:4px 9px;border-radius:20px;font-weight:600;background:var(--azul-claro);color:var(--azul-esc)}
+.crachá.r{background:var(--roxo-claro);color:var(--roxo)}
 
-/* ───────── corpo ───────── */
-.corpo{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:18px 18px calc(var(--nav) + 26px)}
-.tela[hidden]{display:none}
+.corpo{flex:1;overflow-y:auto;padding:18px 17px 22px;min-height:0}
 h1{font-size:0;margin:0;height:0}
-h2.tt{font-size:23px;font-weight:900;margin:0 0 4px;letter-spacing:-.015em}
-p.sb{color:var(--tinta2);font-size:14.5px;margin:0 0 18px}
-h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--tinta3);margin:24px 0 10px;font-weight:600}
-h3:first-of-type{margin-top:0}
+h2{font-size:22px;font-weight:900;margin:0 0 4px;letter-spacing:-.015em}
+p.sb{color:var(--tinta2);font-size:14px;margin:0 0 18px}
 
-.cartao{background:var(--papel);border:1px solid var(--linha);border-radius:18px;padding:16px}
-
-/* cartela */
-.cartela{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.slot{
-  aspect-ratio:1;border-radius:16px;border:2px dashed var(--linha);background:var(--papel);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
-  text-align:center;padding:8px
-}
+.cartela{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.slot{aspect-ratio:1;border-radius:15px;border:2px dashed var(--linha);background:var(--papel);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;padding:7px}
 .slot.cheio{border-style:solid;border-color:transparent;color:#fff}
-.slot .ic{font-size:22px;line-height:1}
-.slot .nm{font-size:11.5px;font-weight:800;line-height:1.15}
-.slot .dt{font-family:var(--mono);font-size:9px;opacity:.9}
+.slot .ic{font-size:21px;line-height:1}
+.slot .nm{font-size:11px;font-weight:800;line-height:1.15}
 .slot.vazio .nm{color:var(--tinta3);font-weight:700}
-
-.barra{height:9px;border-radius:99px;background:var(--linha);overflow:hidden;margin:16px 0 8px}
+.barra{height:9px;border-radius:99px;background:var(--linha);overflow:hidden;margin:15px 0 8px}
 .barra i{display:block;height:100%;background:var(--azul);border-radius:99px;transition:width .35s}
-.progresso{font-size:14px;color:var(--tinta2)}
+.progresso{font-size:13.5px;color:var(--tinta2);margin:0}
 .progresso b{color:var(--tinta)}
 
-/* vale */
-.vale{
-  border-radius:18px;padding:20px;color:#fff;
-  background:linear-gradient(135deg,#0E7A38 0%,#12A04F 100%);
-  box-shadow:0 10px 26px rgba(18,128,64,.28)
-}
-.vale .rot{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
-.vale .vl{font-size:46px;font-weight:900;line-height:1.05;margin:2px 0 6px}
-.vale .serie{font-family:var(--mono);font-size:12px;opacity:.92}
-.vale .cd{
-  margin-top:14px;background:rgba(255,255,255,.16);border-radius:12px;padding:11px;
-  font-size:12.5px;line-height:1.5
-}
-.vale .cd .as{display:block;margin-top:6px;font-family:var(--mono);font-size:10.5px;
-  overflow-wrap:anywhere;opacity:.92}
-.vale .qr{margin-top:14px;background:#fff;border-radius:13px;padding:11px;display:flex;justify-content:center}
-.vale .qr svg{width:100%;max-width:196px;height:auto;display:block}
-.vale .qrt{margin:10px 0 0;font-size:12.5px;text-align:center;opacity:.95;line-height:1.35}
-.leitor{width:100%;font-family:var(--mono);font-size:13px;padding:12px;border:2px solid var(--linha);
-  border-radius:13px;min-height:88px;resize:vertical;background:var(--papel);color:var(--tinta)}
+.vale{border-radius:17px;padding:19px;color:#fff;margin-top:20px;
+  background:linear-gradient(135deg,#0E7A38 0%,#12A04F 100%);box-shadow:0 10px 24px rgba(18,128,64,.26)}
+.vale .rot{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.vale .vl{font-size:43px;font-weight:900;line-height:1.05;margin:2px 0 5px}
+.vale .serie{font-family:var(--mono);font-size:11.5px;opacity:.92}
+.vale .qr{margin-top:13px;background:#fff;border-radius:13px;padding:10px;display:flex;justify-content:center}
+.vale .qr svg{width:100%;max-width:184px;height:auto;display:block}
+.vale .qrt{margin:9px 0 0;font-size:12px;text-align:center;opacity:.95;line-height:1.35}
+.vale .cd{margin-top:13px;background:rgba(255,255,255,.16);border-radius:12px;padding:11px;font-size:12.5px}
 .vale.usado{background:linear-gradient(135deg,#5B6672 0%,#79828E 100%);box-shadow:none}
 
-/* lojas */
-.loja{
-  display:flex;align-items:center;gap:13px;padding:13px 14px;background:var(--papel);
-  border:1px solid var(--linha);border-radius:16px;margin-bottom:10px;width:100%;text-align:left
-}
-.loja:active{background:var(--azul-claro)}
-.marca{
-  width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;
-  font-weight:900;color:#fff;font-size:16px;flex:none
-}
-.loja .txt{flex:1;min-width:0}
-.loja .nm{font-weight:800;font-size:15.5px;line-height:1.2}
-.loja .rm{font-size:12.5px;color:var(--tinta3)}
-.selo{
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
-  padding:4px 9px;border-radius:20px;font-weight:600;white-space:nowrap
-}
-.selo.ok{background:#E6F4EC;color:var(--ok)}
-.selo.no{background:#FBEAE8;color:var(--erro)}
-.selo.ja{background:var(--azul-claro);color:var(--azul-esc)}
+label{display:block;font-weight:800;font-size:13px;margin-bottom:6px}
+select{width:100%;font-size:16px;padding:12px 13px;border:2px solid var(--linha);
+  border-radius:12px;background:var(--papel);color:var(--tinta);min-height:50px;font-family:var(--sans)}
+.bt{display:flex;align-items:center;justify-content:center;width:100%;background:var(--roxo);color:#fff;
+  font-weight:800;font-size:16px;padding:15px;border-radius:14px;min-height:54px}
+.bt.sec{background:var(--papel);color:var(--roxo);border:2px solid var(--roxo)}
+.bts{display:flex;flex-direction:column;gap:9px;margin-top:16px}
 
-/* botões */
-.bt{
-  display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
-  background:var(--azul);color:#fff;font-weight:800;font-size:16.5px;
-  padding:16px;border-radius:15px;min-height:56px
-}
-.bt:active{background:var(--azul-esc)}
-.bt.sec{background:var(--papel);color:var(--azul-esc);border:2px solid var(--azul)}
-.bt.sec:active{background:var(--azul-claro)}
-.bt.fant{background:var(--papel);color:var(--tinta2);border:2px solid var(--linha)}
-.bt[disabled]{opacity:.45}
-.bts{display:flex;flex-direction:column;gap:10px;margin-top:16px}
-
-/* avisos */
-.aviso{border-radius:14px;padding:14px 15px;font-size:14.5px;line-height:1.45;margin-top:14px}
+.aviso{border-radius:13px;padding:13px 14px;font-size:14px;line-height:1.45;margin-top:16px}
 .aviso.ok{background:#E6F4EC;color:#0B5C2B;border:1px solid #B8DFC6}
 .aviso.no{background:#FBEAE8;color:#8C1A10;border:1px solid #EFC6C2}
 .aviso.inf{background:var(--azul-claro);color:var(--azul-esc);border:1px solid #C3D8F3}
 .aviso b{font-weight:800}
 
-/* lista de verificação */
-.vf{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--linha);align-items:flex-start}
+.vf{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--linha);align-items:flex-start}
 .vf:last-child{border-bottom:none}
-.vf .mk{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:13px;font-weight:900;color:#fff;flex:none;margin-top:1px}
+.vf .mk{width:23px;height:23px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:12.5px;font-weight:900;color:#fff;flex:none;margin-top:1px}
 .vf .mk.s{background:var(--ok)} .vf .mk.n{background:var(--erro)}
-.vf .cp{flex:1;min-width:0}
-.vf .cp b{display:block;font-size:14.5px}
-.vf .cp span{font-size:12.5px;color:var(--tinta3);line-height:1.35;display:block}
+.vf b{display:block;font-size:14px}
+.vf span span{font-size:12px;color:var(--tinta3);line-height:1.35;display:block}
+.cartao{background:var(--papel);border:1px solid var(--linha);border-radius:17px;padding:15px;margin-top:16px}
 
-/* console */
-.log{background:#0F1720;border-radius:16px;padding:14px;color:#D7DEE7;
-  font-family:var(--mono);font-size:11.5px;line-height:1.7;max-height:340px;overflow-y:auto}
-.log .ln{padding:4px 0;border-bottom:1px solid #1D2733;word-break:break-word}
-.log .ln:last-child{border-bottom:none}
-.log .hr{color:#64748B;margin-right:7px}
-.log .s{color:#4ADE80;font-weight:600}
-.log .n{color:#FB7185;font-weight:600}
-
-/* tabela de privacidade */
-.pv{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--linha);font-size:14.5px}
-.pv:last-child{border-bottom:none}
-.pv b{font-weight:800;white-space:nowrap}
-.pv .sim{color:var(--tinta2)} .pv .nao{color:var(--ok)}
-
-/* seletor */
-label{display:block;font-weight:800;font-size:13.5px;margin-bottom:7px}
-select{
-  width:100%;font-family:var(--sans);font-size:16px;padding:13px 14px;border:2px solid var(--linha);
-  border-radius:13px;background:var(--papel);color:var(--tinta);min-height:52px
-}
-.campo{margin-bottom:14px}
-
-/* navegação inferior */
-.nav{
-  position:absolute;bottom:0;left:0;right:0;height:calc(var(--nav) + env(safe-area-inset-bottom));
-  padding-bottom:env(safe-area-inset-bottom);
-  background:var(--papel);border-top:1px solid var(--linha);display:flex;z-index:40
-}
-.nav button{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
-  color:var(--tinta3);font-size:11px;font-weight:700;padding-top:6px
-}
-.nav button .g{font-size:21px;line-height:1}
-.nav button[aria-current="page"]{color:var(--azul)}
-.nav button[aria-current="page"] .g{transform:translateY(-1px)}
+.pe{display:flex;gap:16px;justify-content:center;margin-top:22px;padding-top:14px;border-top:1px solid var(--linha)}
+.pe button{font-size:12.5px;color:var(--tinta3);font-weight:700;text-decoration:underline;padding:6px}
 </style>
 </head>
 <body>
 
-<h1>Sou+Olímpia — carteira do morador</h1>
+<h1>Sou+Olímpia — cartela do morador e balcão do restaurante</h1>
+
+<div class="troca" role="group" aria-label="Escolher qual aplicativo ver">
+  <button type="button" data-papel="morador" aria-pressed="true">Sou morador</button>
+  <button type="button" data-papel="rest" aria-pressed="false">Sou restaurante</button>
+</div>
 
 <div class="palco">
 
-  <div class="aparelho">
-    <header class="topo">
-      <img src="logo.jpg" alt="Sou+Olímpia">
-      <span class="quem">
-        <span class="lbl">Minha carteira</span>
-        <span class="val" id="wid">—</span>
-      </span>
-      <button class="icone" id="bt-reset" type="button" aria-label="Reiniciar demonstração">↻</button>
-    </header>
-
-    <main class="corpo" id="corpo">
-
-      <!-- ═══ CARTEIRA ═══ -->
-      <section class="tela" id="tl-carteira" aria-labelledby="h-cart">
-        <h2 class="tt" id="h-cart">Cartela de setembro</h2>
-        <p class="sb">Compre em <b>3 lojas diferentes</b> e ganhe R$ 30 para usar no mês seguinte.</p>
-
+  <div class="coluna">
+    <span class="etiqueta"><span class="pt"></span>Aplicativo do morador</span>
+    <div class="aparelho" data-papel="morador">
+      <header class="topo">
+        <img src="logo.jpg" alt="Sou+Olímpia">
+        <span class="quem"><span class="lbl">Minha carteira</span><span class="val" id="wid">—</span></span>
+        <span class="crachá">morador</span>
+      </header>
+      <main class="corpo">
+        <h2>Cartela de setembro</h2>
+        <p class="sb">Almoce ou jante em <b>3 restaurantes diferentes</b> e ganhe R$ 30 para usar no mês seguinte.</p>
         <div class="cartela" id="cartela" role="list"></div>
         <div class="barra"><i id="barra" style="width:0%"></i></div>
         <p class="progresso" id="prog"></p>
+        <div id="area-vale"></div>
+        <div class="aviso inf">
+          <b>Sua carteira é anônima.</b> A rede não guarda seu nome nem seu CPF — só um código aleatório, a data e a faixa de valor da compra.
+        </div>
+      </main>
+    </div>
+  </div>
 
-        <div id="area-vale" style="margin-top:20px"></div>
-
+  <div class="coluna">
+    <span class="etiqueta"><span class="pt" style="background:#C6B6FF"></span>Aplicativo do restaurante</span>
+    <div class="aparelho" data-papel="rest" hidden>
+      <header class="topo">
+        <img src="logo.jpg" alt="Sou+Olímpia">
+        <span class="quem"><span class="lbl">Estou atendendo como</span><span class="val" id="lid">—</span></span>
+        <span class="crachá r">restaurante</span>
+      </header>
+      <main class="corpo">
+        <h2>Balcão</h2>
+        <p class="sb">Carimbe a cartela do cliente e valide o vale, sem consultar os outros restaurantes.</p>
+        <label for="sel">Meu restaurante</label>
+        <select id="sel"></select>
         <div class="bts">
-          <button class="bt sec" id="bt-ir-lojas" type="button">Ver lojas participantes</button>
+          <button class="bt" id="bt-carimbar" type="button">Carimbar a cartela</button>
+          <button class="bt sec" id="bt-verificar" type="button">Verificar os carimbos</button>
+          <button class="bt sec" id="bt-resgatar" type="button">Ler o QR e resgatar</button>
         </div>
-
-        <div class="aviso inf" style="margin-top:20px">
-          <b>Sua carteira é anônima.</b> A rede não sabe seu nome nem seu CPF — só existe um código aleatório que você pode trocar quando quiser.
+        <div id="saida" role="status" aria-live="polite"></div>
+        <div class="pe">
+          <button type="button" id="bt-fraude">simular fraude</button>
+          <button type="button" id="bt-reset">reiniciar</button>
         </div>
-      </section>
-
-      <!-- ═══ LOJAS ═══ -->
-      <section class="tela" id="tl-lojas" hidden aria-labelledby="h-lojas">
-        <h2 class="tt" id="h-lojas">Lojas participantes</h2>
-        <p class="sb">Toque numa loja para simular uma compra e receber o carimbo.</p>
-        <div id="lista-lojas"></div>
-        <div id="saida-compra" role="status" aria-live="polite"></div>
-      </section>
-
-      <!-- ═══ BALCÃO ═══ -->
-      <section class="tela" id="tl-balcao" hidden aria-labelledby="h-balcao">
-        <h2 class="tt" id="h-balcao">Balcão</h2>
-        <p class="sb">A tela do comerciante. No produto final é um aplicativo separado — aqui está junto para a demonstração caber num aparelho só.</p>
-
-        <div class="campo">
-          <label for="sel-loja">Estou atendendo como</label>
-          <select id="sel-loja"></select>
-        </div>
-
-        <div class="bts">
-          <button class="bt" id="bt-verificar" type="button">Verificar carimbos do cliente</button>
-          <button class="bt sec" id="bt-resgatar" type="button">Ler o QR deste aparelho e resgatar</button>
-        </div>
-
-        <h3 style="margin-top:24px">Vale lido de outro aparelho</h3>
-        <label for="txt-qr">Conteúdo do QR escaneado</label>
-        <textarea class="leitor" id="txt-qr" placeholder="SOU+VALE|v=1|s=…"></textarea>
-        <div class="bts">
-          <button class="bt fant" id="bt-colado" type="button">Validar e resgatar o código colado</button>
-        </div>
-
-        <div id="saida-balcao" role="status" aria-live="polite"></div>
-      </section>
-
-      <!-- ═══ REDE ═══ -->
-      <section class="tela" id="tl-rede" hidden aria-labelledby="h-rede">
-        <h2 class="tt" id="h-rede">Rede e privacidade</h2>
-        <p class="sb">Tudo que acontece por baixo, aberto para quem quiser conferir.</p>
-
-        <h3>O que a rede guarda</h3>
-        <div class="cartao">
-          <div class="pv"><span>Seu nome</span><b class="nao">não guarda</b></div>
-          <div class="pv"><span>Seu CPF</span><b class="nao">não guarda</b></div>
-          <div class="pv"><span>Valor exato da compra</span><b class="nao">não guarda</b></div>
-          <div class="pv"><span>O que você comprou</span><b class="nao">não guarda</b></div>
-          <div class="pv"><span>Loja, data e faixa de valor</span><b class="sim">guarda</b></div>
-          <div class="pv"><span>Código aleatório da carteira</span><b class="sim">guarda</b></div>
-        </div>
-
-        <h3>Console de confiança</h3>
-        <div class="log" id="log" role="log" aria-live="polite" aria-relevant="additions"></div>
-
-        <div class="bts">
-          <button class="bt fant" id="bt-fraude" type="button">Simular fraude num carimbo</button>
-        </div>
-        <div class="aviso inf" style="margin-top:14px">
-          Cada carimbo é assinado com <b>ECDSA P-256</b> no próprio aparelho. Uma loja confere o carimbo de outra sem internet e sem consultar ninguém.
-        </div>
-      </section>
-
-    </main>
-
-    <nav class="nav" aria-label="Navegação principal">
-      <button type="button" data-tela="carteira" aria-current="page"><span class="g" aria-hidden="true">🎟️</span>Carteira</button>
-      <button type="button" data-tela="lojas"><span class="g" aria-hidden="true">🏪</span>Lojas</button>
-      <button type="button" data-tela="balcao"><span class="g" aria-hidden="true">🧾</span>Balcão</button>
-      <button type="button" data-tela="rede"><span class="g" aria-hidden="true">🔐</span>Rede</button>
-    </nav>
+      </main>
+    </div>
   </div>
 
   <aside class="guia" aria-label="Roteiro para quem apresenta">
     <span class="selo">Roteiro do palco</span>
-    <h2>Sou+Olímpia</h2>
-    <p>Protótipo funcional do aplicativo do morador. Roda no navegador, sem servidor e sem internet — a criptografia acontece no próprio aparelho.</p>
+    <h2>Duas telas</h2>
+    <p>O mínimo que prova a rede: um restaurante carimba, outro verifica sozinho, e o vale só vale uma vez.</p>
     <ol>
-      <li>Abra <b>Lojas</b> e toque na Padaria para receber o primeiro carimbo</li>
-      <li>Repita na <b>Farmácia</b> e na <b>Livraria</b> — três lojas diferentes fecham a cartela</li>
-      <li>Volte à <b>Carteira</b> e mostre o vale de R$ 30 aparecendo</li>
-      <li>Em <b>Balcão</b>, atenda como Mercado e toque em <b>Verificar</b>: uma loja confere o carimbo das outras sozinha</li>
-      <li>Toque em <b>Resgatar</b> duas vezes — a segunda é recusada</li>
-      <li>Em <b>Rede</b>, toque em <b>Simular fraude</b> e volte a verificar: a assinatura não bate mais</li>
+      <li>No <b>restaurante</b>, escolha a Cantina e toque em <b>Carimbar</b> — o carimbo aparece na hora no morador</li>
+      <li>Repita como Tempero Caseiro e Beira-Rio: a cartela fecha e o <b>vale com QR</b> aparece</li>
+      <li>Troque para o Burger e toque em <b>Verificar</b>: ele confere o carimbo dos outros sem consultar ninguém</li>
+      <li>Toque em <b>Ler o QR e resgatar</b> duas vezes — a segunda é recusada</li>
+      <li>Toque em <b>simular fraude</b>: a assinatura não bate mais</li>
     </ol>
   </aside>
-
 </div>
-
 <script>
 /* Codificador QR mínimo — modo byte, nível de correção M, versões 1 a 10.
    Suficiente para o payload do vale e sem dependência externa. */
@@ -622,18 +473,17 @@ const QR = (function () {
   return {gerar, svg};
 })();
 </script>
-
 <script>
 "use strict";
-/* Sou+Olímpia — app do morador. Mesma camada de confiança da versão de mesa:
-   credenciais e carimbos assinados com ECDSA P-256, verificação 100% local. */
+/* Sou+Olímpia — MVP. Credenciais, carimbos e vales assinados com ECDSA P-256.
+   Verificação 100% local: nenhuma requisição de rede. */
 
-const CORES={padaria:"#D62718",farmacia:"#128040",livraria:"#E07A00",mercado:"#0E6FD8"};
-const BASE=[
-  {id:"padaria", nome:"Padaria Central",    ramo:"Panificação",       ini:"PC"},
-  {id:"farmacia",nome:"Farmácia São Jorge", ramo:"Farmácia",          ini:"FS"},
-  {id:"livraria",nome:"Livraria da Praça",  ramo:"Livros e papelaria",ini:"LP"},
-  {id:"mercado", nome:"Mercado do Bairro",  ramo:"Alimentos",         ini:"MB"}
+const CORES={a:"#D62718",b:"#128040",c:"#E07A00",d:"#0E6FD8"};
+const REST=[
+  {id:"a",nome:"Cantina da Praça",   ini:"CP"},
+  {id:"b",nome:"Tempero Caseiro",    ini:"TC"},
+  {id:"c",nome:"Beira-Rio Peixaria", ini:"BR"},
+  {id:"d",nome:"Burger da Esquina",  ini:"BE"}
 ];
 const META=3, VALOR=30;
 let S=null;
@@ -647,213 +497,143 @@ const b64=b=>btoa(String.fromCharCode(...new Uint8Array(b)));
 const un64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
 const ALGO={name:"ECDSA",namedCurve:"P-256"}, SIG={name:"ECDSA",hash:"SHA-256"};
 
-function hora(){const d=new Date();return [d.getHours(),d.getMinutes(),d.getSeconds()].map(n=>String(n).padStart(2,"0")).join(":");}
-function log(t,k){
-  const d=document.createElement("div"); d.className="ln";
-  d.innerHTML=`<span class="hr">${hora()}</span><span class="${k==="ok"?"s":k==="no"?"n":""}">${t}</span>`;
-  $("#log").appendChild(d); $("#log").scrollTop=$("#log").scrollHeight;
-}
 const par=()=>crypto.subtle.generateKey(ALGO,true,["sign","verify"]);
-async function expo(p){return {pub:await crypto.subtle.exportKey("jwk",p.publicKey),priv:await crypto.subtle.exportKey("jwk",p.privateKey)};}
+async function expo(p){return{pub:await crypto.subtle.exportKey("jwk",p.publicKey),
+                              priv:await crypto.subtle.exportKey("jwk",p.privateKey)};}
 async function assina(priv,o){
   const k=await crypto.subtle.importKey("jwk",priv,ALGO,true,["sign"]);
   return b64(await crypto.subtle.sign(SIG,k,enc.encode(canon(o))));
 }
 async function confere(pub,o,s){
-  try{
-    const k=await crypto.subtle.importKey("jwk",pub,ALGO,true,["verify"]);
-    return await crypto.subtle.verify(SIG,k,un64(s),enc.encode(canon(o)));
-  }catch(e){return false;}
+  try{const k=await crypto.subtle.importKey("jwk",pub,ALGO,true,["verify"]);
+    return await crypto.subtle.verify(SIG,k,un64(s),enc.encode(canon(o)));}catch(e){return false;}
 }
 
 async function iniciar(){
-  $("#log").innerHTML="";
-  log("Gerando chave-raiz da rede…");
   const raiz=await expo(await par());
-  const negocios={};
-  for(const n of BASE){
+  const rests={};
+  for(const r of REST){
     const p=await expo(await par());
-    const corpo={tipo:"credencial-negocio",negocio:n.id,nome:n.nome,ramo:n.ramo,
-      municipio:"3533908",programa:"sou-mais-olimpia",chave:p.pub,emitida:new Date().toISOString().slice(0,10)};
-    negocios[n.id]={...n,chaves:p,credencial:{corpo,assinatura:await assina(raiz.priv,corpo)},revogado:false};
+    const corpo={tipo:"credencial",negocio:r.id,nome:r.nome,municipio:"3533908",
+      programa:"sou-mais-olimpia",chave:p.pub,emitida:new Date().toISOString().slice(0,10)};
+    rests[r.id]={...r,chaves:p,credencial:{corpo,assinatura:await assina(raiz.priv,corpo)}};
   }
-  log(`${BASE.length} negócios credenciados pela prefeitura`,"ok");
-  S={raiz,negocios,carteira:{id:"olm-"+crypto.randomUUID().slice(0,18),carimbos:[]},vale:null,gastos:[]};
-  log("Carteira criada — código aleatório, sem nome e sem CPF","ok");
+  S={raiz,rests,carteira:{id:"olm-"+crypto.randomUUID().slice(0,18),carimbos:[]},vale:null,gastos:[]};
+  $("#sel").innerHTML=REST.map(r=>`<option value="${r.id}">${r.nome}</option>`).join("");
+  $("#saida").innerHTML="";
   desenhar();
 }
 
-async function comprar(id){
-  const l=S.negocios[id];
-  const saida=$("#saida-compra");
-  if(l.revogado) return saida.innerHTML=`<div class="aviso no"><b>Ops.</b> ${l.nome} não está mais na rede.</div>`;
-  if(S.carteira.carimbos.some(c=>c.corpo.negocio===id))
-    return saida.innerHTML=`<div class="aviso no"><b>Você já tem o carimbo da ${l.nome}.</b> Cada loja carimba uma vez por cartela — é assim que a cartela faz você conhecer lugares novos.</div>`;
-
-  const corpo={tipo:"carimbo",negocio:id,carteira:S.carteira.id,faixa:"50-150",
+async function carimbar(){
+  const r=S.rests[$("#sel").value];
+  if(S.carteira.carimbos.some(c=>c.corpo.negocio===r.id))
+    return diz("no",`<b>Esta cartela já tem o seu carimbo.</b> Cada restaurante carimba uma vez — é assim que o programa leva o cliente a conhecer outras casas.`);
+  const corpo={tipo:"carimbo",negocio:r.id,carteira:S.carteira.id,faixa:"50-150",
     data:new Date().toISOString().slice(0,10),nonce:crypto.randomUUID()};
-  S.carteira.carimbos.push({corpo,assinatura:await assina(l.chaves.priv,corpo)});
-  log(`<b>${l.nome}</b> assinou um carimbo`,"ok");
+  S.carteira.carimbos.push({corpo,assinatura:await assina(r.chaves.priv,corpo)});
 
   if(new Set(S.carteira.carimbos.map(c=>c.corpo.negocio)).size>=META && !S.vale){
-    const c={tipo:"vale",carteira:S.carteira.id,valor:VALOR,
+    const v={tipo:"vale",carteira:S.carteira.id,valor:VALOR,
       serie:"V-"+crypto.randomUUID().slice(0,8).toUpperCase(),emitido:new Date().toISOString().slice(0,10)};
-    S.vale={corpo:c,assinatura:await assina(S.raiz.priv,c),usado:false,onde:null};
-    log(`Cartela fechada. Vale <b>${c.serie}</b> de R$ ${VALOR} assinado pela rede`,"ok");
+    S.vale={corpo:v,assinatura:await assina(S.raiz.priv,v),usado:false,onde:null};
   }
-  saida.innerHTML=`<div class="aviso ok"><b>Carimbo da ${l.nome} recebido.</b> Guardamos só a faixa de valor da compra, nunca o valor exato.</div>`;
+  diz("ok",`<b>Carimbo registrado</b> e assinado com a chave do ${r.nome}. Veja a cartela no aplicativo do cliente.`);
   desenhar();
-  if(S.vale && !S.vale.usado) setTimeout(()=>trocar("carteira"),700);
 }
 
 async function verificar(){
-  const atual=S.negocios[$("#sel-loja").value];
-  const saida=$("#saida-balcao");
-  if(!S.carteira.carimbos.length)
-    return saida.innerHTML=`<div class="aviso no">Este cliente ainda não tem nenhum carimbo.</div>`;
-
-  log(`<b>${atual.nome}</b> verificando sem consultar as outras lojas…`);
+  const atual=S.rests[$("#sel").value];
+  if(!S.carteira.carimbos.length) return diz("no","Este cliente ainda não tem nenhum carimbo.");
   const itens=[];
   for(const c of S.carteira.carimbos){
-    const e=S.negocios[c.corpo.negocio];
+    const e=S.rests[c.corpo.negocio];
     const credOk=await confere(S.raiz.pub,e.credencial.corpo,e.credencial.assinatura);
     const carOk=await confere(e.credencial.corpo.chave,c.corpo,c.assinatura);
-    const ok=credOk&&carOk&&!e.revogado;
-    const motivo=!credOk?"credencial do negócio inválida"
-      :!carOk?"assinatura não confere — dado adulterado"
-      :e.revogado?"credencial revogada pela prefeitura"
-      :"credencial válida e assinatura confere";
-    itens.push({nome:e.nome,ok,motivo});
-    log(`${ok?"✓":"✗"} ${e.nome} — ${motivo}`,ok?"ok":"no");
+    itens.push({nome:e.nome,ok:credOk&&carOk,
+      motivo:!credOk?"credencial inválida":!carOk?"assinatura não confere — dado adulterado"
+             :"credencial válida e assinatura confere"});
   }
-  saida.innerHTML=`<div class="cartao" style="margin-top:16px">
-    ${itens.map(i=>`<div class="vf"><span class="mk ${i.ok?"s":"n"}" aria-hidden="true">${i.ok?"✓":"✗"}</span>
-      <span class="cp"><b>${i.nome}</b><span>${i.motivo}</span></span></div>`).join("")}
-  </div>
-  <div class="aviso inf"><b>Verificado neste aparelho.</b> Só com a chave pública da prefeitura — sem internet, sem consultar as outras lojas e sem planilha.</div>`;
+  $("#saida").innerHTML=`<div class="cartao">${itens.map(i=>
+      `<div class="vf"><span class="mk ${i.ok?"s":"n"}" aria-hidden="true">${i.ok?"✓":"✗"}</span>
+       <span><b>${i.nome}</b><span>${i.motivo}</span></span></div>`).join("")}</div>
+    <div class="aviso inf"><b>Conferido neste aparelho.</b> ${atual.nome} validou os carimbos usando só a chave pública da prefeitura — sem internet, sem consultar os outros restaurantes e sem planilha.</div>`;
 }
 
-function payloadVale(v){
-  const c=v.corpo;
-  return `SOU+VALE|v=1|s=${c.serie}|val=${c.valor}|c=${c.carteira}|e=${c.emitido}|g=${v.assinatura}`;
-}
-function lerPayload(txt){
-  const partes=String(txt||"").trim().split("|");
-  if(partes[0]!=="SOU+VALE") return null;
-  const p={};
-  for(const seg of partes.slice(1)){const i=seg.indexOf("=");if(i>0)p[seg.slice(0,i)]=seg.slice(i+1);}
-  if(!p.s||!p.g||!p.c) return null;
-  return {corpo:{tipo:"vale",carteira:p.c,valor:Number(p.val),serie:p.s,emitido:p.e},assinatura:p.g};
+const payload=v=>`SOU+VALE|s=${v.corpo.serie}|val=${v.corpo.valor}|c=${v.corpo.carteira}|e=${v.corpo.emitido}|g=${v.assinatura}`;
+function lerPayload(t){
+  const ps=String(t||"").trim().split("|");
+  if(ps[0]!=="SOU+VALE") return null;
+  const p={}; for(const s of ps.slice(1)){const i=s.indexOf("=");if(i>0)p[s.slice(0,i)]=s.slice(i+1);}
+  return p.s&&p.g?{corpo:{tipo:"vale",carteira:p.c,valor:Number(p.val),serie:p.s,emitido:p.e},assinatura:p.g}:null;
 }
 
-async function resgatar(lido){
-  const l=S.negocios[$("#sel-loja").value];
-  const saida=$("#saida-balcao");
-  const bruto = lido != null ? lido : (S.vale ? payloadVale(S.vale) : null);
-  if(!bruto) return saida.innerHTML=`<div class="aviso no">Nenhum vale lido. A cartela do cliente precisa de ${META} lojas diferentes.</div>`;
-
-  const v = lerPayload(bruto);
-  if(!v){
-    log("Conteúdo lido não é um vale Sou+Olímpia","no");
-    return saida.innerHTML=`<div class="aviso no"><b>Código não reconhecido.</b> Não é um vale da rede.</div>`;
-  }
-  log(`Lendo vale <b>${v.corpo.serie}</b> do código apresentado…`);
-  if(!await confere(S.raiz.pub,v.corpo,v.assinatura)){
-    log(`Vale ${v.corpo.serie} — assinatura da rede não confere`,"no");
-    return saida.innerHTML=`<div class="aviso no"><b>Vale inválido.</b> A assinatura da rede não confere — este código foi alterado ou não veio da rede.</div>`;
-  }
-  if(S.gastos.includes(v.corpo.serie)){
-    log(`Vale ${v.corpo.serie} — resgate duplo RECUSADO`,"no");
-    return saida.innerHTML=`<div class="aviso no"><b>Recusado.</b> O vale ${v.corpo.serie} já foi resgatado${S.vale&&S.vale.onde?" em "+S.vale.onde:""}. Cada série vale uma vez só.</div>`;
-  }
-  S.gastos.push(v.corpo.serie);
-  if(S.vale && S.vale.corpo.serie===v.corpo.serie){S.vale.usado=true;S.vale.onde=l.nome;}
-  log(`Vale ${v.corpo.serie} resgatado na <b>${l.nome}</b> · assinatura conferida no aparelho`,"ok");
-  saida.innerHTML=`<div class="aviso ok"><b>Vale de R$ ${v.corpo.valor} aceito.</b> A assinatura foi conferida aqui mesmo, sem consultar a rede. Tente de novo para ver o resgate duplo ser recusado.</div>`;
+async function resgatar(){
+  const r=S.rests[$("#sel").value];
+  if(!S.vale) return diz("no",`Este cliente ainda não tem vale. A cartela precisa de ${META} restaurantes diferentes.`);
+  const v=lerPayload(payload(S.vale));
+  if(!await confere(S.raiz.pub,v.corpo,v.assinatura))
+    return diz("no","<b>Vale inválido.</b> A assinatura da rede não confere.");
+  if(S.gastos.includes(v.corpo.serie))
+    return diz("no",`<b>Recusado.</b> O vale ${v.corpo.serie} já foi resgatado em ${S.vale.onde}. Cada série vale uma vez só.`);
+  S.gastos.push(v.corpo.serie); S.vale.usado=true; S.vale.onde=r.nome;
+  diz("ok",`<b>Vale de R$ ${v.corpo.valor} aceito.</b> A assinatura foi conferida aqui mesmo. Tente de novo para ver a rede recusar.`);
   desenhar();
 }
 
 async function fraudar(){
-  if(!S.carteira.carimbos.length){
-    return $("#log").insertAdjacentHTML("beforeend",`<div class="ln"><span class="n">Receba algum carimbo antes de tentar fraudar.</span></div>`);
-  }
+  if(!S.carteira.carimbos.length) return diz("no","Carimbe alguma coisa antes de testar a fraude.");
   S.carteira.carimbos[0].corpo.faixa="acima-150";
-  log("FRAUDE SIMULADA: faixa de valor alterada à força, sem refazer a assinatura","no");
-  trocar("balcao");
   await verificar();
 }
 
+const diz=(t,m)=>{$("#saida").innerHTML=`<div class="aviso ${t}">${m}</div>`;};
+
 function desenhar(){
   $("#wid").textContent=S.carteira.id;
+  $("#lid").textContent=S.rests[$("#sel").value].nome;
 
   const slots=[];
   for(let i=0;i<META;i++){
     const c=S.carteira.carimbos[i];
-    if(c){const n=S.negocios[c.corpo.negocio];
-      slots.push(`<div class="slot cheio" style="background:${CORES[n.id]}" role="listitem">
-        <span class="ic" aria-hidden="true">✓</span><span class="nm">${n.nome}</span><span class="dt">${c.corpo.data.slice(8)}/${c.corpo.data.slice(5,7)}</span></div>`);
-    } else {
-      slots.push(`<div class="slot vazio" role="listitem"><span class="nm">Espaço<br>${i+1}</span></div>`);
-    }
+    slots.push(c
+      ? `<div class="slot cheio" style="background:${CORES[c.corpo.negocio]}" role="listitem">
+           <span class="ic" aria-hidden="true">✓</span><span class="nm">${S.rests[c.corpo.negocio].nome}</span></div>`
+      : `<div class="slot vazio" role="listitem"><span class="nm">Espaço<br>${i+1}</span></div>`);
   }
   $("#cartela").innerHTML=slots.join("");
 
   const d=new Set(S.carteira.carimbos.map(c=>c.corpo.negocio)).size;
   $("#barra").style.width=Math.min(100,d/META*100)+"%";
-  $("#prog").innerHTML=d>=META
-    ? `<b>Cartela completa!</b> Você visitou ${d} lojas diferentes.`
-    : `<b>${d} de ${META}</b> lojas diferentes. Faltam ${META-d} — em lojas que ainda não carimbaram.`;
+  $("#prog").innerHTML=d>=META?`<b>Cartela completa!</b> Você visitou ${d} restaurantes diferentes.`
+    :`<b>${d} de ${META}</b> restaurantes diferentes.`;
 
   $("#area-vale").innerHTML=S.vale?`
     <div class="vale ${S.vale.usado?"usado":""}">
       <div class="rot">${S.vale.usado?"Vale já utilizado":"Seu vale"}</div>
       <div class="vl">R$ ${S.vale.corpo.valor}</div>
       <div class="serie">Série ${S.vale.corpo.serie}</div>
-      ${S.vale.usado
-        ? `<div class="cd">Resgatado em ${S.vale.onde}</div>`
-        : `<div class="qr">${QR.svg(payloadVale(S.vale),{margem:2,alt:"Código QR do vale de R$ "+S.vale.corpo.valor+", série "+S.vale.corpo.serie})}</div>
-           <p class="qrt">Mostre este código no caixa de qualquer loja da rede</p>`}
+      ${S.vale.usado?`<div class="cd">Resgatado em ${S.vale.onde}</div>`
+        :`<div class="qr">${QR.svg(payload(S.vale),{margem:2,
+            alt:"Código QR do vale de R$ "+S.vale.corpo.valor+", série "+S.vale.corpo.serie})}</div>
+          <p class="qrt">Mostre no caixa de qualquer restaurante da rede</p>`}
     </div>`:"";
-
-  $("#lista-lojas").innerHTML=Object.values(S.negocios).map(n=>{
-    const tem=S.carteira.carimbos.some(c=>c.corpo.negocio===n.id);
-    const selo=n.revogado?`<span class="selo no">fora da rede</span>`
-      :tem?`<span class="selo ja">carimbada</span>`:`<span class="selo ok">✓ credenciada</span>`;
-    return `<button class="loja" type="button" data-loja="${n.id}">
-      <span class="marca" style="background:${CORES[n.id]}" aria-hidden="true">${n.ini}</span>
-      <span class="txt"><span class="nm">${n.nome}</span><span class="rm">${n.ramo}</span></span>${selo}</button>`;
-  }).join("");
-  $$("[data-loja]").forEach(b=>b.addEventListener("click",()=>comprar(b.dataset.loja)));
-
-  const sel=$("#sel-loja");
-  if(sel.options.length!==Object.keys(S.negocios).length)
-    sel.innerHTML=Object.values(S.negocios).map(n=>`<option value="${n.id}">${n.nome}</option>`).join("");
 }
 
-function trocar(t){
-  ["carteira","lojas","balcao","rede"].forEach(k=>{
-    $("#tl-"+k).hidden = k!==t;
-  });
-  $$(".nav button").forEach(b=>{
-    if(b.dataset.tela===t) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current");
-  });
-  $("#corpo").scrollTop=0;
-}
-
-$$(".nav button").forEach(b=>b.addEventListener("click",()=>trocar(b.dataset.tela)));
-$("#bt-ir-lojas").addEventListener("click",()=>trocar("lojas"));
+$$(".troca button").forEach(b=>b.addEventListener("click",()=>{
+  $$(".aparelho").forEach(a=>{a.hidden=a.dataset.papel!==b.dataset.papel;});
+  $$(".troca button").forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+}));
+$("#bt-carimbar").addEventListener("click",carimbar);
 $("#bt-verificar").addEventListener("click",verificar);
-$("#bt-resgatar").addEventListener("click",()=>resgatar());
-$("#bt-colado").addEventListener("click",()=>resgatar($("#txt-qr").value));
+$("#bt-resgatar").addEventListener("click",resgatar);
 $("#bt-fraude").addEventListener("click",fraudar);
-$("#bt-reset").addEventListener("click",()=>{iniciar();trocar("carteira");});
+$("#bt-reset").addEventListener("click",iniciar);
+$("#sel").addEventListener("change",desenhar);
 
 if(!window.crypto||!crypto.subtle){
-  $("#corpo").insertAdjacentHTML("afterbegin",
+  document.querySelector(".corpo").insertAdjacentHTML("afterbegin",
     `<div class="aviso no"><b>Navegador sem suporte.</b> Abra no Chrome ou Firefox atualizado.</div>`);
-}else{
-  iniciar();
-}
+}else{ iniciar(); }
 </script>
 </body>
 </html>

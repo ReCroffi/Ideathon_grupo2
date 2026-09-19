@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E6FD8">
+<title>Carteira Sou+Olímpia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --azul:#0E6FD8; --azul-esc:#0A4C96; --azul-claro:#E7F1FD;
+  --amarelo:#F5C400; --vermelho:#D62718; --verde:#128040; --laranja:#E07A00;
+  --tinta:#10151C; --tinta2:#49535F; --tinta3:#6E7884;
+  --papel:#FFFFFF; --fundo:#F4F6FA; --linha:#E1E7EF;
+  --ok:#0E7A38; --erro:#C21F12;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --sans:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+  --nav:68px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;height:100%}
+body{
+  background:var(--fundo);color:var(--tinta);
+  font-family:var(--sans);font-size:16px;line-height:1.5;
+}
+button{font-family:var(--sans);cursor:pointer;border:none;background:none;color:inherit;font-size:16px}
+:focus-visible{outline:3px solid var(--azul);outline-offset:2px;border-radius:8px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ───────── moldura: celular no desktop, tela cheia no telefone ───────── */
+.palco{min-height:100%;display:block}
+.aparelho{
+  position:relative;height:100dvh;width:100%;overflow:hidden;background:var(--fundo);
+  display:flex;flex-direction:column
+}
+.guia{display:none}
+
+@media (min-width:860px){
+  body{background:linear-gradient(140deg,#0A4C96 0%,#0E6FD8 55%,#1687E8 100%)}
+  .palco{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    gap:48px;padding:32px;flex-wrap:wrap
+  }
+  .aparelho{
+    height:844px;width:390px;flex:none;border-radius:46px;border:13px solid #0B0F14;
+    box-shadow:0 34px 70px rgba(0,0,0,.42);overflow:hidden
+  }
+  .aparelho::before{
+    content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+    width:132px;height:26px;background:#0B0F14;border-radius:0 0 16px 16px;z-index:60
+  }
+  /* especificidade maior que a regra base .topo, que vem depois na folha */
+  .aparelho .topo{padding-top:36px}
+  .guia{
+    display:block;width:min(420px,40vw);color:#fff
+  }
+  .guia h2{font-size:26px;font-weight:900;margin:0 0 6px;letter-spacing:-.01em}
+  .guia p{margin:0 0 20px;color:#CFE2FA;font-size:15px;line-height:1.55}
+  .guia ol{margin:0;padding-left:0;list-style:none;counter-reset:g}
+  .guia li{
+    counter-increment:g;position:relative;padding:10px 0 10px 40px;
+    border-top:1px solid rgba(255,255,255,.18);font-size:14.5px;line-height:1.45
+  }
+  .guia li::before{
+    content:counter(g);position:absolute;left:0;top:10px;width:26px;height:26px;border-radius:50%;
+    background:rgba(255,255,255,.16);font-family:var(--mono);font-size:12px;font-weight:600;
+    display:flex;align-items:center;justify-content:center
+  }
+  .guia li b{color:#fff}
+  .guia .selo{
+    display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+    background:rgba(255,255,255,.16);padding:5px 11px;border-radius:20px;margin-bottom:14px
+  }
+}
+
+/* ───────── cabeçalho ───────── */
+.topo{
+  background:var(--papel);padding:calc(env(safe-area-inset-top) + 14px) 18px 12px;
+  display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--linha);flex:none;z-index:20
+}
+.topo img{height:34px;width:auto;display:block}
+.topo .quem{flex:1;min-width:0}
+.topo .quem .lbl{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--tinta3)}
+.topo .quem .val{font-family:var(--mono);font-size:11px;color:var(--tinta2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.icone{
+  width:42px;height:42px;border-radius:12px;background:var(--fundo);display:flex;align-items:center;
+  justify-content:center;font-size:19px;flex:none;border:1px solid var(--linha)
+}
+.icone:active{background:var(--azul-claro)}
+
+/* ───────── corpo ───────── */
+.corpo{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:18px 18px calc(var(--nav) + 26px)}
+.tela[hidden]{display:none}
+h1{font-size:0;margin:0;height:0}
+h2.tt{font-size:23px;font-weight:900;margin:0 0 4px;letter-spacing:-.015em}
+p.sb{color:var(--tinta2);font-size:14.5px;margin:0 0 18px}
+h3{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--tinta3);margin:24px 0 10px;font-weight:600}
+h3:first-of-type{margin-top:0}
+
+.cartao{background:var(--papel);border:1px solid var(--linha);border-radius:18px;padding:16px}
+
+/* cartela */
+.cartela{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.slot{
+  aspect-ratio:1;border-radius:16px;border:2px dashed var(--linha);background:var(--papel);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+  text-align:center;padding:8px
+}
+.slot.cheio{border-style:solid;border-color:transparent;color:#fff}
+.slot .ic{font-size:22px;line-height:1}
+.slot .nm{font-size:11.5px;font-weight:800;line-height:1.15}
+.slot .dt{font-family:var(--mono);font-size:9px;opacity:.9}
+.slot.vazio .nm{color:var(--tinta3);font-weight:700}
+
+.barra{height:9px;border-radius:99px;background:var(--linha);overflow:hidden;margin:16px 0 8px}
+.barra i{display:block;height:100%;background:var(--azul);border-radius:99px;transition:width .35s}
+.progresso{font-size:14px;color:var(--tinta2)}
+.progresso b{color:var(--tinta)}
+
+/* vale */
+.vale{
+  border-radius:18px;padding:20px;color:#fff;
+  background:linear-gradient(135deg,#0E7A38 0%,#12A04F 100%);
+  box-shadow:0 10px 26px rgba(18,128,64,.28)
+}
+.vale .rot{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.vale .vl{font-size:46px;font-weight:900;line-height:1.05;margin:2px 0 6px}
+.vale .serie{font-family:var(--mono);font-size:12px;opacity:.92}
+.vale .cd{
+  margin-top:14px;background:rgba(255,255,255,.16);border-radius:12px;padding:11px;
+  font-size:12.5px;line-height:1.5
+}
+.vale .cd .as{display:block;margin-top:6px;font-family:var(--mono);font-size:10.5px;
+  overflow-wrap:anywhere;opacity:.92}
+.vale .qr{margin-top:14px;background:#fff;border-radius:13px;padding:11px;display:flex;justify-content:center}
+.vale .qr svg{width:100%;max-width:196px;height:auto;display:block}
+.vale .qrt{margin:10px 0 0;font-size:12.5px;text-align:center;opacity:.95;line-height:1.35}
+.oferta{background:var(--papel);border:1px solid var(--linha);border-radius:16px;padding:14px;margin-bottom:10px}
+.oferta .cab{display:flex;align-items:center;gap:11px;margin-bottom:9px}
+.oferta .tit{font-weight:800;font-size:15.5px;line-height:1.25}
+.oferta .det{font-size:14px;color:var(--tinta2);margin:0 0 9px}
+.oferta .pe{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12px;color:var(--tinta3)}
+.oferta .vf{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 9px;border-radius:20px;font-weight:600;background:#E6F4EC;color:var(--ok)}
+.oferta .pub{background:var(--azul-claro);color:var(--azul-esc)}
+.vazio-nota{border:2px dashed var(--linha);border-radius:16px;padding:16px;text-align:center;color:var(--tinta3);font-size:14px}
+.leitor{width:100%;font-family:var(--mono);font-size:13px;padding:12px;border:2px solid var(--linha);
+  border-radius:13px;min-height:88px;resize:vertical;background:var(--papel);color:var(--tinta)}
+.vale.usado{background:linear-gradient(135deg,#5B6672 0%,#79828E 100%);box-shadow:none}
+
+/* lojas */
+.loja{
+  display:flex;align-items:center;gap:13px;padding:13px 14px;background:var(--papel);
+  border:1px solid var(--linha);border-radius:16px;margin-bottom:10px;width:100%;text-align:left
+}
+.loja:active{background:var(--azul-claro)}
+.marca{
+  width:44px;height:44px;border-radius:13px;display:flex;align-items:center;justify-content:center;
+  font-weight:900;color:#fff;font-size:16px;flex:none
+}
+.loja .txt{flex:1;min-width:0}
+.loja .nm{font-weight:800;font-size:15.5px;line-height:1.2}
+.loja .rm{font-size:12.5px;color:var(--tinta3)}
+.selo{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;
+  padding:4px 9px;border-radius:20px;font-weight:600;white-space:nowrap
+}
+.selo.ok{background:#E6F4EC;color:var(--ok)}
+.selo.no{background:#FBEAE8;color:var(--erro)}
+.selo.ja{background:var(--azul-claro);color:var(--azul-esc)}
+
+/* botões */
+.bt{
+  display:flex;align-items:center;justify-content:center;gap:9px;width:100%;
+  background:var(--azul);color:#fff;font-weight:800;font-size:16.5px;
+  padding:16px;border-radius:15px;min-height:56px
+}
+.bt:active{background:var(--azul-esc)}
+.bt.sec{background:var(--papel);color:var(--azul-esc);border:2px solid var(--azul)}
+.bt.sec:active{background:var(--azul-claro)}
+.bt.fant{background:var(--papel);color:var(--tinta2);border:2px solid var(--linha)}
+.bt[disabled]{opacity:.45}
+.bts{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+
+/* avisos */
+.aviso{border-radius:14px;padding:14px 15px;font-size:14.5px;line-height:1.45;margin-top:14px}
+.aviso.ok{background:#E6F4EC;color:#0B5C2B;border:1px solid #B8DFC6}
+.aviso.no{background:#FBEAE8;color:#8C1A10;border:1px solid #EFC6C2}
+.aviso.inf{background:var(--azul-claro);color:var(--azul-esc);border:1px solid #C3D8F3}
+.aviso b{font-weight:800}
+
+/* lista de verificação */
+.vf{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--linha);align-items:flex-start}
+.vf:last-child{border-bottom:none}
+.vf .mk{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:900;color:#fff;flex:none;margin-top:1px}
+.vf .mk.s{background:var(--ok)} .vf .mk.n{background:var(--erro)}
+.vf .cp{flex:1;min-width:0}
+.vf .cp b{display:block;font-size:14.5px}
+.vf .cp span{font-size:12.5px;color:var(--tinta3);line-height:1.35;display:block}
+
+/* console */
+.log{background:#0F1720;border-radius:16px;padding:14px;color:#D7DEE7;
+  font-family:var(--mono);font-size:11.5px;line-height:1.7;max-height:340px;overflow-y:auto}
+.log .ln{padding:4px 0;border-bottom:1px solid #1D2733;word-break:break-word}
+.log .ln:last-child{border-bottom:none}
+.log .hr{color:#64748B;margin-right:7px}
+.log .s{color:#4ADE80;font-weight:600}
+.log .n{color:#FB7185;font-weight:600}
+
+/* tabela de privacidade */
+.pv{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--linha);font-size:14.5px}
+.pv:last-child{border-bottom:none}
+.pv b{font-weight:800;white-space:nowrap}
+.pv .sim{color:var(--tinta2)} .pv .nao{color:var(--ok)}
+
+/* seletor */
+label{display:block;font-weight:800;font-size:13.5px;margin-bottom:7px}
+select{
+  width:100%;font-family:var(--sans);font-size:16px;padding:13px 14px;border:2px solid var(--linha);
+  border-radius:13px;background:var(--papel);color:var(--tinta);min-height:52px
+}
+.campo{margin-bottom:14px}
+
+/* navegação inferior */
+.nav{
+  position:absolute;bottom:0;left:0;right:0;height:calc(var(--nav) + env(safe-area-inset-bottom));
+  padding-bottom:env(safe-area-inset-bottom);
+  background:var(--papel);border-top:1px solid var(--linha);display:flex;z-index:40
+}
+.nav button{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  color:var(--tinta3);font-size:11px;font-weight:700;padding-top:6px
+}
+.nav button .g{font-size:20px;line-height:1}
+.nav button{font-size:10.5px}
+.nav button[aria-current="page"]{color:var(--azul)}
+.nav button[aria-current="page"] .g{transform:translateY(-1px)}
+</style>
+</head>
+<body>
+
+<h1>Sou+Olímpia — carteira do morador</h1>
+
+<div class="palco">
+
+  <div class="aparelho">
+    <header class="topo">
+      <img src="logo.jpg" alt="Sou+Olímpia">
+      <span class="quem">
+        <span class="lbl">Minha carteira</span>
+        <span class="val" id="wid">—</span>
+      </span>
+      <button class="icone" id="bt-reset" type="button" aria-label="Reiniciar demonstração">↻</button>
+    </header>
+
+    <main class="corpo" id="corpo">
+
+      <!-- ═══ CARTEIRA ═══ -->
+      <section class="tela" id="tl-carteira" aria-labelledby="h-cart">
+        <h2 class="tt" id="h-cart">Cartela de setembro</h2>
+        <p class="sb">Compre em <b>3 lojas diferentes</b> e ganhe R$ 30 para usar no mês seguinte.</p>
+
+        <div class="cartela" id="cartela" role="list"></div>
+        <div class="barra"><i id="barra" style="width:0%"></i></div>
+        <p class="progresso" id="prog"></p>
+
+        <div id="area-vale" style="margin-top:20px"></div>
+
+        <div class="bts">
+          <button class="bt sec" id="bt-ir-lojas" type="button">Ver lojas participantes</button>
+        </div>
+
+        <div class="aviso inf" style="margin-top:20px">
+          <b>Sua carteira é anônima.</b> A rede não sabe seu nome nem seu CPF — só existe um código aleatório que você pode trocar quando quiser.
+        </div>
+      </section>
+
+      <!-- ═══ LOJAS ═══ -->
+      <section class="tela" id="tl-lojas" hidden aria-labelledby="h-lojas">
+        <h2 class="tt" id="h-lojas">Lojas participantes</h2>
+        <p class="sb">Toque numa loja para simular uma compra e receber o carimbo.</p>
+        <div id="lista-lojas"></div>
+        <div id="saida-compra" role="status" aria-live="polite"></div>
+      </section>
+
+      <!-- ═══ OFERTAS ═══ -->
+      <section class="tela" id="tl-ofertas" hidden aria-labelledby="h-of">
+        <h2 class="tt" id="h-of">Descontos para quem mora aqui</h2>
+        <p class="sb">Tudo que vale para morador de Olímpia, num lugar só.</p>
+
+        <h3>Ofertas da rede</h3>
+        <div id="lista-ofertas"></div>
+        <p class="sb" style="font-size:13px;margin-top:-4px">Cada oferta é <b>assinada pelo próprio negócio</b>. O aplicativo confere a assinatura antes de mostrar — ninguém publica desconto em nome de outro.</p>
+
+        <h3>Benefícios públicos já existentes</h3>
+        <div id="lista-publicas"></div>
+
+        <h3>O que ainda não existe</h3>
+        <div class="vazio-nota">
+          Olímpia <b>não tem hoje</b> um desconto permanente de morador nos parques.
+          O de 50% que circula foi promoção de um dia só, no aniversário da cidade em 2022.
+          O <b>Cartão Cidadão Olimpiense</b> existe e já era aceito como prova de residência —
+          falta o canal que transforme isso em benefício contínuo.
+        </div>
+      </section>
+
+      <!-- ═══ BALCÃO ═══ -->
+      <section class="tela" id="tl-balcao" hidden aria-labelledby="h-balcao">
+        <h2 class="tt" id="h-balcao">Balcão</h2>
+        <p class="sb">A tela do comerciante. No produto final é um aplicativo separado — aqui está junto para a demonstração caber num aparelho só.</p>
+
+        <div class="campo">
+          <label for="sel-loja">Estou atendendo como</label>
+          <select id="sel-loja"></select>
+        </div>
+
+        <div class="bts">
+          <button class="bt" id="bt-verificar" type="button">Verificar carimbos do cliente</button>
+          <button class="bt sec" id="bt-resgatar" type="button">Ler o QR deste aparelho e resgatar</button>
+        </div>
+
+        <h3 style="margin-top:24px">Vale lido de outro aparelho</h3>
+        <label for="txt-qr">Conteúdo do QR escaneado</label>
+        <textarea class="leitor" id="txt-qr" placeholder="SOU+VALE|v=1|s=…"></textarea>
+        <div class="bts">
+          <button class="bt fant" id="bt-colado" type="button">Validar e resgatar o código colado</button>
+        </div>
+
+        <div id="saida-balcao" role="status" aria-live="polite"></div>
+      </section>
+
+      <!-- ═══ REDE ═══ -->
+      <section class="tela" id="tl-rede" hidden aria-labelledby="h-rede">
+        <h2 class="tt" id="h-rede">Rede e privacidade</h2>
+        <p class="sb">Tudo que acontece por baixo, aberto para quem quiser conferir.</p>
+
+        <h3>O que a rede guarda</h3>
+        <div class="cartao">
+          <div class="pv"><span>Seu nome</span><b class="nao">não guarda</b></div>
+          <div class="pv"><span>Seu CPF</span><b class="nao">não guarda</b></div>
+          <div class="pv"><span>Valor exato da compra</span><b class="nao">não guarda</b></div>
+          <div class="pv"><span>O que você comprou</span><b class="nao">não guarda</b></div>
+          <div class="pv"><span>Loja, data e faixa de valor</span><b class="sim">guarda</b></div>
+          <div class="pv"><span>Código aleatório da carteira</span><b class="sim">guarda</b></div>
+        </div>
+
+        <h3>Console de confiança</h3>
+        <div class="log" id="log" role="log" aria-live="polite" aria-relevant="additions"></div>
+
+        <div class="bts">
+          <button class="bt fant" id="bt-fraude" type="button">Simular fraude num carimbo</button>
+        </div>
+        <div class="aviso inf" style="margin-top:14px">
+          Cada carimbo é assinado com <b>ECDSA P-256</b> no próprio aparelho. Uma loja confere o carimbo de outra sem internet e sem consultar ninguém.
+        </div>
+      </section>
+
+    </main>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <button type="button" data-tela="carteira" aria-current="page"><span class="g" aria-hidden="true">🎟️</span>Carteira</button>
+      <button type="button" data-tela="lojas"><span class="g" aria-hidden="true">🏪</span>Lojas</button>
+      <button type="button" data-tela="ofertas"><span class="g" aria-hidden="true">🏷️</span>Ofertas</button>
+      <button type="button" data-tela="balcao"><span class="g" aria-hidden="true">🧾</span>Balcão</button>
+      <button type="button" data-tela="rede"><span class="g" aria-hidden="true">🔐</span>Rede</button>
+    </nav>
+  </div>
+
+  <aside class="guia" aria-label="Roteiro para quem apresenta">
+    <span class="selo">Roteiro do palco</span>
+    <h2>Sou+Olímpia</h2>
+    <p>Protótipo funcional do aplicativo do morador. Roda no navegador, sem servidor e sem internet — a criptografia acontece no próprio aparelho.</p>
+    <ol>
+      <li>Abra <b>Lojas</b> e toque na Padaria para receber o primeiro carimbo</li>
+      <li>Repita na <b>Farmácia</b> e na <b>Livraria</b> — três lojas diferentes fecham a cartela</li>
+      <li>Volte à <b>Carteira</b>: o vale de R$ 30 aparece com o <b>QR assinado</b></li>
+      <li>Em <b>Balcão</b>, atenda como Mercado e toque em <b>Verificar</b>: uma loja confere o carimbo das outras sozinha</li>
+      <li>Em <b>Balcão</b>, toque em <b>Ler o QR</b> duas vezes — a segunda é recusada. Ou escaneie o QR com outro celular e cole o conteúdo no campo abaixo</li>
+      <li>Em <b>Rede</b>, toque em <b>Simular fraude</b> e volte a verificar: a assinatura não bate mais</li>
+    </ol>
+  </aside>
+
+</div>
+
+<script>
+/* Codificador QR mínimo — modo byte, nível de correção M, versões 1 a 10.
+   Suficiente para o payload do vale e sem dependência externa. */
+const QR = (function () {
+  "use strict";
+
+  // ---------- GF(256), polinômio primitivo 0x11D ----------
+  const EXP = new Uint8Array(512), LOG = new Uint8Array(256);
+  (function () {
+    let x = 1;
+    for (let i = 0; i < 255; i++) { EXP[i] = x; LOG[x] = i; x <<= 1; if (x & 0x100) x ^= 0x11D; }
+    for (let i = 255; i < 512; i++) EXP[i] = EXP[i - 255];
+  })();
+  const mul = (a, b) => (a && b) ? EXP[LOG[a] + LOG[b]] : 0;
+
+  function rsGen(n) {                       // coeficientes do menor para o maior grau
+    let g = [1];
+    for (let i = 0; i < n; i++) {
+      const ng = new Array(g.length + 1).fill(0);
+      for (let j = 0; j < g.length; j++) { ng[j] ^= mul(g[j], EXP[i]); ng[j + 1] ^= g[j]; }
+      g = ng;
+    }
+    return g.reverse();                     // maior grau primeiro, líder = 1
+  }
+  function rsEcc(data, ecLen) {
+    const gen = rsGen(ecLen);
+    const buf = new Uint8Array(data.length + ecLen);
+    buf.set(data);
+    for (let i = 0; i < data.length; i++) {
+      const f = buf[i];
+      if (f) for (let j = 1; j < gen.length; j++) buf[i + j] ^= mul(gen[j], f);
+    }
+    return Array.from(buf.slice(data.length));
+  }
+
+  // ---------- tabelas para nível M, versões 1..10 ----------
+  // [codewords de EC por bloco, blocos grupo 1, dados g1, blocos g2, dados g2]
+  const BLOCOS_M = {
+    1:[10,1,16,0,0], 2:[16,1,28,0,0], 3:[26,1,44,0,0], 4:[18,2,32,0,0], 5:[24,2,43,0,0],
+    6:[16,4,27,0,0], 7:[18,4,31,0,0], 8:[22,2,38,2,39], 9:[22,3,36,2,37], 10:[26,4,43,1,44]
+  };
+  const CAP_M = {1:14,2:26,3:42,4:62,5:84,6:106,7:122,8:152,9:180,10:213};
+  const ALINHA = {
+    1:[], 2:[6,18], 3:[6,22], 4:[6,26], 5:[6,30],
+    6:[6,34], 7:[6,22,38], 8:[6,24,42], 9:[6,26,46], 10:[6,28,50]
+  };
+
+  function bch15(fmt) {                     // informação de formato: BCH(15,5)
+    let v = fmt << 10;
+    for (let i = 4; i >= 0; i--) if (v & (1 << (i + 10))) v ^= 0x537 << i;
+    return (((fmt << 10) | v) ^ 0x5412) & 0x7FFF;
+  }
+  function bch18(ver) {                     // informação de versão: BCH(18,6)
+    let v = ver << 12;
+    for (let i = 5; i >= 0; i--) if (v & (1 << (i + 12))) v ^= 0x1F25 << i;
+    return ((ver << 12) | v) & 0x3FFFF;
+  }
+
+  // ---------- montagem ----------
+  function reservado(tam, ver) {            // true onde não entram dados
+    const r = Array.from({length: tam}, () => new Uint8Array(tam));
+    const marca = (x, y, w, h) => {
+      for (let j = 0; j < h; j++) for (let i = 0; i < w; i++) {
+        const yy = y + j, xx = x + i;
+        if (yy >= 0 && yy < tam && xx >= 0 && xx < tam) r[yy][xx] = 1;
+      }
+    };
+    marca(0, 0, 9, 9);                      // localizador + formato (canto superior esquerdo)
+    marca(tam - 8, 0, 8, 9);                // superior direito
+    marca(0, tam - 8, 9, 8);                // inferior esquerdo
+    for (let i = 0; i < tam; i++) { r[6][i] = 1; r[i][6] = 1; }   // temporização
+    const al = ALINHA[ver];
+    for (const cy of al) for (const cx of al) {
+      const perto = (a, b) => Math.abs(a - b) < 7;
+      if ((perto(cx, 6) && perto(cy, 6)) ||
+          (perto(cx, tam - 7) && perto(cy, 6)) ||
+          (perto(cx, 6) && perto(cy, tam - 7))) continue;
+      marca(cx - 2, cy - 2, 5, 5);
+    }
+    if (ver >= 7) { marca(tam - 11, 0, 3, 6); marca(0, tam - 11, 6, 3); }
+    return r;
+  }
+
+  function desenhaFixos(m, tam, ver) {
+    const localizador = (x, y) => {
+      for (let j = -1; j <= 7; j++) for (let i = -1; i <= 7; i++) {
+        const yy = y + j, xx = x + i;
+        if (yy < 0 || yy >= tam || xx < 0 || xx >= tam) continue;
+        const borda = (i >= 0 && i <= 6 && (j === 0 || j === 6)) || (j >= 0 && j <= 6 && (i === 0 || i === 6));
+        const miolo = i >= 2 && i <= 4 && j >= 2 && j <= 4;
+        m[yy][xx] = (borda || miolo) ? 1 : 0;
+      }
+    };
+    localizador(0, 0); localizador(tam - 7, 0); localizador(0, tam - 7);
+    for (let i = 8; i < tam - 8; i++) { const v = i % 2 === 0 ? 1 : 0; m[6][i] = v; m[i][6] = v; }
+    const al = ALINHA[ver];
+    for (const cy of al) for (const cx of al) {
+      const perto = (a, b) => Math.abs(a - b) < 7;
+      if ((perto(cx, 6) && perto(cy, 6)) ||
+          (perto(cx, tam - 7) && perto(cy, 6)) ||
+          (perto(cx, 6) && perto(cy, tam - 7))) continue;
+      for (let j = -2; j <= 2; j++) for (let i = -2; i <= 2; i++)
+        m[cy + j][cx + i] = (Math.max(Math.abs(i), Math.abs(j)) !== 1) ? 1 : 0;
+    }
+    m[tam - 8][8] = 1;                      // módulo escuro obrigatório
+    if (ver >= 7) {
+      const vi = bch18(ver);
+      for (let i = 0; i < 18; i++) {
+        const b = (vi >> i) & 1, r = Math.floor(i / 3), c = i % 3;
+        m[tam - 11 + c][r] = b;
+        m[r][tam - 11 + c] = b;
+      }
+    }
+  }
+
+  function gravaFormato(m, tam, mascara) {
+    const f = bch15((0 << 3) | mascara);    // 00 = nível M
+    for (let i = 0; i < 15; i++) {
+      const b = (f >> i) & 1;
+      if (i < 6) m[i][8] = b;
+      else if (i < 8) m[i + 1][8] = b;
+      else if (i === 8) m[8][7] = b;
+      else m[8][14 - i] = b;
+      if (i < 8) m[8][tam - 1 - i] = b;
+      else m[tam - 15 + i][8] = b;
+    }
+  }
+
+  const MASCARAS = [
+    (r, c) => (r + c) % 2 === 0,
+    (r, c) => r % 2 === 0,
+    (r, c) => c % 3 === 0,
+    (r, c) => (r + c) % 3 === 0,
+    (r, c) => (Math.floor(r / 2) + Math.floor(c / 3)) % 2 === 0,
+    (r, c) => ((r * c) % 2) + ((r * c) % 3) === 0,
+    (r, c) => (((r * c) % 2) + ((r * c) % 3)) % 2 === 0,
+    (r, c) => (((r + c) % 2) + ((r * c) % 3)) % 2 === 0
+  ];
+
+  function penalidade(m, tam) {
+    let p = 0;
+    // regra 1: sequências de 5+ iguais
+    for (let dir = 0; dir < 2; dir++)
+      for (let a = 0; a < tam; a++) {
+        let run = 1;
+        for (let b = 1; b < tam; b++) {
+          const at = dir ? m[b][a] : m[a][b], ant = dir ? m[b - 1][a] : m[a][b - 1];
+          if (at === ant) { run++; if (run === 5) p += 3; else if (run > 5) p += 1; }
+          else run = 1;
+        }
+      }
+    // regra 2: blocos 2x2
+    for (let r = 0; r < tam - 1; r++) for (let c = 0; c < tam - 1; c++) {
+      const v = m[r][c];
+      if (v === m[r][c + 1] && v === m[r + 1][c] && v === m[r + 1][c + 1]) p += 3;
+    }
+    // regra 3: padrão 1:1:3:1:1 com 4 claros
+    const A = [1,0,1,1,1,0,1,0,0,0,0], B = [0,0,0,0,1,0,1,1,1,0,1];
+    const casa = (get, i, pat) => pat.every((v, k) => get(i + k) === v);
+    for (let a = 0; a < tam; a++)
+      for (let b = 0; b <= tam - 11; b++) {
+        const gl = i => m[a][i], gc = i => m[i][a];
+        if (casa(gl, b, A) || casa(gl, b, B)) p += 40;
+        if (casa(gc, b, A) || casa(gc, b, B)) p += 40;
+      }
+    // regra 4: desequilíbrio claro/escuro
+    let escuros = 0;
+    for (let r = 0; r < tam; r++) for (let c = 0; c < tam; c++) escuros += m[r][c];
+    const pct = (escuros * 100) / (tam * tam);
+    p += Math.floor(Math.abs(pct - 50) / 5) * 10;
+    return p;
+  }
+
+  /** Gera a matriz de módulos (0/1) para um texto. Retorna {tam, matriz, versao}. */
+  function gerar(texto, versaoFixa, mascaraFixa) {
+    const bytes = Array.from(new TextEncoder().encode(texto));
+    let ver = versaoFixa || 0;
+    if (!ver) {
+      for (let v = 1; v <= 10; v++) if (bytes.length <= CAP_M[v]) { ver = v; break; }
+      if (!ver) throw new Error("payload longo demais para versão 10 nível M");
+    }
+    if (bytes.length > CAP_M[ver]) throw new Error("payload não cabe na versão pedida");
+
+    const [ecPorBloco, g1, d1, g2, d2] = BLOCOS_M[ver];
+    const totalDados = g1 * d1 + g2 * d2;
+
+    // fluxo de bits: modo 0100 + contagem (8 bits até v9) + dados
+    const bits = [];
+    const push = (val, n) => { for (let i = n - 1; i >= 0; i--) bits.push((val >> i) & 1); };
+    push(0b0100, 4);
+    push(bytes.length, ver <= 9 ? 8 : 16);
+    for (const b of bytes) push(b, 8);
+    const capBits = totalDados * 8;
+    for (let i = 0; i < 4 && bits.length < capBits; i++) bits.push(0);   // terminador
+    while (bits.length % 8) bits.push(0);
+    const cw = [];
+    for (let i = 0; i < bits.length; i += 8) cw.push(parseInt(bits.slice(i, i + 8).join(""), 2));
+    const ENCHE = [0xEC, 0x11];
+    for (let i = 0; cw.length < totalDados; i++) cw.push(ENCHE[i % 2]);
+
+    // blocos
+    const blocosD = [], blocosE = [];
+    let p = 0;
+    for (let i = 0; i < g1; i++) { const d = cw.slice(p, p + d1); p += d1; blocosD.push(d); blocosE.push(rsEcc(d, ecPorBloco)); }
+    for (let i = 0; i < g2; i++) { const d = cw.slice(p, p + d2); p += d2; blocosD.push(d); blocosE.push(rsEcc(d, ecPorBloco)); }
+
+    // intercalação
+    const fluxo = [];
+    const maxD = Math.max(d1, d2 || 0);
+    for (let i = 0; i < maxD; i++) for (const b of blocosD) if (i < b.length) fluxo.push(b[i]);
+    for (let i = 0; i < ecPorBloco; i++) for (const b of blocosE) fluxo.push(b[i]);
+
+    const fluxoBits = [];
+    for (const b of fluxo) for (let i = 7; i >= 0; i--) fluxoBits.push((b >> i) & 1);
+
+    // matriz
+    const tam = 17 + 4 * ver;
+    const res = reservado(tam, ver);
+    const base = Array.from({length: tam}, () => new Uint8Array(tam));
+    desenhaFixos(base, tam, ver);
+
+    // colocação em zigue-zague, da direita para a esquerda
+    const posicoes = [];
+    let subindo = true;
+    for (let col = tam - 1; col > 0; col -= 2) {
+      if (col === 6) col--;                 // pula a coluna de temporização
+      for (let k = 0; k < tam; k++) {
+        const row = subindo ? tam - 1 - k : k;
+        for (const c of [col, col - 1]) if (!res[row][c]) posicoes.push([row, c]);
+      }
+      subindo = !subindo;
+    }
+    posicoes.forEach(([r, c], i) => { base[r][c] = i < fluxoBits.length ? fluxoBits[i] : 0; });
+
+    // escolha da máscara
+    const candidatas = mascaraFixa != null ? [mascaraFixa] : [0,1,2,3,4,5,6,7];
+    let melhor = null, melhorP = Infinity, melhorM = 0;
+    for (const mk of candidatas) {
+      const m = base.map(l => Uint8Array.from(l));
+      for (let r = 0; r < tam; r++) for (let c = 0; c < tam; c++)
+        if (!res[r][c] && MASCARAS[mk](r, c)) m[r][c] ^= 1;
+      gravaFormato(m, tam, mk);
+      const pen = penalidade(m, tam);
+      if (pen < melhorP) { melhorP = pen; melhor = m; melhorM = mk; }
+    }
+    return {tam, matriz: melhor, versao: ver, mascara: melhorM};
+  }
+
+  /** SVG pronto para embutir. */
+  function svg(texto, opc) {
+    const o = opc || {};
+    const {tam, matriz} = gerar(texto, o.versao, o.mascara);
+    const q = o.margem == null ? 4 : o.margem;
+    const total = tam + q * 2;
+    let d = "";
+    for (let r = 0; r < tam; r++) for (let c = 0; c < tam; c++)
+      if (matriz[r][c]) d += `M${c + q} ${r + q}h1v1h-1z`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${total} ${total}" `
+         + `shape-rendering="crispEdges" role="img" aria-label="${o.alt || "Código QR"}">`
+         + `<rect width="${total}" height="${total}" fill="${o.fundo || "#fff"}"/>`
+         + `<path d="${d}" fill="${o.cor || "#000"}"/></svg>`;
+  }
+
+  return {gerar, svg};
+})();
+</script>
+
+<script>
+"use strict";
+/* Sou+Olímpia — app do morador. Mesma camada de confiança da versão de mesa:
+   credenciais e carimbos assinados com ECDSA P-256, verificação 100% local. */
+
+const CORES={padaria:"#D62718",farmacia:"#128040",livraria:"#E07A00",mercado:"#0E6FD8"};
+const BASE=[
+  {id:"padaria", nome:"Padaria Central",    ramo:"Panificação",       ini:"PC"},
+  {id:"farmacia",nome:"Farmácia São Jorge", ramo:"Farmácia",          ini:"FS"},
+  {id:"livraria",nome:"Livraria da Praça",  ramo:"Livros e papelaria",ini:"LP"},
+  {id:"mercado", nome:"Mercado do Bairro",  ramo:"Alimentos",         ini:"MB"}
+];
+const META=3, VALOR=30;
+
+/* Ofertas de demonstração, publicadas pelos negócios fictícios da rede.
+   Cada uma é assinada com a chave do próprio negócio e conferida antes de aparecer. */
+const OFERTAS_DEMO = [
+  {negocio:"padaria",  titulo:"10% na cesta de café da manhã", detalhe:"De segunda a quinta, o dia todo.", validade:"enquanto durar a baixa temporada"},
+  {negocio:"farmacia", titulo:"15% em medicamentos genéricos", detalhe:"Para quem apresentar a cartela do mês em andamento.", validade:"todo mês de vale"},
+  {negocio:"livraria", titulo:"10% em livros didáticos", detalhe:"Sem valor mínimo de compra.", validade:"o ano todo"},
+  {negocio:"mercado",  titulo:"R$ 10 de desconto acima de R$ 120", detalhe:"Terças e quartas, uma vez por semana.", validade:"maio a setembro"}
+];
+
+/* Benefícios públicos já existentes, com a fonte. Não são assinados pela rede:
+   são informação pública, e o aplicativo diz isso explicitamente. */
+const PUBLICAS = [
+  {titulo:"Meia entrada para todos no Thermas dos Laranjais",
+   detalhe:"Em maio, junho, agosto e setembro, de segunda a sexta, mediante doação de 1 kg de alimento não perecível.",
+   fonte:"tarifário e calendário oficial do parque, 2026"},
+  {titulo:"Meia entrada por lei",
+   detalhe:"Estudantes, pessoas com 60 anos ou mais, professores da rede pública e pessoas com deficiência, com o documento correspondente.",
+   fonte:"vale em todo o estado de São Paulo, o ano inteiro"}
+];
+let S=null;
+
+const enc=new TextEncoder();
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const canon=o=>o===null||typeof o!=="object"?JSON.stringify(o)
+  :Array.isArray(o)?"["+o.map(canon).join(",")+"]"
+  :"{"+Object.keys(o).sort().map(k=>JSON.stringify(k)+":"+canon(o[k])).join(",")+"}";
+const b64=b=>btoa(String.fromCharCode(...new Uint8Array(b)));
+const un64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+const ALGO={name:"ECDSA",namedCurve:"P-256"}, SIG={name:"ECDSA",hash:"SHA-256"};
+
+function hora(){const d=new Date();return [d.getHours(),d.getMinutes(),d.getSeconds()].map(n=>String(n).padStart(2,"0")).join(":");}
+function log(t,k){
+  const d=document.createElement("div"); d.className="ln";
+  d.innerHTML=`<span class="hr">${hora()}</span><span class="${k==="ok"?"s":k==="no"?"n":""}">${t}</span>`;
+  $("#log").appendChild(d); $("#log").scrollTop=$("#log").scrollHeight;
+}
+const par=()=>crypto.subtle.generateKey(ALGO,true,["sign","verify"]);
+async function expo(p){return {pub:await crypto.subtle.exportKey("jwk",p.publicKey),priv:await crypto.subtle.exportKey("jwk",p.privateKey)};}
+async function assina(priv,o){
+  const k=await crypto.subtle.importKey("jwk",priv,ALGO,true,["sign"]);
+  return b64(await crypto.subtle.sign(SIG,k,enc.encode(canon(o))));
+}
+async function confere(pub,o,s){
+  try{
+    const k=await crypto.subtle.importKey("jwk",pub,ALGO,true,["verify"]);
+    return await crypto.subtle.verify(SIG,k,un64(s),enc.encode(canon(o)));
+  }catch(e){return false;}
+}
+
+async function iniciar(){
+  $("#log").innerHTML="";
+  log("Gerando chave-raiz da rede…");
+  const raiz=await expo(await par());
+  const negocios={};
+  for(const n of BASE){
+    const p=await expo(await par());
+    const corpo={tipo:"credencial-negocio",negocio:n.id,nome:n.nome,ramo:n.ramo,
+      municipio:"3533908",programa:"sou-mais-olimpia",chave:p.pub,emitida:new Date().toISOString().slice(0,10)};
+    negocios[n.id]={...n,chaves:p,credencial:{corpo,assinatura:await assina(raiz.priv,corpo)},revogado:false};
+  }
+  log(`${BASE.length} negócios credenciados pela prefeitura`,"ok");
+  S={raiz,negocios,carteira:{id:"olm-"+crypto.randomUUID().slice(0,18),carimbos:[]},vale:null,gastos:[]};
+  log("Carteira criada — código aleatório, sem nome e sem CPF","ok");
+  await montarOfertas();
+  desenhar();
+}
+
+async function montarOfertas(){
+  const lista = [];
+  for(const o of OFERTAS_DEMO){
+    const n = S.negocios[o.negocio];
+    if(!n || n.revogado) continue;
+    const corpo = {tipo:"oferta", negocio:o.negocio, titulo:o.titulo, detalhe:o.detalhe,
+                   validade:o.validade, emitida:new Date().toISOString().slice(0,10)};
+    const assinatura = await assina(n.chaves.priv, corpo);
+    const credOk = await confere(S.raiz.pub, n.credencial.corpo, n.credencial.assinatura);
+    const ofertaOk = await confere(n.credencial.corpo.chave, corpo, assinatura);
+    if(credOk && ofertaOk) lista.push({...o, nome:n.nome, ini:n.ini, id:n.id});
+  }
+  S.ofertas = lista;
+  log(`${lista.length} ofertas publicadas e conferidas por assinatura`,"ok");
+}
+
+async function comprar(id){
+  const l=S.negocios[id];
+  const saida=$("#saida-compra");
+  if(l.revogado) return saida.innerHTML=`<div class="aviso no"><b>Ops.</b> ${l.nome} não está mais na rede.</div>`;
+  if(S.carteira.carimbos.some(c=>c.corpo.negocio===id))
+    return saida.innerHTML=`<div class="aviso no"><b>Você já tem o carimbo da ${l.nome}.</b> Cada loja carimba uma vez por cartela — é assim que a cartela faz você conhecer lugares novos.</div>`;
+
+  const corpo={tipo:"carimbo",negocio:id,carteira:S.carteira.id,faixa:"50-150",
+    data:new Date().toISOString().slice(0,10),nonce:crypto.randomUUID()};
+  S.carteira.carimbos.push({corpo,assinatura:await assina(l.chaves.priv,corpo)});
+  log(`<b>${l.nome}</b> assinou um carimbo`,"ok");
+
+  if(new Set(S.carteira.carimbos.map(c=>c.corpo.negocio)).size>=META && !S.vale){
+    const c={tipo:"vale",carteira:S.carteira.id,valor:VALOR,
+      serie:"V-"+crypto.randomUUID().slice(0,8).toUpperCase(),emitido:new Date().toISOString().slice(0,10)};
+    S.vale={corpo:c,assinatura:await assina(S.raiz.priv,c),usado:false,onde:null};
+    log(`Cartela fechada. Vale <b>${c.serie}</b> de R$ ${VALOR} assinado pela rede`,"ok");
+  }
+  saida.innerHTML=`<div class="aviso ok"><b>Carimbo da ${l.nome} recebido.</b> Guardamos só a faixa de valor da compra, nunca o valor exato.</div>`;
+  desenhar();
+  if(S.vale && !S.vale.usado) setTimeout(()=>trocar("carteira"),700);
+}
+
+async function verificar(){
+  const atual=S.negocios[$("#sel-loja").value];
+  const saida=$("#saida-balcao");
+  if(!S.carteira.carimbos.length)
+    return saida.innerHTML=`<div class="aviso no">Este cliente ainda não tem nenhum carimbo.</div>`;
+
+  log(`<b>${atual.nome}</b> verificando sem consultar as outras lojas…`);
+  const itens=[];
+  for(const c of S.carteira.carimbos){
+    const e=S.negocios[c.corpo.negocio];
+    const credOk=await confere(S.raiz.pub,e.credencial.corpo,e.credencial.assinatura);
+    const carOk=await confere(e.credencial.corpo.chave,c.corpo,c.assinatura);
+    const ok=credOk&&carOk&&!e.revogado;
+    const motivo=!credOk?"credencial do negócio inválida"
+      :!carOk?"assinatura não confere — dado adulterado"
+      :e.revogado?"credencial revogada pela prefeitura"
+      :"credencial válida e assinatura confere";
+    itens.push({nome:e.nome,ok,motivo});
+    log(`${ok?"✓":"✗"} ${e.nome} — ${motivo}`,ok?"ok":"no");
+  }
+  saida.innerHTML=`<div class="cartao" style="margin-top:16px">
+    ${itens.map(i=>`<div class="vf"><span class="mk ${i.ok?"s":"n"}" aria-hidden="true">${i.ok?"✓":"✗"}</span>
+      <span class="cp"><b>${i.nome}</b><span>${i.motivo}</span></span></div>`).join("")}
+  </div>
+  <div class="aviso inf"><b>Verificado neste aparelho.</b> Só com a chave pública da prefeitura — sem internet, sem consultar as outras lojas e sem planilha.</div>`;
+}
+
+function payloadVale(v){
+  const c=v.corpo;
+  return `SOU+VALE|v=1|s=${c.serie}|val=${c.valor}|c=${c.carteira}|e=${c.emitido}|g=${v.assinatura}`;
+}
+function lerPayload(txt){
+  const partes=String(txt||"").trim().split("|");
+  if(partes[0]!=="SOU+VALE") return null;
+  const p={};
+  for(const seg of partes.slice(1)){const i=seg.indexOf("=");if(i>0)p[seg.slice(0,i)]=seg.slice(i+1);}
+  if(!p.s||!p.g||!p.c) return null;
+  return {corpo:{tipo:"vale",carteira:p.c,valor:Number(p.val),serie:p.s,emitido:p.e},assinatura:p.g};
+}
+
+async function resgatar(lido){
+  const l=S.negocios[$("#sel-loja").value];
+  const saida=$("#saida-balcao");
+  const bruto = lido != null ? lido : (S.vale ? payloadVale(S.vale) : null);
+  if(!bruto) return saida.innerHTML=`<div class="aviso no">Nenhum vale lido. A cartela do cliente precisa de ${META} lojas diferentes.</div>`;
+
+  const v = lerPayload(bruto);
+  if(!v){
+    log("Conteúdo lido não é um vale Sou+Olímpia","no");
+    return saida.innerHTML=`<div class="aviso no"><b>Código não reconhecido.</b> Não é um vale da rede.</div>`;
+  }
+  log(`Lendo vale <b>${v.corpo.serie}</b> do código apresentado…`);
+  if(!await confere(S.raiz.pub,v.corpo,v.assinatura)){
+    log(`Vale ${v.corpo.serie} — assinatura da rede não confere`,"no");
+    return saida.innerHTML=`<div class="aviso no"><b>Vale inválido.</b> A assinatura da rede não confere — este código foi alterado ou não veio da rede.</div>`;
+  }
+  if(S.gastos.includes(v.corpo.serie)){
+    log(`Vale ${v.corpo.serie} — resgate duplo RECUSADO`,"no");
+    return saida.innerHTML=`<div class="aviso no"><b>Recusado.</b> O vale ${v.corpo.serie} já foi resgatado${S.vale&&S.vale.onde?" em "+S.vale.onde:""}. Cada série vale uma vez só.</div>`;
+  }
+  S.gastos.push(v.corpo.serie);
+  if(S.vale && S.vale.corpo.serie===v.corpo.serie){S.vale.usado=true;S.vale.onde=l.nome;}
+  log(`Vale ${v.corpo.serie} resgatado na <b>${l.nome}</b> · assinatura conferida no aparelho`,"ok");
+  saida.innerHTML=`<div class="aviso ok"><b>Vale de R$ ${v.corpo.valor} aceito.</b> A assinatura foi conferida aqui mesmo, sem consultar a rede. Tente de novo para ver o resgate duplo ser recusado.</div>`;
+  desenhar();
+}
+
+async function fraudar(){
+  if(!S.carteira.carimbos.length){
+    return $("#log").insertAdjacentHTML("beforeend",`<div class="ln"><span class="n">Receba algum carimbo antes de tentar fraudar.</span></div>`);
+  }
+  S.carteira.carimbos[0].corpo.faixa="acima-150";
+  log("FRAUDE SIMULADA: faixa de valor alterada à força, sem refazer a assinatura","no");
+  trocar("balcao");
+  await verificar();
+}
+
+function desenhar(){
+  $("#wid").textContent=S.carteira.id;
+
+  const slots=[];
+  for(let i=0;i<META;i++){
+    const c=S.carteira.carimbos[i];
+    if(c){const n=S.negocios[c.corpo.negocio];
+      slots.push(`<div class="slot cheio" style="background:${CORES[n.id]}" role="listitem">
+        <span class="ic" aria-hidden="true">✓</span><span class="nm">${n.nome}</span><span class="dt">${c.corpo.data.slice(8)}/${c.corpo.data.slice(5,7)}</span></div>`);
+    } else {
+      slots.push(`<div class="slot vazio" role="listitem"><span class="nm">Espaço<br>${i+1}</span></div>`);
+    }
+  }
+  $("#cartela").innerHTML=slots.join("");
+
+  const d=new Set(S.carteira.carimbos.map(c=>c.corpo.negocio)).size;
+  $("#barra").style.width=Math.min(100,d/META*100)+"%";
+  $("#prog").innerHTML=d>=META
+    ? `<b>Cartela completa!</b> Você visitou ${d} lojas diferentes.`
+    : `<b>${d} de ${META}</b> lojas diferentes. Faltam ${META-d} — em lojas que ainda não carimbaram.`;
+
+  $("#area-vale").innerHTML=S.vale?`
+    <div class="vale ${S.vale.usado?"usado":""}">
+      <div class="rot">${S.vale.usado?"Vale já utilizado":"Seu vale"}</div>
+      <div class="vl">R$ ${S.vale.corpo.valor}</div>
+      <div class="serie">Série ${S.vale.corpo.serie}</div>
+      ${S.vale.usado
+        ? `<div class="cd">Resgatado em ${S.vale.onde}</div>`
+        : `<div class="qr">${QR.svg(payloadVale(S.vale),{margem:2,alt:"Código QR do vale de R$ "+S.vale.corpo.valor+", série "+S.vale.corpo.serie})}</div>
+           <p class="qrt">Mostre este código no caixa de qualquer loja da rede</p>`}
+    </div>`:"";
+
+  $("#lista-lojas").innerHTML=Object.values(S.negocios).map(n=>{
+    const tem=S.carteira.carimbos.some(c=>c.corpo.negocio===n.id);
+    const selo=n.revogado?`<span class="selo no">fora da rede</span>`
+      :tem?`<span class="selo ja">carimbada</span>`:`<span class="selo ok">✓ credenciada</span>`;
+    return `<button class="loja" type="button" data-loja="${n.id}">
+      <span class="marca" style="background:${CORES[n.id]}" aria-hidden="true">${n.ini}</span>
+      <span class="txt"><span class="nm">${n.nome}</span><span class="rm">${n.ramo}</span></span>${selo}</button>`;
+  }).join("");
+  $$("[data-loja]").forEach(b=>b.addEventListener("click",()=>comprar(b.dataset.loja)));
+
+  const ofs = S.ofertas || [];
+  $("#lista-ofertas").innerHTML = ofs.length ? ofs.map(o=>`
+    <div class="oferta">
+      <div class="cab">
+        <span class="marca" style="background:${CORES[o.id]};width:38px;height:38px;font-size:14px" aria-hidden="true">${o.ini}</span>
+        <span><span class="tit">${o.titulo}</span><br><span class="rm" style="font-size:12.5px;color:var(--tinta3)">${o.nome}</span></span>
+      </div>
+      <p class="det">${o.detalhe}</p>
+      <div class="pe"><span class="vf">✓ assinatura conferida</span><span>Vale ${o.validade}</span></div>
+    </div>`).join("")
+    : `<div class="vazio-nota">Nenhuma oferta publicada ainda.</div>`;
+
+  $("#lista-publicas").innerHTML = PUBLICAS.map(o=>`
+    <div class="oferta">
+      <div class="cab"><span class="tit">${o.titulo}</span></div>
+      <p class="det">${o.detalhe}</p>
+      <div class="pe"><span class="vf pub">informação pública</span><span>${o.fonte}</span></div>
+    </div>`).join("");
+
+  const sel=$("#sel-loja");
+  if(sel.options.length!==Object.keys(S.negocios).length)
+    sel.innerHTML=Object.values(S.negocios).map(n=>`<option value="${n.id}">${n.nome}</option>`).join("");
+}
+
+function trocar(t){
+  ["carteira","lojas","ofertas","balcao","rede"].forEach(k=>{
+    $("#tl-"+k).hidden = k!==t;
+  });
+  $$(".nav button").forEach(b=>{
+    if(b.dataset.tela===t) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current");
+  });
+  $("#corpo").scrollTop=0;
+}
+
+$$(".nav button").forEach(b=>b.addEventListener("click",()=>trocar(b.dataset.tela)));
+$("#bt-ir-lojas").addEventListener("click",()=>trocar("lojas"));
+$("#bt-verificar").addEventListener("click",verificar);
+$("#bt-resgatar").addEventListener("click",()=>resgatar());
+$("#bt-colado").addEventListener("click",()=>resgatar($("#txt-qr").value));
+$("#bt-fraude").addEventListener("click",fraudar);
+$("#bt-reset").addEventListener("click",()=>{iniciar();trocar("carteira");});
+
+if(!window.crypto||!crypto.subtle){
+  $("#corpo").insertAdjacentHTML("afterbegin",
+    `<div class="aviso no"><b>Navegador sem suporte.</b> Abra no Chrome ou Firefox atualizado.</div>`);
+}else{
+  iniciar();
+}
+</script>
+</body>
+</html>
