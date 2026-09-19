@@ -1,0 +1,1454 @@
+{
+ "iss_arrecadacao": {
+  "2023-01": 3730897.74,
+  "2023-02": 5480958.64,
+  "2023-03": 3040680.54,
+  "2023-04": 3088483.85,
+  "2023-05": 3086110.51,
+  "2023-06": 3009974.64,
+  "2023-07": 2751092,
+  "2023-08": 5609491.99,
+  "2023-09": 3259287.49,
+  "2023-10": 3578299.24,
+  "2023-11": 4400218.6,
+  "2023-12": 3669425.87,
+  "2024-01": 4170632.87,
+  "2024-02": 6553323.97,
+  "2024-03": 3617757.49,
+  "2024-04": 3345221.26,
+  "2024-05": 3643050.71,
+  "2024-06": 3206784.06,
+  "2024-07": 3465986.8,
+  "2024-08": 6600455.2,
+  "2024-09": 3736045.96,
+  "2024-10": 3646409.93,
+  "2024-11": 5407786.57,
+  "2024-12": 3849140.53,
+  "2025-01": 4097357.23,
+  "2025-02": 7300176.92,
+  "2025-03": 3748507.84,
+  "2025-04": 9078724.37,
+  "2025-05": 5139344.21,
+  "2025-06": 3593671.05,
+  "2025-07": 3790976.34,
+  "2025-08": 6401258.05,
+  "2025-09": 4096673.7,
+  "2025-10": 4441060.4,
+  "2025-11": 4773895.94,
+  "2025-12": 4316484.02
+ },
+ "iss_por_mes_movimento": {
+  "2022": {
+   "12": 3730897.74
+  },
+  "2023": {
+   "1": 5480958.64,
+   "2": 3040680.54,
+   "3": 3088483.85,
+   "4": 3086110.51,
+   "5": 3009974.64,
+   "6": 2751092,
+   "7": 5609491.99,
+   "8": 3259287.49,
+   "9": 3578299.24,
+   "10": 4400218.6,
+   "11": 3669425.87,
+   "12": 4170632.87
+  },
+  "2024": {
+   "1": 6553323.97,
+   "2": 3617757.49,
+   "3": 3345221.26,
+   "4": 3643050.71,
+   "5": 3206784.06,
+   "6": 3465986.8,
+   "7": 6600455.2,
+   "8": 3736045.96,
+   "9": 3646409.93,
+   "10": 5407786.57,
+   "11": 3849140.53,
+   "12": 4097357.23
+  },
+  "2025": {
+   "1": 7300176.92,
+   "2": 3748507.84,
+   "3": 9078724.37,
+   "4": 5139344.21,
+   "5": 3593671.05,
+   "6": 3790976.34,
+   "7": 6401258.05,
+   "8": 4096673.7,
+   "9": 4441060.4,
+   "10": 4773895.94,
+   "11": 4316484.02
+  }
+ },
+ "iss_indice_sazonal": {
+  "2023": {
+   "1": 1.457,
+   "2": 0.808,
+   "3": 0.821,
+   "4": 0.82,
+   "5": 0.8,
+   "6": 0.731,
+   "7": 1.491,
+   "8": 0.866,
+   "9": 0.951,
+   "10": 1.17,
+   "11": 0.975,
+   "12": 1.109
+  },
+  "2024": {
+   "1": 1.537,
+   "2": 0.848,
+   "3": 0.785,
+   "4": 0.854,
+   "5": 0.752,
+   "6": 0.813,
+   "7": 1.548,
+   "8": 0.876,
+   "9": 0.855,
+   "10": 1.268,
+   "11": 0.903,
+   "12": 0.961
+  },
+  "2025": {
+   "1": 1.534,
+   "2": 0.787,
+   "4": 1.08,
+   "5": 0.755,
+   "6": 0.796,
+   "7": 1.345,
+   "8": 0.861,
+   "9": 0.933,
+   "10": 1.003,
+   "11": 0.907
+  }
+ },
+ "iss_indice_medio": {
+  "1": 1.509,
+  "2": 0.814,
+  "3": 0.803,
+  "4": 0.918,
+  "5": 0.769,
+  "6": 0.78,
+  "7": 1.461,
+  "8": 0.868,
+  "9": 0.913,
+  "10": 1.147,
+  "11": 0.928,
+  "12": 1.035
+ },
+ "caged_2025": {
+  "202501": {
+   "setores": {
+    "Construção": {
+     "adm": 158,
+     "desl": 65,
+     "saldo": 93
+    },
+    "Indústria de transformação": {
+     "adm": 145,
+     "desl": 156,
+     "saldo": -11
+    },
+    "Adm. e serviços complementares": {
+     "adm": 114,
+     "desl": 161,
+     "saldo": -47
+    },
+    "Outros serviços": {
+     "adm": 18,
+     "desl": 22,
+     "saldo": -4
+    },
+    "Alojamento e alimentação": {
+     "adm": 137,
+     "desl": 196,
+     "saldo": -59
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 29,
+     "desl": 58,
+     "saldo": -29
+    },
+    "Comércio": {
+     "adm": 179,
+     "desl": 208,
+     "saldo": -29
+    },
+    "Saúde": {
+     "adm": 15,
+     "desl": 17,
+     "saldo": -2
+    },
+    "Agropecuária": {
+     "adm": 25,
+     "desl": 29,
+     "saldo": -4
+    },
+    "Imobiliárias": {
+     "adm": 7,
+     "desl": 2,
+     "saldo": 5
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 18,
+     "desl": 27,
+     "saldo": -9
+    },
+    "Financeiro": {
+     "adm": 4,
+     "desl": 4,
+     "saldo": 0
+    },
+    "Transporte": {
+     "adm": 15,
+     "desl": 11,
+     "saldo": 4
+    },
+    "Educação": {
+     "adm": 15,
+     "desl": 18,
+     "saldo": -3
+    },
+    "Água e esgoto": {
+     "adm": 4,
+     "desl": 5,
+     "saldo": -1
+    },
+    "Informação e comunicação": {
+     "adm": 4,
+     "desl": 2,
+     "saldo": 2
+    },
+    "Administração pública": {
+     "adm": 2,
+     "desl": 0,
+     "saldo": 2
+    }
+   },
+   "total": {
+    "adm": 889,
+    "desl": 981
+   },
+   "saldo": -92,
+   "saldo_turismo": -88,
+   "saldo_comercio": -29,
+   "salario_mediano_admissao": 2123.65
+  },
+  "202502": {
+   "setores": {
+    "Construção": {
+     "adm": 95,
+     "desl": 70,
+     "saldo": 25
+    },
+    "Imobiliárias": {
+     "adm": 11,
+     "desl": 10,
+     "saldo": 1
+    },
+    "Indústria de transformação": {
+     "adm": 127,
+     "desl": 116,
+     "saldo": 11
+    },
+    "Adm. e serviços complementares": {
+     "adm": 112,
+     "desl": 141,
+     "saldo": -29
+    },
+    "Saúde": {
+     "adm": 25,
+     "desl": 18,
+     "saldo": 7
+    },
+    "Comércio": {
+     "adm": 194,
+     "desl": 197,
+     "saldo": -3
+    },
+    "Alojamento e alimentação": {
+     "adm": 191,
+     "desl": 167,
+     "saldo": 24
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 47,
+     "desl": 33,
+     "saldo": 14
+    },
+    "Transporte": {
+     "adm": 14,
+     "desl": 15,
+     "saldo": -1
+    },
+    "Outros serviços": {
+     "adm": 41,
+     "desl": 22,
+     "saldo": 19
+    },
+    "Agropecuária": {
+     "adm": 25,
+     "desl": 31,
+     "saldo": -6
+    },
+    "Informação e comunicação": {
+     "adm": 8,
+     "desl": 2,
+     "saldo": 6
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 24,
+     "desl": 17,
+     "saldo": 7
+    },
+    "Educação": {
+     "adm": 15,
+     "desl": 9,
+     "saldo": 6
+    },
+    "Água e esgoto": {
+     "adm": 3,
+     "desl": 4,
+     "saldo": -1
+    },
+    "Financeiro": {
+     "adm": 5,
+     "desl": 2,
+     "saldo": 3
+    },
+    "Administração pública": {
+     "adm": 1,
+     "desl": 0,
+     "saldo": 1
+    }
+   },
+   "total": {
+    "adm": 938,
+    "desl": 854
+   },
+   "saldo": 84,
+   "saldo_turismo": 38,
+   "saldo_comercio": -3,
+   "salario_mediano_admissao": 2076.36
+  },
+  "202503": {
+   "setores": {
+    "Saúde": {
+     "adm": 13,
+     "desl": 25,
+     "saldo": -12
+    },
+    "Alojamento e alimentação": {
+     "adm": 167,
+     "desl": 168,
+     "saldo": -1
+    },
+    "Indústria de transformação": {
+     "adm": 187,
+     "desl": 120,
+     "saldo": 67
+    },
+    "Comércio": {
+     "adm": 207,
+     "desl": 219,
+     "saldo": -12
+    },
+    "Construção": {
+     "adm": 69,
+     "desl": 100,
+     "saldo": -31
+    },
+    "Adm. e serviços complementares": {
+     "adm": 95,
+     "desl": 142,
+     "saldo": -47
+    },
+    "Agropecuária": {
+     "adm": 43,
+     "desl": 27,
+     "saldo": 16
+    },
+    "Informação e comunicação": {
+     "adm": 4,
+     "desl": 5,
+     "saldo": -1
+    },
+    "Outros serviços": {
+     "adm": 22,
+     "desl": 17,
+     "saldo": 5
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 30,
+     "desl": 43,
+     "saldo": -13
+    },
+    "Educação": {
+     "adm": 7,
+     "desl": 9,
+     "saldo": -2
+    },
+    "Imobiliárias": {
+     "adm": 5,
+     "desl": 8,
+     "saldo": -3
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 9,
+     "desl": 27,
+     "saldo": -18
+    },
+    "Financeiro": {
+     "adm": 3,
+     "desl": 6,
+     "saldo": -3
+    },
+    "Água e esgoto": {
+     "adm": 3,
+     "desl": 5,
+     "saldo": -2
+    },
+    "Transporte": {
+     "adm": 15,
+     "desl": 16,
+     "saldo": -1
+    }
+   },
+   "total": {
+    "adm": 879,
+    "desl": 937
+   },
+   "saldo": -58,
+   "saldo_turismo": -14,
+   "saldo_comercio": -12,
+   "salario_mediano_admissao": 2066.0
+  },
+  "202504": {
+   "setores": {
+    "Alojamento e alimentação": {
+     "adm": 142,
+     "desl": 170,
+     "saldo": -28
+    },
+    "Indústria de transformação": {
+     "adm": 126,
+     "desl": 144,
+     "saldo": -18
+    },
+    "Comércio": {
+     "adm": 313,
+     "desl": 179,
+     "saldo": 134
+    },
+    "Agropecuária": {
+     "adm": 104,
+     "desl": 21,
+     "saldo": 83
+    },
+    "Adm. e serviços complementares": {
+     "adm": 94,
+     "desl": 113,
+     "saldo": -19
+    },
+    "Construção": {
+     "adm": 36,
+     "desl": 79,
+     "saldo": -43
+    },
+    "Saúde": {
+     "adm": 40,
+     "desl": 18,
+     "saldo": 22
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 28,
+     "desl": 25,
+     "saldo": 3
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 13,
+     "desl": 13,
+     "saldo": 0
+    },
+    "Informação e comunicação": {
+     "adm": 2,
+     "desl": 2,
+     "saldo": 0
+    },
+    "Outros serviços": {
+     "adm": 25,
+     "desl": 28,
+     "saldo": -3
+    },
+    "Transporte": {
+     "adm": 40,
+     "desl": 16,
+     "saldo": 24
+    },
+    "Educação": {
+     "adm": 22,
+     "desl": 2,
+     "saldo": 20
+    },
+    "Financeiro": {
+     "adm": 2,
+     "desl": 2,
+     "saldo": 0
+    },
+    "Água e esgoto": {
+     "adm": 3,
+     "desl": 3,
+     "saldo": 0
+    },
+    "Imobiliárias": {
+     "adm": 1,
+     "desl": 6,
+     "saldo": -5
+    },
+    "Eletricidade e gás": {
+     "adm": 1,
+     "desl": 1,
+     "saldo": 0
+    }
+   },
+   "total": {
+    "adm": 992,
+    "desl": 822
+   },
+   "saldo": 170,
+   "saldo_turismo": -25,
+   "saldo_comercio": 134,
+   "salario_mediano_admissao": 2054.35
+  },
+  "202505": {
+   "setores": {
+    "Adm. e serviços complementares": {
+     "adm": 88,
+     "desl": 102,
+     "saldo": -14
+    },
+    "Outros serviços": {
+     "adm": 24,
+     "desl": 23,
+     "saldo": 1
+    },
+    "Alojamento e alimentação": {
+     "adm": 132,
+     "desl": 156,
+     "saldo": -24
+    },
+    "Construção": {
+     "adm": 43,
+     "desl": 81,
+     "saldo": -38
+    },
+    "Indústria de transformação": {
+     "adm": 140,
+     "desl": 109,
+     "saldo": 31
+    },
+    "Comércio": {
+     "adm": 323,
+     "desl": 205,
+     "saldo": 118
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 40,
+     "desl": 40,
+     "saldo": 0
+    },
+    "Educação": {
+     "adm": 15,
+     "desl": 10,
+     "saldo": 5
+    },
+    "Transporte": {
+     "adm": 9,
+     "desl": 9,
+     "saldo": 0
+    },
+    "Agropecuária": {
+     "adm": 15,
+     "desl": 57,
+     "saldo": -42
+    },
+    "Imobiliárias": {
+     "adm": 5,
+     "desl": 3,
+     "saldo": 2
+    },
+    "Saúde": {
+     "adm": 24,
+     "desl": 16,
+     "saldo": 8
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 15,
+     "desl": 15,
+     "saldo": 0
+    },
+    "Água e esgoto": {
+     "adm": 3,
+     "desl": 4,
+     "saldo": -1
+    },
+    "Financeiro": {
+     "adm": 3,
+     "desl": 4,
+     "saldo": -1
+    },
+    "Informação e comunicação": {
+     "adm": 2,
+     "desl": 3,
+     "saldo": -1
+    }
+   },
+   "total": {
+    "adm": 881,
+    "desl": 837
+   },
+   "saldo": 44,
+   "saldo_turismo": -24,
+   "saldo_comercio": 118,
+   "salario_mediano_admissao": 2085.0
+  },
+  "202506": {
+   "setores": {
+    "Adm. e serviços complementares": {
+     "adm": 113,
+     "desl": 90,
+     "saldo": 23
+    },
+    "Alojamento e alimentação": {
+     "adm": 155,
+     "desl": 117,
+     "saldo": 38
+    },
+    "Construção": {
+     "adm": 57,
+     "desl": 55,
+     "saldo": 2
+    },
+    "Comércio": {
+     "adm": 214,
+     "desl": 182,
+     "saldo": 32
+    },
+    "Água e esgoto": {
+     "adm": 6,
+     "desl": 40,
+     "saldo": -34
+    },
+    "Indústria de transformação": {
+     "adm": 121,
+     "desl": 130,
+     "saldo": -9
+    },
+    "Outros serviços": {
+     "adm": 28,
+     "desl": 12,
+     "saldo": 16
+    },
+    "Agropecuária": {
+     "adm": 27,
+     "desl": 29,
+     "saldo": -2
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 9,
+     "desl": 14,
+     "saldo": -5
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 26,
+     "desl": 33,
+     "saldo": -7
+    },
+    "Imobiliárias": {
+     "adm": 3,
+     "desl": 3,
+     "saldo": 0
+    },
+    "Transporte": {
+     "adm": 7,
+     "desl": 10,
+     "saldo": -3
+    },
+    "Educação": {
+     "adm": 5,
+     "desl": 13,
+     "saldo": -8
+    },
+    "Saúde": {
+     "adm": 25,
+     "desl": 12,
+     "saldo": 13
+    },
+    "Informação e comunicação": {
+     "adm": 3,
+     "desl": 3,
+     "saldo": 0
+    },
+    "Financeiro": {
+     "adm": 3,
+     "desl": 1,
+     "saldo": 2
+    }
+   },
+   "total": {
+    "adm": 802,
+    "desl": 744
+   },
+   "saldo": 58,
+   "saldo_turismo": 31,
+   "saldo_comercio": 32,
+   "salario_mediano_admissao": 2100.0
+  },
+  "202507": {
+   "setores": {
+    "Comércio": {
+     "adm": 223,
+     "desl": 256,
+     "saldo": -33
+    },
+    "Alojamento e alimentação": {
+     "adm": 168,
+     "desl": 148,
+     "saldo": 20
+    },
+    "Saúde": {
+     "adm": 23,
+     "desl": 21,
+     "saldo": 2
+    },
+    "Indústria de transformação": {
+     "adm": 127,
+     "desl": 104,
+     "saldo": 23
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 14,
+     "desl": 12,
+     "saldo": 2
+    },
+    "Educação": {
+     "adm": 5,
+     "desl": 17,
+     "saldo": -12
+    },
+    "Adm. e serviços complementares": {
+     "adm": 97,
+     "desl": 101,
+     "saldo": -4
+    },
+    "Construção": {
+     "adm": 22,
+     "desl": 72,
+     "saldo": -50
+    },
+    "Agropecuária": {
+     "adm": 27,
+     "desl": 31,
+     "saldo": -4
+    },
+    "Outros serviços": {
+     "adm": 19,
+     "desl": 25,
+     "saldo": -6
+    },
+    "Transporte": {
+     "adm": 9,
+     "desl": 13,
+     "saldo": -4
+    },
+    "Imobiliárias": {
+     "adm": 6,
+     "desl": 4,
+     "saldo": 2
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 41,
+     "desl": 29,
+     "saldo": 12
+    },
+    "Eletricidade e gás": {
+     "adm": 1,
+     "desl": 1,
+     "saldo": 0
+    },
+    "Financeiro": {
+     "adm": 4,
+     "desl": 2,
+     "saldo": 2
+    },
+    "Informação e comunicação": {
+     "adm": 2,
+     "desl": 3,
+     "saldo": -1
+    },
+    "Água e esgoto": {
+     "adm": 0,
+     "desl": 5,
+     "saldo": -5
+    }
+   },
+   "total": {
+    "adm": 788,
+    "desl": 844
+   },
+   "saldo": -56,
+   "saldo_turismo": 32,
+   "saldo_comercio": -33,
+   "salario_mediano_admissao": 2042.0
+  },
+  "202508": {
+   "setores": {
+    "Indústria de transformação": {
+     "adm": 100,
+     "desl": 126,
+     "saldo": -26
+    },
+    "Educação": {
+     "adm": 23,
+     "desl": 7,
+     "saldo": 16
+    },
+    "Alojamento e alimentação": {
+     "adm": 175,
+     "desl": 146,
+     "saldo": 29
+    },
+    "Comércio": {
+     "adm": 199,
+     "desl": 229,
+     "saldo": -30
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 15,
+     "desl": 23,
+     "saldo": -8
+    },
+    "Adm. e serviços complementares": {
+     "adm": 90,
+     "desl": 85,
+     "saldo": 5
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 22,
+     "desl": 10,
+     "saldo": 12
+    },
+    "Construção": {
+     "adm": 32,
+     "desl": 55,
+     "saldo": -23
+    },
+    "Outros serviços": {
+     "adm": 32,
+     "desl": 16,
+     "saldo": 16
+    },
+    "Saúde": {
+     "adm": 31,
+     "desl": 26,
+     "saldo": 5
+    },
+    "Agropecuária": {
+     "adm": 65,
+     "desl": 20,
+     "saldo": 45
+    },
+    "Imobiliárias": {
+     "adm": 6,
+     "desl": 9,
+     "saldo": -3
+    },
+    "Informação e comunicação": {
+     "adm": 1,
+     "desl": 9,
+     "saldo": -8
+    },
+    "Transporte": {
+     "adm": 16,
+     "desl": 14,
+     "saldo": 2
+    },
+    "Água e esgoto": {
+     "adm": 3,
+     "desl": 0,
+     "saldo": 3
+    },
+    "Financeiro": {
+     "adm": 2,
+     "desl": 0,
+     "saldo": 2
+    }
+   },
+   "total": {
+    "adm": 812,
+    "desl": 775
+   },
+   "saldo": 37,
+   "saldo_turismo": 21,
+   "saldo_comercio": -30,
+   "salario_mediano_admissao": 2105.0
+  },
+  "202509": {
+   "setores": {
+    "Saúde": {
+     "adm": 24,
+     "desl": 14,
+     "saldo": 10
+    },
+    "Adm. e serviços complementares": {
+     "adm": 95,
+     "desl": 76,
+     "saldo": 19
+    },
+    "Comércio": {
+     "adm": 194,
+     "desl": 177,
+     "saldo": 17
+    },
+    "Indústria de transformação": {
+     "adm": 127,
+     "desl": 105,
+     "saldo": 22
+    },
+    "Alojamento e alimentação": {
+     "adm": 187,
+     "desl": 152,
+     "saldo": 35
+    },
+    "Imobiliárias": {
+     "adm": 3,
+     "desl": 5,
+     "saldo": -2
+    },
+    "Agropecuária": {
+     "adm": 48,
+     "desl": 36,
+     "saldo": 12
+    },
+    "Outros serviços": {
+     "adm": 30,
+     "desl": 22,
+     "saldo": 8
+    },
+    "Construção": {
+     "adm": 52,
+     "desl": 61,
+     "saldo": -9
+    },
+    "Financeiro": {
+     "adm": 2,
+     "desl": 5,
+     "saldo": -3
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 19,
+     "desl": 15,
+     "saldo": 4
+    },
+    "Água e esgoto": {
+     "adm": 1,
+     "desl": 1,
+     "saldo": 0
+    },
+    "Educação": {
+     "adm": 17,
+     "desl": 1,
+     "saldo": 16
+    },
+    "Transporte": {
+     "adm": 15,
+     "desl": 3,
+     "saldo": 12
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 26,
+     "desl": 19,
+     "saldo": 7
+    },
+    "Informação e comunicação": {
+     "adm": 6,
+     "desl": 3,
+     "saldo": 3
+    }
+   },
+   "total": {
+    "adm": 846,
+    "desl": 695
+   },
+   "saldo": 151,
+   "saldo_turismo": 42,
+   "saldo_comercio": 17,
+   "salario_mediano_admissao": 2070.0
+  },
+  "202510": {
+   "setores": {
+    "Transporte": {
+     "adm": 8,
+     "desl": 15,
+     "saldo": -7
+    },
+    "Adm. e serviços complementares": {
+     "adm": 81,
+     "desl": 226,
+     "saldo": -145
+    },
+    "Alojamento e alimentação": {
+     "adm": 173,
+     "desl": 154,
+     "saldo": 19
+    },
+    "Comércio": {
+     "adm": 178,
+     "desl": 209,
+     "saldo": -31
+    },
+    "Imobiliárias": {
+     "adm": 4,
+     "desl": 4,
+     "saldo": 0
+    },
+    "Agropecuária": {
+     "adm": 43,
+     "desl": 62,
+     "saldo": -19
+    },
+    "Outros serviços": {
+     "adm": 28,
+     "desl": 22,
+     "saldo": 6
+    },
+    "Indústria de transformação": {
+     "adm": 79,
+     "desl": 136,
+     "saldo": -57
+    },
+    "Construção": {
+     "adm": 59,
+     "desl": 51,
+     "saldo": 8
+    },
+    "Saúde": {
+     "adm": 21,
+     "desl": 20,
+     "saldo": 1
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 32,
+     "desl": 32,
+     "saldo": 0
+    },
+    "Informação e comunicação": {
+     "adm": 5,
+     "desl": 5,
+     "saldo": 0
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 17,
+     "desl": 24,
+     "saldo": -7
+    },
+    "Educação": {
+     "adm": 14,
+     "desl": 10,
+     "saldo": 4
+    },
+    "Financeiro": {
+     "adm": 4,
+     "desl": 0,
+     "saldo": 4
+    }
+   },
+   "total": {
+    "adm": 746,
+    "desl": 970
+   },
+   "saldo": -224,
+   "saldo_turismo": 19,
+   "saldo_comercio": -31,
+   "salario_mediano_admissao": 2106.72
+  },
+  "202511": {
+   "setores": {
+    "Arte, cultura, esporte e lazer": {
+     "adm": 47,
+     "desl": 31,
+     "saldo": 16
+    },
+    "Alojamento e alimentação": {
+     "adm": 168,
+     "desl": 124,
+     "saldo": 44
+    },
+    "Adm. e serviços complementares": {
+     "adm": 114,
+     "desl": 105,
+     "saldo": 9
+    },
+    "Comércio": {
+     "adm": 179,
+     "desl": 167,
+     "saldo": 12
+    },
+    "Construção": {
+     "adm": 74,
+     "desl": 49,
+     "saldo": 25
+    },
+    "Saúde": {
+     "adm": 21,
+     "desl": 20,
+     "saldo": 1
+    },
+    "Indústria de transformação": {
+     "adm": 116,
+     "desl": 142,
+     "saldo": -26
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 19,
+     "desl": 17,
+     "saldo": 2
+    },
+    "Outros serviços": {
+     "adm": 16,
+     "desl": 20,
+     "saldo": -4
+    },
+    "Educação": {
+     "adm": 7,
+     "desl": 4,
+     "saldo": 3
+    },
+    "Agropecuária": {
+     "adm": 18,
+     "desl": 66,
+     "saldo": -48
+    },
+    "Transporte": {
+     "adm": 7,
+     "desl": 27,
+     "saldo": -20
+    },
+    "Imobiliárias": {
+     "adm": 8,
+     "desl": 8,
+     "saldo": 0
+    },
+    "Informação e comunicação": {
+     "adm": 1,
+     "desl": 3,
+     "saldo": -2
+    },
+    "Financeiro": {
+     "adm": 3,
+     "desl": 3,
+     "saldo": 0
+    },
+    "Água e esgoto": {
+     "adm": 0,
+     "desl": 1,
+     "saldo": -1
+    }
+   },
+   "total": {
+    "adm": 798,
+    "desl": 787
+   },
+   "saldo": 11,
+   "saldo_turismo": 60,
+   "saldo_comercio": 12,
+   "salario_mediano_admissao": 2200.0
+  },
+  "202512": {
+   "setores": {
+    "Alojamento e alimentação": {
+     "adm": 148,
+     "desl": 155,
+     "saldo": -7
+    },
+    "Arte, cultura, esporte e lazer": {
+     "adm": 22,
+     "desl": 36,
+     "saldo": -14
+    },
+    "Educação": {
+     "adm": 3,
+     "desl": 31,
+     "saldo": -28
+    },
+    "Indústria de transformação": {
+     "adm": 71,
+     "desl": 113,
+     "saldo": -42
+    },
+    "Comércio": {
+     "adm": 162,
+     "desl": 181,
+     "saldo": -19
+    },
+    "Adm. e serviços complementares": {
+     "adm": 76,
+     "desl": 82,
+     "saldo": -6
+    },
+    "Saúde": {
+     "adm": 27,
+     "desl": 19,
+     "saldo": 8
+    },
+    "Construção": {
+     "adm": 29,
+     "desl": 42,
+     "saldo": -13
+    },
+    "Prof. científicas e técnicas": {
+     "adm": 5,
+     "desl": 18,
+     "saldo": -13
+    },
+    "Outros serviços": {
+     "adm": 17,
+     "desl": 17,
+     "saldo": 0
+    },
+    "Agropecuária": {
+     "adm": 16,
+     "desl": 40,
+     "saldo": -24
+    },
+    "Imobiliárias": {
+     "adm": 3,
+     "desl": 9,
+     "saldo": -6
+    },
+    "Financeiro": {
+     "adm": 2,
+     "desl": 3,
+     "saldo": -1
+    },
+    "Transporte": {
+     "adm": 6,
+     "desl": 9,
+     "saldo": -3
+    },
+    "Água e esgoto": {
+     "adm": 0,
+     "desl": 1,
+     "saldo": -1
+    },
+    "Eletricidade e gás": {
+     "adm": 1,
+     "desl": 0,
+     "saldo": 1
+    },
+    "Informação e comunicação": {
+     "adm": 3,
+     "desl": 3,
+     "saldo": 0
+    }
+   },
+   "total": {
+    "adm": 591,
+    "desl": 759
+   },
+   "saldo": -168,
+   "saldo_turismo": -21,
+   "saldo_comercio": -19,
+   "salario_mediano_admissao": 2142.78
+  }
+ },
+ "oto_boletins": [
+  {
+   "periodo": "Carnaval",
+   "mes": 2,
+   "ocupacao": 80.64,
+   "hospedados": 75213,
+   "rhc": 11661,
+   "dayuse": 15511,
+   "total": 102386,
+   "por_dia": 20477
+  },
+  {
+   "periodo": "Páscoa",
+   "mes": 4,
+   "ocupacao": 75.07,
+   "hospedados": 42224,
+   "rhc": 6472,
+   "dayuse": 8695,
+   "total": 57391,
+   "por_dia": 19130
+  },
+  {
+   "periodo": "Tiradentes",
+   "mes": 4,
+   "ocupacao": 73.53,
+   "hospedados": 55035,
+   "rhc": 8382,
+   "dayuse": 11323,
+   "total": 74741,
+   "por_dia": 18685
+  },
+  {
+   "periodo": "Dia do Trabalhador",
+   "mes": 5,
+   "ocupacao": 65.38,
+   "hospedados": 36550,
+   "rhc": 5590,
+   "dayuse": 7524,
+   "total": 49664,
+   "por_dia": 16555
+  },
+  {
+   "periodo": "Festa do Peão",
+   "mes": 6,
+   "ocupacao": 41.74,
+   "hospedados": 23288,
+   "rhc": 3569,
+   "dayuse": 4795,
+   "total": 31651,
+   "por_dia": 10550
+  },
+  {
+   "periodo": "Corpus Christi",
+   "mes": 6,
+   "ocupacao": 67.78,
+   "hospedados": 49095,
+   "rhc": 7727,
+   "dayuse": 10146,
+   "total": 66968,
+   "por_dia": 16742
+  },
+  {
+   "periodo": "Férias de julho",
+   "mes": 7,
+   "ocupacao": 73.17,
+   "hospedados": 438214,
+   "rhc": 64375,
+   "dayuse": 89737,
+   "total": 592326,
+   "por_dia": 19107
+  },
+  {
+   "periodo": "FEFOL (Folclore)",
+   "mes": 8,
+   "ocupacao": 35.78,
+   "hospedados": 62962,
+   "rhc": 9140,
+   "dayuse": 12874,
+   "total": 84975,
+   "por_dia": 9442
+  },
+  {
+   "periodo": "7 de Setembro",
+   "mes": 9,
+   "ocupacao": 73.14,
+   "hospedados": 42408,
+   "rhc": 6227,
+   "dayuse": 8684,
+   "total": 57319,
+   "por_dia": 19106
+  }
+ ],
+ "alta_temporada_verao": {
+  "periodo": "dez/2025–jan/2026",
+  "total": 1100000,
+  "hospedados": 815000,
+  "rhc": 127000,
+  "dayuse": 168000,
+  "ocupacao": 70.79,
+  "por_dia": 18000
+ },
+ "ibge": {
+  "pop_censo2022": 55074,
+  "pop_est2026": 57028,
+  "area_km2": 802.393,
+  "densidade": 68.62,
+  "pib_2023": 3569675501,
+  "pib_per_capita_2023": 64815.98,
+  "idhm_2010": 0.773,
+  "escolarizacao": 97.62,
+  "salario_medio_sm_2024": 2.6,
+  "pessoal_ocupado_2024": 25756,
+  "assalariados_2024": 18998,
+  "empresas_2024": 5858,
+  "folha_2024": 913398000,
+  "esgoto": 96.56,
+  "agua": 95.58,
+  "idade_mediana": 37,
+  "envelhecimento": 103.6,
+  "dom_ocupados": 20418,
+  "dom_uso_ocasional": 4380,
+  "dom_vagos": 2916,
+  "dom_recenseados": 27756,
+  "cresc_domicilios_pct": 54.77,
+  "cresc_pop_aa": 0.8,
+  "transferencias_pct_2025": 60.71,
+  "receita_2025": 472444065.23,
+  "mortalidade_infantil_2025": 10.29
+ },
+ "pib_per_capita": {
+  "2010": 23816.4,
+  "2013": 28279.83,
+  "2016": 35176.68,
+  "2019": 38588.17,
+  "2020": 38531.11,
+  "2021": 45985.63,
+  "2022": 56768.78,
+  "2023": 64815.98
+ },
+ "vab_2021": {
+  "Serviços": 1232950.114,
+  "Indústria": 648285.981,
+  "Administração pública": 265224.635,
+  "Agropecuária": 117750.639
+ },
+ "pessoal_ocupado_setor_2024": {
+  "Indústria de transformação": 5757,
+  "Comércio": 4973,
+  "Alojamento e alimentação": 2641,
+  "Adm. e serviços complementares": 2315,
+  "Agropecuária": 2002,
+  "Administração pública": 1694,
+  "Arte, cultura, esporte e lazer": 1160,
+  "Saúde": 1055,
+  "Prof. científicas e técnicas": 891,
+  "Construção": 740,
+  "Educação": 554,
+  "Outros": 1974
+ },
+ "base_renda": [
+  {
+   "k": "Renda estável",
+   "v": 11062,
+   "det": "Indústria de transformação, administração pública, saúde, educação e agropecuária"
+  },
+  {
+   "k": "Intermediário",
+   "v": 10893,
+   "det": "Comércio, serviços administrativos, construção e profissionais — atende morador e turista"
+  },
+  {
+   "k": "Exposto ao turista",
+   "v": 3801,
+   "det": "Hospedagem, alimentação, arte, cultura e lazer — o quadro que encolhe na baixa"
+  }
+ ],
+ "parques": {
+  "Thermas dos Laranjais": {
+   "visitantes_2024": 1850000,
+   "ranking_mundo": 4
+  },
+  "Hot Beach": {
+   "visitantes_2023": 1035000,
+   "ranking_mundo": 5
+  }
+ }
+}

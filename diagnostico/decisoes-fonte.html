@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Sou+Olímpia — decisões do grupo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,75..125,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+@page { size: 210mm 297mm; margin: 0; }
+:root{
+  --ink:#0b0b0b; --ink2:#43423f; --ink3:#77756f;
+  --rule:#d8d7d0; --grid:#e6e5de;
+  --paper:#ffffff; --tint:#f2f1ec; --tintblue:#e9f0fa;
+  --accent:#1c5cab; --bad:#b8332f; --good:#0a6b2e; --warn:#8a5a00;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+  font-family:"Archivo","DejaVu Sans",sans-serif;font-variation-settings:"wdth" 100}
+body{font-size:9.4pt;line-height:1.45;-webkit-font-smoothing:antialiased}
+.page{width:210mm;height:297mm;padding:15mm 16mm 13mm;position:relative;overflow:hidden;
+  page-break-after:always;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+.runner{position:absolute;left:16mm;right:16mm;bottom:7mm;display:flex;justify-content:space-between;
+  font-family:"IBM Plex Mono",monospace;font-size:6.6pt;color:var(--ink3);letter-spacing:.06em;
+  text-transform:uppercase;border-top:.5pt solid var(--rule);padding-top:2.5mm}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:7pt;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink3);margin:0 0 3mm}
+h1{font-size:25pt;font-variation-settings:"wdth" 116,"wght" 800;line-height:.96;
+  letter-spacing:-.02em;margin:0 0 3mm}
+h1 .sub{display:block;font-variation-settings:"wdth" 116,"wght" 300;color:var(--ink2);font-size:17pt}
+h2{font-size:12.5pt;font-variation-settings:"wdth" 110,"wght" 700;letter-spacing:-.012em;
+  margin:0 0 2.5mm;padding-top:2mm;border-top:1.4pt solid var(--ink)}
+h3{font-size:9.6pt;font-variation-settings:"wdth" 104,"wght" 700;margin:0 0 1.2mm}
+p{margin:0 0 2.4mm}
+.lead{font-size:10.2pt;color:var(--ink2);margin-bottom:4mm;max-width:152mm}
+b,strong{font-variation-settings:"wdth" 100,"wght" 700}
+table{border-collapse:collapse;width:100%;font-size:8.6pt}
+th,td{text-align:left;padding:1.55mm 2.4mm;border-bottom:.5pt solid var(--grid);vertical-align:top}
+thead th{font-family:"IBM Plex Mono",monospace;font-size:6.6pt;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink3);font-weight:500;border-bottom:.9pt solid var(--ink)}
+tbody tr:last-child td{border-bottom:none}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:6.4pt;letter-spacing:.08em;text-transform:uppercase;
+  padding:.7mm 1.6mm;border:.6pt solid currentColor;white-space:nowrap;display:inline-block}
+.t-ok{color:var(--good)} .t-prop{color:var(--warn)} .t-rev{color:var(--bad)}
+.box{border:.6pt solid var(--rule);padding:3mm 3.5mm;background:var(--tint)}
+.box.blue{background:var(--tintblue);border-color:#c3d6ef}
+.box.red{background:#fbecec;border-color:#e8c6c4}
+.box p:last-child{margin-bottom:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.stack{display:flex;flex-direction:column;gap:3.5mm}
+.note{font-size:7.7pt;color:var(--ink3);line-height:1.4}
+ul{margin:0 0 2.5mm;padding-left:4.5mm}
+li{margin-bottom:1.3mm}
+ol.steps{margin:0;padding-left:0;list-style:none;counter-reset:s}
+ol.steps li{counter-increment:s;margin-bottom:2.6mm;padding-left:8mm;position:relative}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:.2mm;width:5.2mm;height:5.2mm;
+  background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:7pt;
+  display:flex;align-items:center;justify-content:center}
+.flow{display:flex;align-items:stretch;gap:0;margin:2mm 0 1mm}
+.flow .st{flex:1;border:.6pt solid var(--rule);padding:2.4mm 2.6mm;background:var(--paper)}
+.flow .ar{width:6mm;display:flex;align-items:center;justify-content:center;color:var(--ink3);font-size:11pt}
+.flow .st .n{font-family:"IBM Plex Mono",monospace;font-size:6.2pt;color:var(--ink3);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:1mm}
+.flow .st .t{font-size:8.4pt;line-height:1.35}
+</style>
+</head>
+<body>
+
+<!-- ============ P1 ============ -->
+<section class="page">
+  <p class="eyebrow">Ideathon OlimpiaLab 2026 · Grupo 4 · Desafio 2</p>
+  <h1>Sou+Olímpia<span class="sub">o que ficou decidido</span></h1>
+  <p class="lead">Resumo das decisões tomadas até agora, o que mudou de rumo e o que ainda falta o grupo bater o martelo. Cada decisão vem com o motivo, porque motivo é o que se defende no palco.</p>
+
+  <table>
+    <thead><tr><th style="width:26%">Decisão</th><th style="width:44%">Por quê</th><th style="width:30%">Status</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>Ancorar o projeto em dado medido</b></td>
+        <td>Não existia nenhum estudo de sazonalidade do comércio de Olímpia. Construímos a série de ISS mensal de 2023 a 2025 a partir da API do Tesouro. Nenhum outro grupo vai ter medição própria.</td>
+        <td><span class="tag t-ok">decidido</span></td>
+      </tr>
+      <tr>
+        <td><b>Causa raiz: falta camada de confiança entre negócios</b></td>
+        <td>Os cinco porquês levam de “sazonalidade” até “parceria entre pequenos negócios roda em WhatsApp e planilha, e ninguém consegue verificar o que o outro afirma”. É exatamente o enunciado do Desafio 2.</td>
+        <td><span class="tag t-ok">decidido</span></td>
+      </tr>
+      <tr>
+        <td><b>Operador: Prefeitura / Secretaria de Desenvolvimento</b></td>
+        <td>Alcance e legitimidade. Com uma trava: a prefeitura <b>não toca no dinheiro</b>. Se custear desconto, vira subsídio a consumo e exige lei, dotação, licitação e prestação de contas ao TCE.</td>
+        <td><span class="tag t-ok">decidido</span></td>
+      </tr>
+      <tr>
+        <td><b>Simulação econômica com análise de sensibilidade</b></td>
+        <td>Responde a pergunta de unit economics do jurado: a partir de qual taxa de incrementalidade o comerciante lucra. Vale mais que tela bonita.</td>
+        <td><span class="tag t-ok">decidido</span></td>
+      </tr>
+      <tr>
+        <td><b>Entrega: piloto de papel, sem código</b></td>
+        <td>Foi a escolha inicial, mas o slide do desafio exige <b>“uma rede ou sistema de interoperabilidade demonstrado em funcionamento”</b>. Cartela carimbada não atende ao requisito obrigatório.</td>
+        <td><span class="tag t-rev">revisada</span></td>
+      </tr>
+      <tr>
+        <td><b>Mecanismo: cartela de carimbos → vale</b></td>
+        <td>Carimbo por loja distinta no mês; cartela cheia vira vale em reais, resgatável em qualquer loja da rede no mês seguinte, pago por quem resgata. Descartadas as alternativas de desconto escalonado no caixa e de sorteio.</td>
+        <td><span class="tag t-prop">falta bater</span></td>
+      </tr>
+      <tr>
+        <td><b>Encaixe legal no SMITS</b></td>
+        <td>Olímpia já tem o Observatório do Turismo (Lei 5.060/2025) e o SMITS (Lei 5.343/2026), cuja finalidade é produzir e integrar informação estratégica. Entrar como módulo de varejo é estender lei existente, não aprovar lei nova.</td>
+        <td><span class="tag t-prop">falta bater</span></td>
+      </tr>
+      <tr>
+        <td><b>Posicionamento do pitch</b></td>
+        <td>“Motor de circulação e inteligência de varejo para uma cidade sazonal” — não “cashback para estimular consumo”.</td>
+        <td><span class="tag t-prop">falta bater</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2 style="margin-top:3.5mm">Por que o mecanismo é esse, e não um desconto comum</h2>
+  <div class="two">
+    <div class="box red">
+      <h3>Desconto linear é soma zero</h3>
+      <p>Se todas as lojas dão 10%, ninguém ganha participação. Quem ficou de fora perde movimento e adere, e no fim a cidade inteira vende mais barato no mês em que já tem menos caixa. Piorou o problema que veio resolver.</p>
+    </div>
+    <div class="box blue">
+      <h3>Progressão por lojas é circulação</h3>
+      <p>A recompensa cresce com o <b>número de lojas diferentes</b> visitadas, não com o valor gasto. Isso aumenta os estabelecimentos por cliente em vez de redistribuir o mesmo cliente. E é a única coisa que uma placa de 10% na porta não consegue fazer.</p>
+    </div>
+  </div>
+
+  <div class="runner"><span>Sou+Olímpia · Grupo 4</span><span>Decisões · 1 de 3</span></div>
+</section>
+
+<!-- ============ P2 ============ -->
+<section class="page">
+  <p class="eyebrow">Página 2 de 3 · O que mudou</p>
+  <h1 style="font-size:20pt">A virada de rumo</h1>
+  <p class="lead" style="font-size:9.8pt">O slide do Desafio 2 reposicionou o projeto. Vale a pena entender exatamente o que mudou, porque quase tudo que já foi feito continua valendo.</p>
+
+  <div class="two" style="margin-bottom:5mm">
+    <div class="box">
+      <h3>O que o desafio pede</h3>
+      <p><b>Pergunta:</b> como conectar pequenos negócios, pessoas e dados com segurança.</p>
+      <p><b>Dor:</b> dependência de planilhas e mensagens soltas para formar parcerias.</p>
+      <p><b>Entrega obrigatória:</b> uma rede ou sistema de interoperabilidade demonstrado em funcionamento.</p>
+      <p class="note" style="margin-top:2mm">Não precisa ser blockchain. O objetivo é resolver a confiança — vale API, banco integrado ou credencial verificável.</p>
+    </div>
+    <div class="box blue">
+      <h3>Como a nossa ideia se encaixa</h3>
+      <p>O programa de desconto progressivo <b>é</b> uma parceria multi-negócio. Hoje, uma campanha assim seria tocada num grupo de WhatsApp com uma planilha compartilhada — exatamente a dor do enunciado.</p>
+      <p>Então o entregável não é o programa de desconto. É a <b>camada de confiança</b> que permite o programa existir. O desconto é a primeira aplicação rodando em cima dela.</p>
+    </div>
+  </div>
+
+  <h2>O que a rede faz</h2>
+  <p>Cada negócio recebe uma credencial verificável; cada morador recebe a sua. Qualquer negócio emite um registro assinado — carimbo, vale, indicação, item de pacote conjunto — e qualquer outro negócio verifica esse registro sem telefonar para o emissor e sem depender de uma planilha central que alguém precise manter.</p>
+
+  <div class="flow">
+    <div class="st"><div class="n">Loja A</div><div class="t">Emite um carimbo assinado com a própria chave</div></div>
+    <div class="ar">→</div>
+    <div class="st"><div class="n">Morador</div><div class="t">Guarda o carimbo na carteira digital dele</div></div>
+    <div class="ar">→</div>
+    <div class="st"><div class="n">Loja B</div><div class="t">Verifica o carimbo da Loja A sozinha, sem consultar a Loja A</div></div>
+    <div class="ar">→</div>
+    <div class="st"><div class="n">Rede</div><div class="t">Fecha a cartela, emite o vale e impede resgate duplo</div></div>
+  </div>
+  <p class="note">O ponto da demonstração é o terceiro quadro: a Loja B confia num registro emitido pela Loja A sem precisar confiar na Loja A. É isso que resolve o problema da planilha.</p>
+
+  <h2 style="margin-top:4mm">O que sai do discurso</h2>
+  <table>
+    <thead><tr><th style="width:42%">Não dizer</th><th>Dizer</th></tr></thead>
+    <tbody>
+      <tr><td>“Vamos preencher o vale da baixa temporada.”</td><td>“Vamos reduzir a amplitude.” Fechar o vale exigiria de R$ 3.278 a 8.195 a mais por domicílio por mês. Qualquer jurado derruba isso com uma conta de guardanapo.</td></tr>
+      <tr><td>“O comércio de Olímpia sofre na baixa.”</td><td>“Os <b>serviços</b> caem pela metade. Sobre o varejo não temos evidência — fomos verificar e o emprego formal no varejo é plano o ano todo.” Admitir isso pontua mais que fingir certeza.</td></tr>
+      <tr><td>“É um app de cashback.”</td><td>“É uma camada de interoperabilidade entre os negócios da cidade, e o primeiro caso de uso é um programa de circulação.”</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box" style="margin-top:4mm">
+    <h3>O ativo que ninguém mais tem</h3>
+    <p>Hoje não existe nenhum dado de transação do varejo de Olímpia — foi isso que travou o nosso próprio diagnóstico. A rede produz esse dado desde o primeiro dia. Mesmo que o efeito de estímulo seja modesto, o dataset tem valor para a prefeitura, para a associação comercial e para o comerciante. Isso é uma razão legítima para construir, independente do desconto funcionar.</p>
+  </div>
+
+  <div class="runner"><span>Sou+Olímpia · Grupo 4</span><span>Decisões · 2 de 3</span></div>
+</section>
+
+<!-- ============ P3 ============ -->
+<section class="page">
+  <p class="eyebrow">Página 3 de 3 · Pendências</p>
+  <h1 style="font-size:20pt">O que falta decidir</h1>
+  <p class="lead" style="font-size:9.8pt">Cinco pontos em aberto. Os dois primeiros travam o resto.</p>
+
+  <ol class="steps">
+    <li><b>Confirmar o mecanismo da cartela.</b> Quantos carimbos no piloto (3, porque com poucas lojas uma cartela de 5 é impossível de completar), valor do vale em reais, compra mínima para carimbar e se o vale pode ser resgatado em loja já carimbada.</li>
+    <li><b>Definir o que exatamente vai ser demonstrado no palco.</b> O desafio exige sistema em funcionamento. Precisa rodar sem internet confiável e sem servidor nosso no ar — o mais seguro é tudo no navegador, com as chaves e a verificação acontecendo na própria máquina.</li>
+    <li><b>Fechar a identidade visual e o nome das partes.</b> Já temos Sou+Olímpia e o logo. Falta nomear a carteira do morador, o painel do comerciante e a camada de rede.</li>
+    <li><b>Integrar o protótipo do app que já foi feito.</b> Verificar o que das telas existentes aproveita para a demonstração.</li>
+    <li><b>Rodar a simulação econômica</b> com os parâmetros que o grupo achar realistas, e levar o gráfico de sensibilidade impresso.</li>
+  </ol>
+
+  <h2 style="margin-top:2mm">Números para ter na ponta da língua</h2>
+  <table>
+    <thead><tr><th>Indicador</th><th style="width:22%">Valor</th><th style="width:44%">Serve para responder</th></tr></thead>
+    <tbody>
+      <tr><td>Pico ÷ vale, serviços</td><td><b>1,96×</b></td><td>“Qual o tamanho do problema?”</td></tr>
+      <tr><td>Janeiro + julho</td><td><b>26% do ISS do ano</b></td><td>“Por que dois meses importam tanto?”</td></tr>
+      <tr><td>Meses abaixo da média</td><td><b>8 de 12</b></td><td>“Não é alta temporada quase o ano todo?”</td></tr>
+      <tr><td>Saldo de emprego no turismo</td><td><b>−88 em janeiro</b></td><td>“Quem é o afetado de verdade?”</td></tr>
+      <tr><td>Mediana de admissão</td><td><b>R$ 2.100</b></td><td>“Por que o vale é em reais e não em percentual?”</td></tr>
+      <tr><td>Unidades de comércio</td><td><b>1.131</b>, uma a cada 49 habitantes</td><td>“Por que não dá para fechar o vale?”</td></tr>
+      <tr><td>Ocupação no FEFOL</td><td><b>35,8%</b></td><td>“As festas da cidade não resolvem?”</td></tr>
+      <tr><td>Promoção do Thermas</td><td>meia entrada em <b>mai, jun, ago e set</b></td><td>“Alguém já faz isso?”</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box blue" style="margin-top:4mm">
+    <h3>A frase de abertura</h3>
+    <p>“Olímpia fatura 26% do seu ano de serviços em dois meses. Nós medimos isso com o ISS mensal do Tesouro Nacional, e descobrimos que o problema não é falta de cliente — é falta de uma camada que permita os negócios da cidade agirem juntos.”</p>
+  </div>
+
+  <div class="box red" style="margin-top:4mm">
+    <h3>A pergunta que vai vir, e a resposta</h3>
+    <p><b>“Por que isso não é só mais um app de cashback?”</b></p>
+    <p>Porque a recompensa cresce com o número de lojas diferentes, não com o valor gasto — isso espalha o movimento em vez de concentrar. E porque o entregável é a camada de verificação entre negócios, que hoje não existe em lugar nenhum da cidade. O desconto é só o primeiro caso de uso dela.</p>
+  </div>
+
+  <div class="runner"><span>Sou+Olímpia · Grupo 4 · dados públicos, set/2026</span><span>Decisões · 3 de 3</span></div>
+</section>
+
+</body>
+</html>

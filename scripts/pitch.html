@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Sou+Olímpia — roteiro do pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+@page { size: 210mm 297mm; margin: 0; }
+:root{
+  --azul:#0E6FD8; --azul-esc:#0A4C96; --azul-claro:#E7F1FD;
+  --vermelho:#C21F12; --verde:#0E7A38; --laranja:#B96A00;
+  --tinta:#10151C; --tinta2:#49535F; --tinta3:#79828E;
+  --papel:#fff; --tint:#F1F4F8; --linha:#D9E0E9; --grid:#EAEFF5;
+  --mono:"IBM Plex Mono","DejaVu Sans Mono",monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--papel);color:var(--tinta);
+  font-family:"Nunito","DejaVu Sans",sans-serif}
+body{font-size:9.5pt;line-height:1.5}
+.page{width:210mm;height:297mm;padding:14mm 15mm 12mm;position:relative;overflow:hidden;
+  page-break-after:always;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+.runner{position:absolute;left:15mm;right:15mm;bottom:6mm;display:flex;justify-content:space-between;
+  font-family:var(--mono);font-size:6.6pt;color:var(--tinta3);letter-spacing:.06em;text-transform:uppercase;
+  border-top:.5pt solid var(--linha);padding-top:2.5mm}
+.eyebrow{font-family:var(--mono);font-size:7pt;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--azul);margin:0 0 3mm;font-weight:600}
+h1{font-size:24pt;font-weight:900;line-height:1;letter-spacing:-.015em;margin:0 0 2.5mm}
+h1 .sub{display:block;font-weight:400;color:var(--tinta2);font-size:15pt;margin-top:1.5mm}
+h2{font-size:12pt;font-weight:900;margin:0 0 2.5mm;padding-top:2mm;border-top:1.6pt solid var(--azul)}
+h3{font-size:9.6pt;font-weight:800;margin:0 0 1.2mm}
+p{margin:0 0 2.2mm}
+.lead{font-size:10pt;color:var(--tinta2);margin-bottom:4mm;max-width:155mm}
+b,strong{font-weight:800}
+table{border-collapse:collapse;width:100%;font-size:8.6pt}
+th,td{text-align:left;padding:1.7mm 2.3mm;border-bottom:.5pt solid var(--grid);vertical-align:top}
+thead th{font-family:var(--mono);font-size:6.6pt;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--tinta3);font-weight:600;border-bottom:.9pt solid var(--azul)}
+tbody tr:last-child td{border-bottom:none}
+.t-num{font-family:var(--mono);font-size:7.6pt;color:var(--azul-esc);white-space:nowrap;font-weight:600}
+.fala{color:var(--tinta);font-style:italic}
+.box{border:.6pt solid var(--linha);padding:2.8mm 3.2mm;background:var(--tint);border-radius:2mm}
+.box.blue{background:var(--azul-claro);border-color:#C3D6EF}
+.box.red{background:#FBECEC;border-color:#E8C6C4}
+.box.green{background:#EDF7F0;border-color:#BCDFC9}
+.box p:last-child{margin-bottom:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.note{font-size:7.7pt;color:var(--tinta3);line-height:1.4}
+ol.demo{margin:0;padding-left:0;list-style:none;counter-reset:d}
+ol.demo li{counter-increment:d;margin-bottom:2.6mm;padding-left:8mm;position:relative}
+ol.demo li::before{content:counter(d);position:absolute;left:0;top:.3mm;width:5.4mm;height:5.4mm;border-radius:50%;
+  background:var(--azul);color:#fff;font-family:var(--mono);font-size:7pt;font-weight:600;
+  display:flex;align-items:center;justify-content:center}
+ol.demo li.crit::before{background:var(--vermelho)}
+.clique{font-family:var(--mono);font-size:7.6pt;background:#fff;border:.5pt solid var(--linha);
+  padding:.4mm 1.4mm;border-radius:1mm;color:var(--azul-esc);white-space:nowrap}
+</style>
+</head>
+<body>
+
+<!-- ============ P1 ============ -->
+<section class="page">
+  <p class="eyebrow">Ideathon OlimpiaLab 2026 · Grupo 4 · Desafio 2</p>
+  <h1>Sou+Olímpia<span class="sub">roteiro do pitch — 5 minutos</span></h1>
+  <p class="lead">Um bloco por slide, com o tempo e o que falar. Não é para decorar: é para saber onde cortar se o relógio apertar. Os tempos somam 5 minutos cravados, sem folga — o primeiro corte, se precisar, é o slide 8.</p>
+
+  <table>
+    <thead><tr><th style="width:8%">Slide</th><th style="width:10%">Tempo</th><th>O que falar</th></tr></thead>
+    <tbody>
+      <tr><td><b>1</b><br><span class="note">Capa</span></td><td class="t-num">0:00–0:15</td>
+        <td><span class="fala">“Somos o Grupo 4 e trouxemos o Sou+Olímpia: uma rede de confiança para os negócios da cidade.”</span><br>
+        <span class="note">Não gaste tempo aqui. Nome, desafio, e siga.</span></td></tr>
+
+      <tr><td><b>2</b><br><span class="note">O número</span></td><td class="t-num">0:15–1:00</td>
+        <td><span class="fala">“Olímpia fatura 26% do seu ano de serviços em dois meses. Esse gráfico não existia — nós construímos, com o ISS mensal da API do Tesouro Nacional, 36 meses. Janeiro vale quase o dobro de maio, e oito dos doze meses ficam abaixo da média do próprio ano.”</span><br>
+        <span class="note">Este é o slide que compra a atenção da banca. Fale devagar e deixe o gráfico respirar.</span></td></tr>
+
+      <tr><td><b>3</b><br><span class="note">Cinco porquês</span></td><td class="t-num">1:00–1:40</td>
+        <td><span class="fala">“Perguntamos cinco vezes por quê. A resposta não foi falta de cliente. Foi que a saída é ação coletiva entre negócios — e que parceria, hoje, roda em planilha e grupo de WhatsApp, onde ninguém consegue verificar o que o outro afirma. A causa raiz é exatamente o enunciado do Desafio 2.”</span><br>
+        <span class="note">Aqui você amarra o problema de vocês ao desafio. É o momento mais importante do pitch.</span></td></tr>
+
+      <tr><td><b>4 e 5</b><br><span class="note">Solução</span></td><td class="t-num">1:40–2:20</td>
+        <td><span class="fala">“O Sou+Olímpia é uma camada de interoperabilidade. A prefeitura assina uma credencial dizendo que o negócio existe e está na rede. Aí a Loja B consegue verificar um registro emitido pela Loja A sem precisar confiar na Loja A, e sem planilha no meio.”</span></td></tr>
+
+      <tr><td><b>9</b><br><span class="note">Demonstração</span></td><td class="t-num">2:20–3:50</td>
+        <td><b>Vá para o navegador.</b> Roteiro completo na página seguinte. Termine sempre pelos dois últimos passos — resgate duplo recusado e carimbo adulterado rejeitado.<br>
+        <span class="note">90 segundos. Se estourar, corte o passo 1 (credenciamento) e comece já carimbando.</span></td></tr>
+
+      <tr><td><b>6</b><br><span class="note">Diferencial</span></td><td class="t-num">3:50–4:10</td>
+        <td><span class="fala">“A recompensa cresce com o número de lojas diferentes, não com o valor gasto. Desconto linear redistribui o mesmo cliente e é soma zero. Progressão por lojas aumenta quantos estabelecimentos cada cliente visita.”</span></td></tr>
+
+      <tr><td><b>7 e 8</b><br><span class="note">Segurança</span></td><td class="t-num">4:10–4:30</td>
+        <td><span class="fala">“A rede não guarda nome, não guarda CPF e não guarda o valor exato da compra — só a faixa. E tudo é navegável por teclado e anunciado por leitor de tela.”</span></td></tr>
+
+      <tr><td><b>10 e 11</b><br><span class="note">Governança</span></td><td class="t-num">4:30–4:50</td>
+        <td><span class="fala">“A prefeitura coordena e não paga: se custeasse o desconto viraria subsídio a consumo, com lei, licitação e TCE. E somos honestos sobre o limite: a sazonalidade que medimos é de serviços. Fomos verificar o varejo e o emprego formal é plano o ano todo.”</span></td></tr>
+
+      <tr><td><b>12</b><br><span class="note">Fecho</span></td><td class="t-num">4:50–5:00</td>
+        <td><span class="fala">“O problema de Olímpia não é falta de cliente. É falta de uma camada que permita os negócios da cidade agirem juntos. É isso que a gente construiu.”</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="box blue" style="margin-top:4mm">
+    <h3>Se o tempo apertar, corte nesta ordem</h3>
+    <p>1. Slide 8, acessibilidade — mencione numa frase dentro do slide 7. &nbsp; 2. Slide 6, diferencial — a demonstração já mostra. &nbsp; 3. Slide 11, limites — mas <b>nunca</b> corte o slide 3 nem a demonstração.</p>
+  </div>
+
+  <div class="runner"><span>Sou+Olímpia · Grupo 4</span><span>Roteiro · 1 de 3</span></div>
+</section>
+
+<!-- ============ P2 ============ -->
+<section class="page">
+  <p class="eyebrow">Página 2 de 3 · A demonstração</p>
+  <h1 style="font-size:19pt">90 segundos no navegador</h1>
+  <p class="lead" style="font-size:9.6pt">Abra <span class="clique">mvp/index.html</span> antes de subir ao palco, com a aba do console visível. Roda offline: não depende do wi-fi do evento.</p>
+
+  <ol class="demo">
+    <li><b>Mostre a aba Prefeitura.</b> <span class="fala">“Quatro negócios credenciados. A prefeitura assinou a credencial de cada um — isso é a única coisa que ela faz.”</span><br>
+      <span class="note">Aponte para as impressões de chave. Elas mudam a cada execução, o que prova que são geradas na hora.</span></li>
+
+    <li><b>Vá para Ponto de venda, escolha a Padaria, clique em</b> <span class="clique">Carimbar</span>.
+      <span class="fala">“A Padaria assinou um carimbo com a chave dela. Repare no console: a assinatura apareceu.”</span></li>
+
+    <li><b>Troque para a Farmácia e clique em</b> <span class="clique">Verificar</span>.
+      <span class="fala">“Agora a Farmácia está verificando um carimbo que a Padaria emitiu. Ela não consultou a Padaria, não abriu planilha nenhuma, e não tem internet. Validou com a chave pública da prefeitura, aqui mesmo.”</span><br>
+      <span class="note">Este é o momento que responde ao Desafio 2. Pause meio segundo depois de falar.</span></li>
+
+    <li><b>Carimbe na Farmácia e na Livraria.</b>
+      <span class="fala">“Três lojas diferentes fecham a cartela. Uma loja só não consegue encher — é assim que o programa obriga o cliente a circular.”</span><br>
+      <span class="note">Abra a aba Carteira do morador para mostrar o vale de R$ 30 e o identificador aleatório, sem nome e sem CPF.</span></li>
+
+    <li class="crit"><b>Volte ao Ponto de venda e clique em</b> <span class="clique">Resgatar vale</span> <b>duas vezes.</b>
+      <span class="fala">“Resgatou. E se eu tentar de novo…”</span> — a segunda tentativa é recusada.
+      <span class="fala">“Cada série vale uma vez só, e quem garante isso é a assinatura, não a boa-fé de ninguém.”</span></li>
+
+    <li class="crit"><b>Clique em</b> <span class="clique">Simular fraude</span>.
+      <span class="fala">“Vou adulterar um carimbo à força, mudando o valor da compra sem refazer a assinatura. A rede rejeita na hora.”</span><br>
+      <span class="note">Fecha o pitch técnico. Se sobrar tempo, clique também em Revogar credencial da Padaria e verifique de novo — os carimbos dela param de valer.</span></li>
+  </ol>
+
+  <div class="two" style="margin-top:3mm">
+    <div class="box red">
+      <h3>Plano B se algo falhar</h3>
+      <p>O protótipo não usa servidor nem internet, então a falha mais provável é do navegador. Tenha o Chrome e o Firefox abertos com a página carregada. Se travar, clique em <span class="clique">Reiniciar demonstração</span> — recria tudo em dois segundos.</p>
+      <p>Último recurso: as capturas de tela no final do deck.</p>
+    </div>
+    <div class="box green">
+      <h3>O que a banca precisa ver</h3>
+      <p>Só duas coisas importam nesses 90 segundos: <b>a Loja B verificando sozinha</b> o carimbo da Loja A, e <b>a rede recusando</b> o que não deveria aceitar. Se o relógio apertar, pule os passos 1 e 4 e vá direto para o 3, o 5 e o 6.</p>
+    </div>
+  </div>
+
+  <div class="runner"><span>Sou+Olímpia · Grupo 4</span><span>Roteiro · 2 de 3</span></div>
+</section>
+
+<!-- ============ P3 ============ -->
+<section class="page">
+  <p class="eyebrow">Página 3 de 3 · Perguntas</p>
+  <h1 style="font-size:19pt">O que vão perguntar</h1>
+  <p class="lead" style="font-size:9.6pt">As respostas curtas. Se uma pergunta sair daqui, dizer “não medimos isso” pontua mais que improvisar.</p>
+
+  <table>
+    <thead><tr><th style="width:34%">Pergunta</th><th>Resposta</th></tr></thead>
+    <tbody>
+      <tr><td><b>Por que não é blockchain?</b></td>
+        <td>Porque não precisa ser — e o próprio enunciado diz isso. O problema é provar origem e integridade, e assinatura digital resolve. Blockchain serviria para eliminar um emissor central de confiança, mas aqui a prefeitura é uma autoridade legítima e já existente. Usar blockchain seria custo sem benefício.</td></tr>
+      <tr><td><b>Vocês têm dado de que o varejo cai na baixa?</b></td>
+        <td><b>Não, e fomos verificar.</b> A sazonalidade que medimos é de serviços — loja paga ICMS, não ISS. O emprego formal no varejo é plano o ano todo: saldo de −14 vagas em 2025, descontada a abertura de um hipermercado. Por isso o alvo não é salvar o varejo, é criar a camada que permite ação coletiva.</td></tr>
+      <tr><td><b>Quanto do vale vocês fecham?</b></td>
+        <td>Nada perto de fechar, e quem promete isso está errando a conta. A diferença entre pico e vale é de R$ 67 a 167 milhões de faturamento por mês. Dividido por 20.418 domicílios, daria R$ 3.278 a 8.195 a mais por família por mês. O objetivo é reduzir a amplitude.</td></tr>
+      <tr><td><b>Por que não basta uma placa de 10% na porta?</b></td>
+        <td>Porque a progressão é por número de lojas diferentes, não por valor gasto. Isso não existe offline: transforma concorrentes em rede e espalha o movimento em vez de concentrar.</td></tr>
+      <tr><td><b>E o Nubank, o PicPay, a Stone?</b></td>
+        <td>Eles têm o app e a maquininha, mas não têm a regra local nem o comerciante de rua que não está em nenhuma dessas bases. E não resolvem o problema do enunciado, que é um negócio verificar o outro. Se quiserem entrar, viramos o trilho deles.</td></tr>
+      <tr><td><b>Quem paga o desconto?</b></td>
+        <td>O comerciante onde o vale for resgatado. Em agregado se compensa: cada loja concede poucos vales e recebe várias visitas que não teria. A prefeitura não custeia nada — se custeasse, viraria subsídio a consumo.</td></tr>
+      <tr><td><b>Onde ficam as chaves privadas?</b></td>
+        <td>No protótipo, no navegador, para a demonstração rodar sem servidor. Em produção, no dispositivo de cada comerciante ou num módulo de segurança. A prefeitura nunca tem acesso a elas — ela só assina credenciais, não carimbos.</td></tr>
+      <tr><td><b>E a LGPD?</b></td>
+        <td>A rede não guarda nome, CPF, valor exato nem o que foi comprado. O morador é um identificador aleatório que ele mesmo pode descartar e gerar outro. É minimização por construção, não por política escrita depois.</td></tr>
+      <tr><td><b>Qual o tamanho do mercado?</b></td>
+        <td>20.418 domicílios, 1.131 unidades de comércio, 5.858 empresas. É pequeno e nós sabemos: por isso o piloto é de 3 a 5 lojas e uma rua, não a cidade inteira.</td></tr>
+      <tr><td><b>Como vocês sabem que funciona?</b></td>
+        <td>Ainda não sabemos, e é a nossa premissa mais arriscada. O teste custa zero: 3 a 5 lojas, 15% para morador, duas semanas de um mês de vale, contra um grupo de controle de lojas parecidas, com hipótese registrada antes da coleta.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="box blue" style="margin-top:4mm">
+    <h3>A frase para fechar qualquer resposta difícil</h3>
+    <p>“A gente preferiu medir e descobrir o que não sabe, em vez de chegar aqui com certeza que não se sustenta.” Funciona porque é verdade — e porque o diagnóstico está no repositório, com os scripts que reproduzem tudo.</p>
+  </div>
+
+  <div class="runner"><span>Sou+Olímpia · Grupo 4 · dados públicos, set/2026</span><span>Roteiro · 3 de 3</span></div>
+</section>
+
+</body>
+</html>

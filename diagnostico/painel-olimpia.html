@@ -1,0 +1,755 @@
+<title>Olímpia em Dois Meses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,62..125,300..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  color-scheme: light;
+  --plane:#f4f4f1;
+  --surface:#fcfcfb;
+  --surface-2:#eeeee9;
+  --ink:#0b0b0b;
+  --ink-2:#52514e;
+  --ink-3:#898781;
+  --grid:#e1e0d9;
+  --axis:#c3c2b7;
+  --rule:rgba(11,11,11,.10);
+  --accent:#1c5cab;
+  --accent-soft:#e6eefa;
+  --s1:#2a78d6;
+  --s2:#eb6834;
+  --s3:#1baf7a;
+  --good:#006300;
+  --bad:#d03b3b;
+  --tip-bg:#0b0b0b;
+  --tip-ink:#fcfcfb;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --plane:#0d0d0d;
+    --surface:#1a1a19;
+    --surface-2:#232321;
+    --ink:#ffffff;
+    --ink-2:#c3c2b7;
+    --ink-3:#898781;
+    --grid:#2c2c2a;
+    --axis:#383835;
+    --rule:rgba(255,255,255,.10);
+    --accent:#6da7ec;
+    --accent-soft:#16283f;
+    --s1:#3987e5;
+    --s2:#d95926;
+    --s3:#199e70;
+    --good:#0ca30c;
+    --bad:#e66767;
+    --tip-bg:#fcfcfb;
+    --tip-ink:#0b0b0b;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --plane:#0d0d0d;
+  --surface:#1a1a19;
+  --surface-2:#232321;
+  --ink:#ffffff;
+  --ink-2:#c3c2b7;
+  --ink-3:#898781;
+  --grid:#2c2c2a;
+  --axis:#383835;
+  --rule:rgba(255,255,255,.10);
+  --accent:#6da7ec;
+  --accent-soft:#16283f;
+  --s1:#3987e5;
+  --s2:#d95926;
+  --s3:#199e70;
+  --good:#0ca30c;
+  --bad:#e66767;
+  --tip-bg:#fcfcfb;
+  --tip-ink:#0b0b0b;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--plane);
+  color:var(--ink);
+  font-family:"Archivo","Helvetica Neue",Arial,sans-serif;
+  font-variation-settings:"wdth" 100;
+  font-size:15px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px 96px}
+
+/* ---------- header ---------- */
+header.top{
+  border-bottom:1px solid var(--rule);
+  background:var(--surface);
+  margin-bottom:34px;
+}
+.top-in{max-width:1140px;margin:0 auto;padding:44px 24px 32px;display:flex;flex-wrap:wrap;gap:28px;align-items:flex-end;justify-content:space-between}
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+  margin:0 0 12px;
+}
+h1{
+  font-size:clamp(38px,6.4vw,66px);
+  font-variation-settings:"wdth" 118,"wght" 800;
+  line-height:.94;letter-spacing:-.022em;margin:0;text-wrap:balance;
+}
+h1 .thin{font-variation-settings:"wdth" 118,"wght" 300;color:var(--ink-2);display:block}
+.standfirst{margin:14px 0 0;max-width:46ch;color:var(--ink-2);font-size:16px}
+.stamp{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11px;line-height:1.9;
+  color:var(--ink-3);text-align:right;white-space:nowrap;
+}
+.stamp b{color:var(--ink-2);font-weight:500}
+
+/* ---------- kpi strip ---------- */
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:56px}
+.kpi{background:var(--surface);padding:18px 18px 16px}
+.kpi .k-lab{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:9px}
+.kpi .k-val{font-size:30px;font-variation-settings:"wdth" 108,"wght" 700;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.kpi .k-val small{font-size:15px;font-variation-settings:"wdth" 100,"wght" 500;color:var(--ink-2);margin-left:2px}
+.kpi .k-sub{font-size:12.5px;color:var(--ink-3);margin-top:7px;line-height:1.4}
+
+/* ---------- sections ---------- */
+section{margin-bottom:60px}
+.s-head{border-top:2px solid var(--ink);padding-top:12px;margin-bottom:22px}
+h2{font-size:clamp(22px,3vw,30px);font-variation-settings:"wdth" 112,"wght" 700;letter-spacing:-.017em;margin:0;line-height:1.1}
+.s-head p{margin:9px 0 0;color:var(--ink-2);max-width:66ch;font-size:15px}
+
+.card{background:var(--surface);border:1px solid var(--rule);padding:20px 20px 16px}
+.card h3{font-size:15px;font-variation-settings:"wdth" 106,"wght" 700;margin:0 0 3px;letter-spacing:-.005em}
+.card .note{font-size:12.5px;color:var(--ink-3);margin:0 0 16px;line-height:1.45}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:18px}
+
+.figwrap{overflow-x:auto}
+svg{display:block;max-width:100%;height:auto}
+text{font-family:"Archivo",Arial,sans-serif}
+.tick{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;fill:var(--ink-3)}
+.dlabel{font-size:11.5px;font-weight:700;fill:var(--ink);font-variant-numeric:tabular-nums}
+.slabel{font-size:12px;fill:var(--ink-2)}
+
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin:2px 0 14px;font-size:12.5px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.swatch{width:11px;height:11px;border-radius:2px;display:inline-block;flex:none}
+
+.tbtn{
+  font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  background:none;border:1px solid var(--rule);color:var(--ink-2);padding:5px 10px;cursor:pointer;
+}
+.tbtn:hover{background:var(--surface-2);color:var(--ink)}
+.tbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.tableview{display:none;margin-top:16px;overflow-x:auto}
+.tableview.on{display:block}
+table{border-collapse:collapse;font-size:12.5px;width:100%;font-variant-numeric:tabular-nums}
+th,td{text-align:right;padding:5px 9px;border-bottom:1px solid var(--grid);white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:500}
+
+#tip{
+  position:fixed;pointer-events:none;opacity:0;transition:opacity .09s;
+  background:var(--tip-bg);color:var(--tip-ink);padding:8px 11px;font-size:12px;line-height:1.5;
+  z-index:50;max-width:250px;box-shadow:0 4px 14px rgba(0,0,0,.18);
+}
+#tip b{font-variation-settings:"wght" 700}
+#tip .tnum{font-variant-numeric:tabular-nums}
+
+.takeaway{
+  border-left:3px solid var(--accent);background:var(--accent-soft);
+  padding:15px 18px;margin-top:18px;font-size:14.5px;color:var(--ink);
+}
+.takeaway b{font-variation-settings:"wght" 700}
+
+ul.facts{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+ul.facts li{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline;border-bottom:1px solid var(--grid);padding-bottom:9px;font-size:14px}
+ul.facts li span:last-child{font-variant-numeric:tabular-nums;font-variation-settings:"wght" 700;white-space:nowrap}
+ul.facts li em{font-style:normal;color:var(--ink-3);font-size:12.5px;display:block}
+ul.facts-2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));column-gap:34px}
+
+footer{border-top:1px solid var(--rule);padding-top:22px;font-size:13px;color:var(--ink-3)}
+footer h3{font-size:13px;font-variation-settings:"wdth" 104,"wght" 700;color:var(--ink-2);margin:0 0 8px;text-transform:uppercase;letter-spacing:.07em;font-family:"IBM Plex Mono",monospace}
+footer ul{margin:0 0 20px;padding-left:18px;display:grid;gap:5px}
+footer a{color:var(--accent)}
+.caveat{border:1px solid var(--rule);padding:14px 16px;margin-bottom:20px;background:var(--surface)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div>
+      <p class="eyebrow">Estância Turística de Olímpia · São Paulo</p>
+      <h1>Uma economia<span class="thin">de dois meses</span></h1>
+      <p class="standfirst">Olímpia fatura 26% do seu ano de serviços em janeiro e julho. Os outros dez meses dividem o resto. Este painel mede o tamanho dessa distorção com dado público mensal.</p>
+    </div>
+    <div class="stamp">
+      <b>ISS</b> mensal · 2023–2025<br>
+      <b>Visitantes</b> · 9 períodos OTO<br>
+      <b>Censo</b> 2022 · <b>CEMPRE</b> 2024<br>
+      <b>CAGED</b> · 2025
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="kpis" id="kpis"></div>
+
+  <!-- ============ 1. CALENDÁRIO ============ -->
+  <section>
+    <div class="s-head">
+      <h2>O calendário manda na cidade</h2>
+      <p>O ISS é o imposto sobre serviços — hotéis, parques, agências. Ele vence no mês seguinte ao serviço prestado, então a série foi deslocada para o <b>mês do movimento</b>. O índice compara cada mês com a média do próprio ano.</p>
+    </div>
+    <div class="card">
+      <h3>Índice sazonal do ISS por mês de movimento</h3>
+      <p class="note">Média do ano = 1,00. Três anos independentes, mesmo desenho. Março/2025 excluído por outlier de arrecadação; dezembro/2025 ainda não publicado.</p>
+      <div class="legend" id="lg-season"></div>
+      <div class="figwrap"><svg id="c-season" role="img" aria-label="Índice sazonal mensal do ISS de Olímpia entre 2023 e 2025"></svg></div>
+      <button class="tbtn" data-table="t-season">Ver tabela</button>
+      <div class="tableview" id="t-season"></div>
+      <div class="takeaway" id="tk-season"></div>
+    </div>
+  </section>
+
+  <!-- ============ 2. QUEM CHEGA ============ -->
+  <section>
+    <div class="s-head">
+      <h2>Quem chega, e quando</h2>
+      <p>O Observatório do Turismo de Olímpia (OTO) pesquisa a rede hoteleira antes de cada período e projeta ocupação e fluxo. Nove boletins de 2026 permitem ordenar o calendário turístico por força real.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Taxa de ocupação hoteleira projetada</h3>
+        <p class="note">Por período, 2026. A linha marca a ocupação da alta de verão (70,8%).</p>
+        <div class="figwrap"><svg id="c-occ" role="img" aria-label="Taxa de ocupação hoteleira projetada por período em Olímpia"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Turistas por dia no período</h3>
+        <p class="note">Fluxo diário estimado — hospedados, hospedagem caseira e day use.</p>
+        <div class="figwrap"><svg id="c-day" role="img" aria-label="Turistas por dia estimados por período em Olímpia"></svg></div>
+      </div>
+    </div>
+    <div class="takeaway">
+      <b>Os eventos-marca da cidade são os mais fracos do calendário.</b> O Festival Nacional do Folclore projeta <b>35,8%</b> de ocupação e a Festa do Peão, <b>41,7%</b> — contra 80,6% no Carnaval. E não é só o hotel: o fluxo diário também cai pela metade, 9.442 e 10.550 pessoas por dia contra 20.477 no Carnaval. O ISS confirma — agosto e junho estão entre os meses mais fracos do ano. A contrapartida é que são a única demanda programada que a cidade produz fora da alta.
+    </div>
+  </section>
+
+  <!-- ============ 3. QUEM TRABALHA ============ -->
+  <section>
+    <div class="s-head">
+      <h2>Quem trabalha</h2>
+      <p>25.756 pessoas ocupadas em 5.858 empresas formais. O turismo aparece menos no emprego direto do que na conversa — mas comanda o ritmo de contratação do ano.</p>
+    </div>
+    <div class="card">
+      <h3>Saldo mensal de empregos formais — 2025</h3>
+      <p class="note" id="caged-note">Admissões menos desligamentos, por mês. Turismo = alojamento, alimentação, arte, cultura e lazer.</p>
+      <div class="legend" id="lg-caged"></div>
+      <div class="figwrap"><svg id="c-caged" role="img" aria-label="Saldo mensal de empregos formais em Olímpia em 2025, por grupo de setor"></svg></div>
+      <button class="tbtn" data-table="t-caged">Ver tabela</button>
+      <div class="tableview" id="t-caged"></div>
+      <div class="takeaway" id="tk-caged"></div>
+    </div>
+    <div class="grid-2" style="margin-top:18px">
+      <div class="card">
+        <h3>Pessoal ocupado por setor</h3>
+        <p class="note">CEMPRE 2024, empresas formais. Alojamento, alimentação e lazer somam <b id="turshare">—</b> do total.</p>
+        <div class="legend" id="lg-sector"></div>
+        <div class="figwrap"><svg id="c-sector" role="img" aria-label="Pessoal ocupado por setor em Olímpia em 2024"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Estrutura econômica</h3>
+        <p class="note">Valor adicionado bruto por atividade, 2021.</p>
+        <ul class="facts" id="f-vab"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. O RETRATO ============ -->
+  <section>
+    <div class="s-head">
+      <h2>O retrato por trás do fluxo</h2>
+      <p>Uma cidade de 55 mil habitantes que recebe mais de um milhão de visitantes por temporada. O descompasso aparece na renda, no estoque de imóveis e na estrutura etária.</p>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>PIB per capita</h3>
+        <p class="note">Reais correntes. Saltou 68% entre 2020 e 2023 — construção de resorts e recuperação pós-pandemia.</p>
+        <div class="figwrap"><svg id="c-pib" role="img" aria-label="Evolução do PIB per capita de Olímpia entre 2010 e 2023"></svg></div>
+      </div>
+      <div class="card">
+        <h3>Domicílios recenseados</h3>
+        <p class="note">Censo 2022. Um quarto do estoque de imóveis não tem morador.</p>
+        <div class="figwrap"><svg id="c-dom" role="img" aria-label="Composição dos domicílios recenseados em Olímpia no Censo 2022"></svg></div>
+        <div class="takeaway" style="margin-top:14px">
+          <b>4.380 domicílios de uso ocasional</b> — segunda residência e temporada. O estoque de imóveis cresceu 54,8% entre 2010 e 2022; a população, 10%.
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <h3>Indicadores sociais</h3>
+      <p class="note">Censo 2022, CEMPRE 2024 e finanças municipais 2025.</p>
+      <ul class="facts facts-2" id="f-social"></ul>
+    </div>
+  </section>
+
+  <!-- ============ 5. CONTRA-CICLO ============ -->
+  <section>
+    <div class="s-head">
+      <h2>Como o comércio atravessa o vale</h2>
+      <p>Se o turista some em maio e junho, sobra o morador. Mas há uma armadilha na conta: parte do morador perde a renda no mesmo momento em que o turista vai embora. Quem o comerciante consegue alcançar na baixa é uma fatia específica da cidade — e ela é mensurável.</p>
+    </div>
+
+    <div class="card">
+      <h3>De quem é a renda que fica na baixa temporada</h3>
+      <p class="note">Pessoal ocupado formal por exposição ao ciclo turístico. CEMPRE 2024, 25.756 pessoas.</p>
+      <div class="legend" id="lg-renda"></div>
+      <div class="figwrap"><svg id="c-renda" role="img" aria-label="Pessoal ocupado de Olímpia separado por exposição ao ciclo turístico"></svg></div>
+      <div class="takeaway">
+        <b>A armadilha:</b> o conselho óbvio — "venda para o morador na baixa" — esbarra no fato de que 3.801 pessoas trabalham justamente no setor que demite entre dezembro e maio. O público de fato disponível no vale são os <b>11.062 empregos de renda estável</b>: indústria de transformação, poder público, saúde, educação e agropecuária. É para esse salário, que cai todo dia 5 independentemente da ocupação hoteleira, que o comércio precisa falar em maio e junho.
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:18px">
+      <div class="card">
+        <h3>Quatro alavancas que a base de dados sustenta</h3>
+        <ul class="facts" style="margin-top:4px">
+          <li><span>Inverter o calendário promocional<em>Em janeiro o turista compra de qualquer jeito. Desconto em janeiro é margem jogada fora; a campanha precisa estar em maio, junho, fevereiro e março.</em></span><span></span></li>
+          <li><span>Trocar ticket alto por frequência<em>Mediana de admissão de R$ 2.100. O morador não sustenta ticket de turista — sustenta recorrência: assinatura, clube, fidelidade, parcela pequena.</em></span><span></span></li>
+          <li><span>Vender preço de morador, com comprovante<em>Prática consolidada em destino turístico. Separa as duas demandas sem canibalizar a margem da alta.</em></span><span></span></li>
+          <li><span>Segurar a equipe em vez de demitir<em>O ciclo destrói 88 vagas em janeiro e recontrata a partir de junho. Banco de horas e jornada reduzida preservam mão de obra treinada e o custo de reposição.</em></span><span></span></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Por que feriado não conserta mês</h3>
+        <p class="note" style="margin-bottom:6px">Cada mês fraco, seu índice de ISS e o que existe de demanda programada nele.</p>
+        <div class="figwrap"><table id="t-vale"></table></div>
+        <div class="takeaway" style="margin-top:16px">
+          <b>O Carnaval é o evento de maior ocupação do ano — 80,6% — e cai em fevereiro, um mês que marca 0,81.</b> Quatro dias cheios não movem trinta. Olímpia responde a <b>duração</b>, não a intensidade: o que faz janeiro e julho é um mês inteiro de férias escolares, não um pico. Por isso perseguir feriadão não fecha o vale — e por isso agosto (0,87), com os nove dias do FEFOL, ainda bate fevereiro, que tem só o Carnaval.
+        </div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:18px">
+      <h3>O maior player da cidade já roda o contra-ciclo — e não mexe na tabela</h3>
+      <p class="note">Tarifário oficial do Thermas dos Laranjais e calendário da promoção "todos pagam meia entrada + 1 kg de alimento", 2026.</p>
+      <div class="legend" id="lg-promo"></div>
+      <div class="figwrap"><svg id="c-promo" role="img" aria-label="Índice sazonal do ISS por mês, com marcação dos meses em que o parque roda meia entrada para todos"></svg></div>
+      <div class="takeaway">
+        <b>O preço de tabela não sobe na alta — o preço efetivo cai na baixa.</b> O tarifário é único, de segunda a segunda: R$ 189 na loja online e R$ 199 na bilheteria, sem variação por temporada nem por dia da semana. O que muda é a promoção: em <b>maio, junho, agosto e setembro de 2026</b>, de segunda a sexta, todos pagam meia entrada mediante doação de um quilo de alimento. São exatamente quatro dos meses de vale (índices 0,77, 0,78, 0,87 e 0,91), e só nos dias úteis, que é quando a demanda é mais fraca.
+        <br><br>
+        O desenho é deliberado: manter a tabela intacta e conceder desconto condicional preserva a referência de preço, não treina o cliente a esperar promoção, e ainda converte o corte em ação social — foram mais de 20 toneladas de alimento repassadas a 16 entidades da cidade. Fevereiro e março, também fracos (0,81 e 0,80), ficam de fora dessa campanha.
+      </div>
+    </div>
+
+    <div class="takeaway" style="border-left-color:var(--bad)">
+      <b>O limite honesto disto tudo.</b> Olímpia tem 1.131 unidades locais de comércio para 55 mil moradores — uma a cada 49 habitantes. Essa capacidade foi dimensionada para um fluxo que passa de um milhão de visitantes só no verão, não para a população residente. Nenhuma tática de varejo fecha uma conta dessa ordem: na baixa, sobra estrutura instalada por definição. O que dá para fazer é reduzir a amplitude do vale, não eliminá-lo — e decidir de antemão quanta capacidade se mantém aberta em maio e junho.
+    </div>
+  </section>
+
+  <!-- ============ MÉTODO ============ -->
+  <footer>
+    <div class="caveat">
+      <h3 style="margin-bottom:9px">Como ler, e onde desconfiar</h3>
+      <p style="margin:0 0 9px;color:var(--ink-2)">O ISS mede <b>serviços</b>, não varejo. Lojas recolhem ICMS, que é estadual e não tem série mensal por município — testei a cota-parte do ICMS que Olímpia recebe e ela não acompanha o ciclo local, porque é rateio por índice fixo. Então "comércio" aqui significa a economia de serviços do turismo, não a loja de rua.</p>
+      <p style="margin:0 0 9px;color:var(--ink-2)">O deslocamento de um mês entre serviço e recolhimento é a convenção padrão do ISS. A simetria fevereiro/agosto — dois picos de mesma magnitude, um por férias escolar — sustenta a hipótese. A rival, de que fevereiro seja inflado pelo ISS Fixo anual dos autônomos, não explicaria agosto.</p>
+      <p style="margin:0;color:var(--ink-2)">Abril/2025 registrou R$ 9,08 milhões contra R$ 3,3 milhões em 2024, um salto de 2,7x sem paralelo na série. Tratei como outlier — provável recuperação de crédito ou ISS de obra — e removi da base de cálculo. Os boletins do OTO são <b>expectativa</b> pesquisada junto à hotelaria, não realizado.</p>
+    </div>
+    <h3>Fontes</h3>
+    <ul>
+      <li>Tesouro Nacional — SICONFI, RREO Anexo 03, ente 3533908 (série mensal de ISS, 2023–2025)</li>
+      <li>IBGE — Censo Demográfico 2022, CEMPRE 2024, PIB dos Municípios 2023, Panorama municipal</li>
+      <li>Observatório do Turismo de Olímpia (OTO) / Secretaria Municipal de Turismo — boletins de expectativa de ocupação e fluxo, 2026</li>
+      <li>Ministério do Trabalho e Emprego — microdados do Novo CAGED, 2025</li>
+      <li>Themed Entertainment Association / AECOM — Theme Index 2024 (Thermas dos Laranjais, 1,85 milhão de visitantes, 4º parque aquático mais visitado do mundo)</li>
+      <li>Thermas dos Laranjais — tarifário oficial (termas.com.br) e calendário de promoções 2026</li>
+    </ul>
+    <div class="caveat">
+      <h3 style="margin-bottom:9px">O que não existe: índice de preços municipal</h3>
+      <p style="margin:0 0 9px;color:var(--ink-2)">Não há série de preços para Olímpia. O IPCA cobre 16 regiões metropolitanas e o IPC-Fipe, só a capital — nenhum dos dois desce a município do interior. O Procon-SP faz pesquisa de preços de hospedagem e alimentação em cidades turísticas, mas a cobertura de Olímpia é intermitente e as coletas acontecem em janeiro e em julho — os dois picos —, sem linha de base na baixa.</p>
+      <p style="margin:0;color:var(--ink-2)">Por isso o ISS não responde sozinho se o preço sobe na alta: ele mede faturamento, que é preço vezes volume, e não há série mensal de volume para separar os dois. O tarifário dos parques é a única evidência de preço datada e pública da cidade — e é evidência de um só estabelecimento, ainda que o maior deles. Os números de variação de diária de hotel que circulam em sites de reserva são estatística comercial de agregador, não índice.</p>
+    </div>
+  </footer>
+</div>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+const D = {"iss_arrecadacao":{"2023-01":3730897.74,"2023-02":5480958.64,"2023-03":3040680.54,"2023-04":3088483.85,"2023-05":3086110.51,"2023-06":3009974.64,"2023-07":2751092,"2023-08":5609491.99,"2023-09":3259287.49,"2023-10":3578299.24,"2023-11":4400218.6,"2023-12":3669425.87,"2024-01":4170632.87,"2024-02":6553323.97,"2024-03":3617757.49,"2024-04":3345221.26,"2024-05":3643050.71,"2024-06":3206784.06,"2024-07":3465986.8,"2024-08":6600455.2,"2024-09":3736045.96,"2024-10":3646409.93,"2024-11":5407786.57,"2024-12":3849140.53,"2025-01":4097357.23,"2025-02":7300176.92,"2025-03":3748507.84,"2025-04":9078724.37,"2025-05":5139344.21,"2025-06":3593671.05,"2025-07":3790976.34,"2025-08":6401258.05,"2025-09":4096673.7,"2025-10":4441060.4,"2025-11":4773895.94,"2025-12":4316484.02},"iss_por_mes_movimento":{"2022":{"12":3730897.74},"2023":{"1":5480958.64,"2":3040680.54,"3":3088483.85,"4":3086110.51,"5":3009974.64,"6":2751092,"7":5609491.99,"8":3259287.49,"9":3578299.24,"10":4400218.6,"11":3669425.87,"12":4170632.87},"2024":{"1":6553323.97,"2":3617757.49,"3":3345221.26,"4":3643050.71,"5":3206784.06,"6":3465986.8,"7":6600455.2,"8":3736045.96,"9":3646409.93,"10":5407786.57,"11":3849140.53,"12":4097357.23},"2025":{"1":7300176.92,"2":3748507.84,"3":9078724.37,"4":5139344.21,"5":3593671.05,"6":3790976.34,"7":6401258.05,"8":4096673.7,"9":4441060.4,"10":4773895.94,"11":4316484.02}},"iss_indice_sazonal":{"2023":{"1":1.457,"2":0.808,"3":0.821,"4":0.82,"5":0.8,"6":0.731,"7":1.491,"8":0.866,"9":0.951,"10":1.17,"11":0.975,"12":1.109},"2024":{"1":1.537,"2":0.848,"3":0.785,"4":0.854,"5":0.752,"6":0.813,"7":1.548,"8":0.876,"9":0.855,"10":1.268,"11":0.903,"12":0.961},"2025":{"1":1.534,"2":0.787,"4":1.08,"5":0.755,"6":0.796,"7":1.345,"8":0.861,"9":0.933,"10":1.003,"11":0.907}},"iss_indice_medio":{"1":1.509,"2":0.814,"3":0.803,"4":0.918,"5":0.769,"6":0.78,"7":1.461,"8":0.868,"9":0.913,"10":1.147,"11":0.928,"12":1.035},"caged_2025":{"202501":{"setores":{"Construção":{"adm":158,"desl":65,"saldo":93},"Indústria de transformação":{"adm":145,"desl":156,"saldo":-11},"Adm. e serviços complementares":{"adm":114,"desl":161,"saldo":-47},"Outros serviços":{"adm":18,"desl":22,"saldo":-4},"Alojamento e alimentação":{"adm":137,"desl":196,"saldo":-59},"Arte, cultura, esporte e lazer":{"adm":29,"desl":58,"saldo":-29},"Comércio":{"adm":179,"desl":208,"saldo":-29},"Saúde":{"adm":15,"desl":17,"saldo":-2},"Agropecuária":{"adm":25,"desl":29,"saldo":-4},"Imobiliárias":{"adm":7,"desl":2,"saldo":5},"Prof. científicas e técnicas":{"adm":18,"desl":27,"saldo":-9},"Financeiro":{"adm":4,"desl":4,"saldo":0},"Transporte":{"adm":15,"desl":11,"saldo":4},"Educação":{"adm":15,"desl":18,"saldo":-3},"Água e esgoto":{"adm":4,"desl":5,"saldo":-1},"Informação e comunicação":{"adm":4,"desl":2,"saldo":2},"Administração pública":{"adm":2,"desl":0,"saldo":2}},"total":{"adm":889,"desl":981},"saldo":-92,"saldo_turismo":-88,"saldo_comercio":-29,"salario_mediano_admissao":2123.65},"202502":{"setores":{"Construção":{"adm":95,"desl":70,"saldo":25},"Imobiliárias":{"adm":11,"desl":10,"saldo":1},"Indústria de transformação":{"adm":127,"desl":116,"saldo":11},"Adm. e serviços complementares":{"adm":112,"desl":141,"saldo":-29},"Saúde":{"adm":25,"desl":18,"saldo":7},"Comércio":{"adm":194,"desl":197,"saldo":-3},"Alojamento e alimentação":{"adm":191,"desl":167,"saldo":24},"Arte, cultura, esporte e lazer":{"adm":47,"desl":33,"saldo":14},"Transporte":{"adm":14,"desl":15,"saldo":-1},"Outros serviços":{"adm":41,"desl":22,"saldo":19},"Agropecuária":{"adm":25,"desl":31,"saldo":-6},"Informação e comunicação":{"adm":8,"desl":2,"saldo":6},"Prof. científicas e técnicas":{"adm":24,"desl":17,"saldo":7},"Educação":{"adm":15,"desl":9,"saldo":6},"Água e esgoto":{"adm":3,"desl":4,"saldo":-1},"Financeiro":{"adm":5,"desl":2,"saldo":3},"Administração pública":{"adm":1,"desl":0,"saldo":1}},"total":{"adm":938,"desl":854},"saldo":84,"saldo_turismo":38,"saldo_comercio":-3,"salario_mediano_admissao":2076.36},"202503":{"setores":{"Saúde":{"adm":13,"desl":25,"saldo":-12},"Alojamento e alimentação":{"adm":167,"desl":168,"saldo":-1},"Indústria de transformação":{"adm":187,"desl":120,"saldo":67},"Comércio":{"adm":207,"desl":219,"saldo":-12},"Construção":{"adm":69,"desl":100,"saldo":-31},"Adm. e serviços complementares":{"adm":95,"desl":142,"saldo":-47},"Agropecuária":{"adm":43,"desl":27,"saldo":16},"Informação e comunicação":{"adm":4,"desl":5,"saldo":-1},"Outros serviços":{"adm":22,"desl":17,"saldo":5},"Arte, cultura, esporte e lazer":{"adm":30,"desl":43,"saldo":-13},"Educação":{"adm":7,"desl":9,"saldo":-2},"Imobiliárias":{"adm":5,"desl":8,"saldo":-3},"Prof. científicas e técnicas":{"adm":9,"desl":27,"saldo":-18},"Financeiro":{"adm":3,"desl":6,"saldo":-3},"Água e esgoto":{"adm":3,"desl":5,"saldo":-2},"Transporte":{"adm":15,"desl":16,"saldo":-1}},"total":{"adm":879,"desl":937},"saldo":-58,"saldo_turismo":-14,"saldo_comercio":-12,"salario_mediano_admissao":2066.0},"202504":{"setores":{"Alojamento e alimentação":{"adm":142,"desl":170,"saldo":-28},"Indústria de transformação":{"adm":126,"desl":144,"saldo":-18},"Comércio":{"adm":313,"desl":179,"saldo":134},"Agropecuária":{"adm":104,"desl":21,"saldo":83},"Adm. e serviços complementares":{"adm":94,"desl":113,"saldo":-19},"Construção":{"adm":36,"desl":79,"saldo":-43},"Saúde":{"adm":40,"desl":18,"saldo":22},"Arte, cultura, esporte e lazer":{"adm":28,"desl":25,"saldo":3},"Prof. científicas e técnicas":{"adm":13,"desl":13,"saldo":0},"Informação e comunicação":{"adm":2,"desl":2,"saldo":0},"Outros serviços":{"adm":25,"desl":28,"saldo":-3},"Transporte":{"adm":40,"desl":16,"saldo":24},"Educação":{"adm":22,"desl":2,"saldo":20},"Financeiro":{"adm":2,"desl":2,"saldo":0},"Água e esgoto":{"adm":3,"desl":3,"saldo":0},"Imobiliárias":{"adm":1,"desl":6,"saldo":-5},"Eletricidade e gás":{"adm":1,"desl":1,"saldo":0}},"total":{"adm":992,"desl":822},"saldo":170,"saldo_turismo":-25,"saldo_comercio":134,"salario_mediano_admissao":2054.35},"202505":{"setores":{"Adm. e serviços complementares":{"adm":88,"desl":102,"saldo":-14},"Outros serviços":{"adm":24,"desl":23,"saldo":1},"Alojamento e alimentação":{"adm":132,"desl":156,"saldo":-24},"Construção":{"adm":43,"desl":81,"saldo":-38},"Indústria de transformação":{"adm":140,"desl":109,"saldo":31},"Comércio":{"adm":323,"desl":205,"saldo":118},"Arte, cultura, esporte e lazer":{"adm":40,"desl":40,"saldo":0},"Educação":{"adm":15,"desl":10,"saldo":5},"Transporte":{"adm":9,"desl":9,"saldo":0},"Agropecuária":{"adm":15,"desl":57,"saldo":-42},"Imobiliárias":{"adm":5,"desl":3,"saldo":2},"Saúde":{"adm":24,"desl":16,"saldo":8},"Prof. científicas e técnicas":{"adm":15,"desl":15,"saldo":0},"Água e esgoto":{"adm":3,"desl":4,"saldo":-1},"Financeiro":{"adm":3,"desl":4,"saldo":-1},"Informação e comunicação":{"adm":2,"desl":3,"saldo":-1}},"total":{"adm":881,"desl":837},"saldo":44,"saldo_turismo":-24,"saldo_comercio":118,"salario_mediano_admissao":2085.0},"202506":{"setores":{"Adm. e serviços complementares":{"adm":113,"desl":90,"saldo":23},"Alojamento e alimentação":{"adm":155,"desl":117,"saldo":38},"Construção":{"adm":57,"desl":55,"saldo":2},"Comércio":{"adm":214,"desl":182,"saldo":32},"Água e esgoto":{"adm":6,"desl":40,"saldo":-34},"Indústria de transformação":{"adm":121,"desl":130,"saldo":-9},"Outros serviços":{"adm":28,"desl":12,"saldo":16},"Agropecuária":{"adm":27,"desl":29,"saldo":-2},"Prof. científicas e técnicas":{"adm":9,"desl":14,"saldo":-5},"Arte, cultura, esporte e lazer":{"adm":26,"desl":33,"saldo":-7},"Imobiliárias":{"adm":3,"desl":3,"saldo":0},"Transporte":{"adm":7,"desl":10,"saldo":-3},"Educação":{"adm":5,"desl":13,"saldo":-8},"Saúde":{"adm":25,"desl":12,"saldo":13},"Informação e comunicação":{"adm":3,"desl":3,"saldo":0},"Financeiro":{"adm":3,"desl":1,"saldo":2}},"total":{"adm":802,"desl":744},"saldo":58,"saldo_turismo":31,"saldo_comercio":32,"salario_mediano_admissao":2100.0},"202507":{"setores":{"Comércio":{"adm":223,"desl":256,"saldo":-33},"Alojamento e alimentação":{"adm":168,"desl":148,"saldo":20},"Saúde":{"adm":23,"desl":21,"saldo":2},"Indústria de transformação":{"adm":127,"desl":104,"saldo":23},"Prof. científicas e técnicas":{"adm":14,"desl":12,"saldo":2},"Educação":{"adm":5,"desl":17,"saldo":-12},"Adm. e serviços complementares":{"adm":97,"desl":101,"saldo":-4},"Construção":{"adm":22,"desl":72,"saldo":-50},"Agropecuária":{"adm":27,"desl":31,"saldo":-4},"Outros serviços":{"adm":19,"desl":25,"saldo":-6},"Transporte":{"adm":9,"desl":13,"saldo":-4},"Imobiliárias":{"adm":6,"desl":4,"saldo":2},"Arte, cultura, esporte e lazer":{"adm":41,"desl":29,"saldo":12},"Eletricidade e gás":{"adm":1,"desl":1,"saldo":0},"Financeiro":{"adm":4,"desl":2,"saldo":2},"Informação e comunicação":{"adm":2,"desl":3,"saldo":-1},"Água e esgoto":{"adm":0,"desl":5,"saldo":-5}},"total":{"adm":788,"desl":844},"saldo":-56,"saldo_turismo":32,"saldo_comercio":-33,"salario_mediano_admissao":2042.0},"202508":{"setores":{"Indústria de transformação":{"adm":100,"desl":126,"saldo":-26},"Educação":{"adm":23,"desl":7,"saldo":16},"Alojamento e alimentação":{"adm":175,"desl":146,"saldo":29},"Comércio":{"adm":199,"desl":229,"saldo":-30},"Arte, cultura, esporte e lazer":{"adm":15,"desl":23,"saldo":-8},"Adm. e serviços complementares":{"adm":90,"desl":85,"saldo":5},"Prof. científicas e técnicas":{"adm":22,"desl":10,"saldo":12},"Construção":{"adm":32,"desl":55,"saldo":-23},"Outros serviços":{"adm":32,"desl":16,"saldo":16},"Saúde":{"adm":31,"desl":26,"saldo":5},"Agropecuária":{"adm":65,"desl":20,"saldo":45},"Imobiliárias":{"adm":6,"desl":9,"saldo":-3},"Informação e comunicação":{"adm":1,"desl":9,"saldo":-8},"Transporte":{"adm":16,"desl":14,"saldo":2},"Água e esgoto":{"adm":3,"desl":0,"saldo":3},"Financeiro":{"adm":2,"desl":0,"saldo":2}},"total":{"adm":812,"desl":775},"saldo":37,"saldo_turismo":21,"saldo_comercio":-30,"salario_mediano_admissao":2105.0},"202509":{"setores":{"Saúde":{"adm":24,"desl":14,"saldo":10},"Adm. e serviços complementares":{"adm":95,"desl":76,"saldo":19},"Comércio":{"adm":194,"desl":177,"saldo":17},"Indústria de transformação":{"adm":127,"desl":105,"saldo":22},"Alojamento e alimentação":{"adm":187,"desl":152,"saldo":35},"Imobiliárias":{"adm":3,"desl":5,"saldo":-2},"Agropecuária":{"adm":48,"desl":36,"saldo":12},"Outros serviços":{"adm":30,"desl":22,"saldo":8},"Construção":{"adm":52,"desl":61,"saldo":-9},"Financeiro":{"adm":2,"desl":5,"saldo":-3},"Prof. científicas e técnicas":{"adm":19,"desl":15,"saldo":4},"Água e esgoto":{"adm":1,"desl":1,"saldo":0},"Educação":{"adm":17,"desl":1,"saldo":16},"Transporte":{"adm":15,"desl":3,"saldo":12},"Arte, cultura, esporte e lazer":{"adm":26,"desl":19,"saldo":7},"Informação e comunicação":{"adm":6,"desl":3,"saldo":3}},"total":{"adm":846,"desl":695},"saldo":151,"saldo_turismo":42,"saldo_comercio":17,"salario_mediano_admissao":2070.0},"202510":{"setores":{"Transporte":{"adm":8,"desl":15,"saldo":-7},"Adm. e serviços complementares":{"adm":81,"desl":226,"saldo":-145},"Alojamento e alimentação":{"adm":173,"desl":154,"saldo":19},"Comércio":{"adm":178,"desl":209,"saldo":-31},"Imobiliárias":{"adm":4,"desl":4,"saldo":0},"Agropecuária":{"adm":43,"desl":62,"saldo":-19},"Outros serviços":{"adm":28,"desl":22,"saldo":6},"Indústria de transformação":{"adm":79,"desl":136,"saldo":-57},"Construção":{"adm":59,"desl":51,"saldo":8},"Saúde":{"adm":21,"desl":20,"saldo":1},"Arte, cultura, esporte e lazer":{"adm":32,"desl":32,"saldo":0},"Informação e comunicação":{"adm":5,"desl":5,"saldo":0},"Prof. científicas e técnicas":{"adm":17,"desl":24,"saldo":-7},"Educação":{"adm":14,"desl":10,"saldo":4},"Financeiro":{"adm":4,"desl":0,"saldo":4}},"total":{"adm":746,"desl":970},"saldo":-224,"saldo_turismo":19,"saldo_comercio":-31,"salario_mediano_admissao":2106.72},"202511":{"setores":{"Arte, cultura, esporte e lazer":{"adm":47,"desl":31,"saldo":16},"Alojamento e alimentação":{"adm":168,"desl":124,"saldo":44},"Adm. e serviços complementares":{"adm":114,"desl":105,"saldo":9},"Comércio":{"adm":179,"desl":167,"saldo":12},"Construção":{"adm":74,"desl":49,"saldo":25},"Saúde":{"adm":21,"desl":20,"saldo":1},"Indústria de transformação":{"adm":116,"desl":142,"saldo":-26},"Prof. científicas e técnicas":{"adm":19,"desl":17,"saldo":2},"Outros serviços":{"adm":16,"desl":20,"saldo":-4},"Educação":{"adm":7,"desl":4,"saldo":3},"Agropecuária":{"adm":18,"desl":66,"saldo":-48},"Transporte":{"adm":7,"desl":27,"saldo":-20},"Imobiliárias":{"adm":8,"desl":8,"saldo":0},"Informação e comunicação":{"adm":1,"desl":3,"saldo":-2},"Financeiro":{"adm":3,"desl":3,"saldo":0},"Água e esgoto":{"adm":0,"desl":1,"saldo":-1}},"total":{"adm":798,"desl":787},"saldo":11,"saldo_turismo":60,"saldo_comercio":12,"salario_mediano_admissao":2200.0},"202512":{"setores":{"Alojamento e alimentação":{"adm":148,"desl":155,"saldo":-7},"Arte, cultura, esporte e lazer":{"adm":22,"desl":36,"saldo":-14},"Educação":{"adm":3,"desl":31,"saldo":-28},"Indústria de transformação":{"adm":71,"desl":113,"saldo":-42},"Comércio":{"adm":162,"desl":181,"saldo":-19},"Adm. e serviços complementares":{"adm":76,"desl":82,"saldo":-6},"Saúde":{"adm":27,"desl":19,"saldo":8},"Construção":{"adm":29,"desl":42,"saldo":-13},"Prof. científicas e técnicas":{"adm":5,"desl":18,"saldo":-13},"Outros serviços":{"adm":17,"desl":17,"saldo":0},"Agropecuária":{"adm":16,"desl":40,"saldo":-24},"Imobiliárias":{"adm":3,"desl":9,"saldo":-6},"Financeiro":{"adm":2,"desl":3,"saldo":-1},"Transporte":{"adm":6,"desl":9,"saldo":-3},"Água e esgoto":{"adm":0,"desl":1,"saldo":-1},"Eletricidade e gás":{"adm":1,"desl":0,"saldo":1},"Informação e comunicação":{"adm":3,"desl":3,"saldo":0}},"total":{"adm":591,"desl":759},"saldo":-168,"saldo_turismo":-21,"saldo_comercio":-19,"salario_mediano_admissao":2142.78}},"oto_boletins":[{"periodo":"Carnaval","mes":2,"ocupacao":80.64,"hospedados":75213,"rhc":11661,"dayuse":15511,"total":102386,"por_dia":20477},{"periodo":"Páscoa","mes":4,"ocupacao":75.07,"hospedados":42224,"rhc":6472,"dayuse":8695,"total":57391,"por_dia":19130},{"periodo":"Tiradentes","mes":4,"ocupacao":73.53,"hospedados":55035,"rhc":8382,"dayuse":11323,"total":74741,"por_dia":18685},{"periodo":"Dia do Trabalhador","mes":5,"ocupacao":65.38,"hospedados":36550,"rhc":5590,"dayuse":7524,"total":49664,"por_dia":16555},{"periodo":"Festa do Peão","mes":6,"ocupacao":41.74,"hospedados":23288,"rhc":3569,"dayuse":4795,"total":31651,"por_dia":10550},{"periodo":"Corpus Christi","mes":6,"ocupacao":67.78,"hospedados":49095,"rhc":7727,"dayuse":10146,"total":66968,"por_dia":16742},{"periodo":"Férias de julho","mes":7,"ocupacao":73.17,"hospedados":438214,"rhc":64375,"dayuse":89737,"total":592326,"por_dia":19107},{"periodo":"FEFOL (Folclore)","mes":8,"ocupacao":35.78,"hospedados":62962,"rhc":9140,"dayuse":12874,"total":84975,"por_dia":9442},{"periodo":"7 de Setembro","mes":9,"ocupacao":73.14,"hospedados":42408,"rhc":6227,"dayuse":8684,"total":57319,"por_dia":19106}],"alta_temporada_verao":{"periodo":"dez/2025–jan/2026","total":1100000,"hospedados":815000,"rhc":127000,"dayuse":168000,"ocupacao":70.79,"por_dia":18000},"ibge":{"pop_censo2022":55074,"pop_est2026":57028,"area_km2":802.393,"densidade":68.62,"pib_2023":3569675501,"pib_per_capita_2023":64815.98,"idhm_2010":0.773,"escolarizacao":97.62,"salario_medio_sm_2024":2.6,"pessoal_ocupado_2024":25756,"assalariados_2024":18998,"empresas_2024":5858,"folha_2024":913398000,"esgoto":96.56,"agua":95.58,"idade_mediana":37,"envelhecimento":103.6,"dom_ocupados":20418,"dom_uso_ocasional":4380,"dom_vagos":2916,"dom_recenseados":27756,"cresc_domicilios_pct":54.77,"cresc_pop_aa":0.8,"transferencias_pct_2025":60.71,"receita_2025":472444065.23,"mortalidade_infantil_2025":10.29},"pib_per_capita":{"2010":23816.4,"2013":28279.83,"2016":35176.68,"2019":38588.17,"2020":38531.11,"2021":45985.63,"2022":56768.78,"2023":64815.98},"vab_2021":{"Serviços":1232950.114,"Indústria":648285.981,"Administração pública":265224.635,"Agropecuária":117750.639},"pessoal_ocupado_setor_2024":{"Indústria de transformação":5757,"Comércio":4973,"Alojamento e alimentação":2641,"Adm. e serviços complementares":2315,"Agropecuária":2002,"Administração pública":1694,"Arte, cultura, esporte e lazer":1160,"Saúde":1055,"Prof. científicas e técnicas":891,"Construção":740,"Educação":554,"Outros":1974},"base_renda":[{"k":"Renda estável","v":11062,"det":"Indústria de transformação, administração pública, saúde, educação e agropecuária"},{"k":"Intermediário","v":10893,"det":"Comércio, serviços administrativos, construção e profissionais — atende morador e turista"},{"k":"Exposto ao turista","v":3801,"det":"Hospedagem, alimentação, arte, cultura e lazer — o quadro que encolhe na baixa"}],"parques":{"Thermas dos Laranjais":{"visitantes_2024":1850000,"ranking_mundo":4},"Hot Beach":{"visitantes_2023":1035000,"ranking_mundo":5}}};
+const MES = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+const cv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmtBR = (v,d=0) => v.toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
+const SVGNS = "http://www.w3.org/2000/svg";
+function el(tag,attrs={},parent){const n=document.createElementNS(SVGNS,tag);for(const k in attrs)n.setAttribute(k,attrs[k]);if(parent)parent.appendChild(n);return n;}
+
+/* ---------- tooltip ---------- */
+const tip = document.getElementById("tip");
+function bindTip(node, html){
+  const show = e => {
+    tip.innerHTML = html;
+    tip.style.opacity = 1;
+    const r = tip.getBoundingClientRect();
+    let x = (e.clientX ?? 0) + 14, y = (e.clientY ?? 0) - 10;
+    if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+    if (y + r.height > innerHeight - 8) y = innerHeight - r.height - 8;
+    tip.style.left = Math.max(8,x) + "px";
+    tip.style.top = Math.max(8,y) + "px";
+  };
+  node.addEventListener("mousemove", show);
+  node.addEventListener("mouseenter", show);
+  node.addEventListener("mouseleave", () => tip.style.opacity = 0);
+}
+
+/* ---------- KPIs ---------- */
+const ib = D.ibge;
+const issAtiv = D.iso_ativ;
+const kpiData = [
+  {lab:"Pico ÷ vale", val:"1,96", unit:"x", sub:"Janeiro vale quase o dobro de maio em serviços"},
+  {lab:"Jan + Jul", val:"26", unit:"%", sub:"do ISS do ano em 17% do calendário"},
+  {lab:"PIB per capita", val:"64,8", unit:" mil", sub:"R$, 2023 — +68% sobre 2020"},
+  {lab:"Visitantes na alta", val:"1,1", unit:" mi", sub:"dez/2025–jan/2026, para 55 mil moradores"},
+  {lab:"Domicílios sem morador", val:"26", unit:"%", sub:"4.380 de uso ocasional, 2.916 vagos"},
+];
+document.getElementById("kpis").innerHTML = kpiData.map(k=>`
+  <div class="kpi">
+    <div class="k-lab">${k.lab}</div>
+    <div class="k-val">${k.val}<small>${k.unit}</small></div>
+    <div class="k-sub">${k.sub}</div>
+  </div>`).join("");
+
+/* ================= 1. SAZONALIDADE ================= */
+(function(){
+  const svg = document.getElementById("c-season");
+  const W=760,H=330,P={t:20,r:20,b:34,l:44};
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const iw=W-P.l-P.r, ih=H-P.t-P.b;
+  const anos=["2023","2024","2025"], cols=[cv("--s1"),cv("--s2"),cv("--s3")];
+  const x = m => P.l + (m-0.5)*(iw/12);
+  const yMin=0.6,yMax=1.65;
+  const y = v => P.t + ih - (v-yMin)/(yMax-yMin)*ih;
+
+  // grid
+  for(let g=0.6; g<=1.6001; g+=0.2){
+    el("line",{x1:P.l,x2:W-P.r,y1:y(g),y2:y(g),stroke:cv("--grid"),"stroke-width":1},svg);
+    el("text",{x:P.l-9,y:y(g)+3.5,"text-anchor":"end",class:"tick"},svg).textContent=fmtBR(g,1);
+  }
+  // reference line at 1.00
+  el("line",{x1:P.l,x2:W-P.r,y1:y(1),y2:y(1),stroke:cv("--axis"),"stroke-width":1.5,"stroke-dasharray":"4 3"},svg);
+  el("text",{x:x(3),y:y(1)-8,"text-anchor":"middle",class:"tick"},svg).textContent="média do ano";
+
+  MES.forEach((m,i)=>el("text",{x:x(i+1),y:H-13,"text-anchor":"middle",class:"tick"},svg).textContent=m);
+
+  anos.forEach((a,ai)=>{
+    const serie=D.iss_indice_sazonal[a]||{};
+    let dpath="",started=false;
+    for(let m=1;m<=12;m++){
+      const v=serie[String(m)];
+      if(v==null){started=false;continue;}
+      dpath += (started?"L":"M")+x(m)+" "+y(v)+" "; started=true;
+    }
+    el("path",{d:dpath,fill:"none",stroke:cols[ai],"stroke-width":2,"stroke-linecap":"round","stroke-linejoin":"round"},svg);
+    for(let m=1;m<=12;m++){
+      const v=serie[String(m)]; if(v==null) continue;
+      const c=el("circle",{cx:x(m),cy:y(v),r:4,fill:cols[ai],stroke:cv("--surface"),"stroke-width":2},svg);
+      const rs = D.iss_por_mes_movimento[a] && D.iss_por_mes_movimento[a][String(m)];
+      bindTip(c,`<b>${MES[m-1]} / ${a}</b><br><span class="tnum">Índice ${fmtBR(v,2)}</span>`+
+        (rs?`<br><span class="tnum">ISS R$ ${fmtBR(rs/1e6,2)} mi</span>`:"")+
+        `<br><span style="opacity:.7">recolhido em ${MES[m%12]}</span>`);
+      const hit=el("circle",{cx:x(m),cy:y(v),r:11,fill:"transparent"},svg);
+      bindTip(hit,`<b>${MES[m-1]} / ${a}</b><br><span class="tnum">Índice ${fmtBR(v,2)}</span>`+
+        (rs?`<br><span class="tnum">ISS R$ ${fmtBR(rs/1e6,2)} mi</span>`:""));
+    }
+  });
+
+  // direct labels on the two peaks (relief rule: aqua is sub-3:1 on light)
+  const lab=(m,txt)=>{
+    const t=el("text",{x:x(m),y:y(1.60),"text-anchor":"middle",class:"dlabel"},svg);
+    t.textContent=txt;
+  };
+  lab(1,"pico"); lab(7,"pico");
+  const vale=el("text",{x:x(5),y:y(0.68),"text-anchor":"middle",class:"dlabel"},svg);
+  vale.textContent="vale";
+
+  document.getElementById("lg-season").innerHTML = anos.map((a,i)=>
+    `<span><i class="swatch" style="background:${cols[i]}"></i>${a}</span>`).join("");
+
+  const med=D.iss_indice_medio;
+  document.getElementById("tk-season").innerHTML =
+    `<b>Dois picos, oito meses abaixo da média.</b> Janeiro (${fmtBR(med["1"],2)}) e julho (${fmtBR(med["7"],2)}) ficam ~50% acima da média; outubro (${fmtBR(med["10"],2)}) é um terceiro pico menor, puxado pelo feriado de 12 de outubro. O fundo é maio (${fmtBR(med["5"],2)}) e junho (${fmtBR(med["6"],2)}). O mês mediano roda em 0,92 — abaixo da própria média do ano, porque os dois picos puxam a média para cima.`;
+
+  // table view (relief + accessibility)
+  let html='<table><thead><tr><th>Mês</th><th>2023</th><th>2024</th><th>2025</th><th>Média</th><th>ISS 2024</th></tr></thead><tbody>';
+  for(let m=1;m<=12;m++){
+    const g=k=>{const v=(D.iss_indice_sazonal[k]||{})[String(m)];return v==null?"—":fmtBR(v,2);};
+    const rs=D.iss_por_mes_movimento["2024"][String(m)];
+    html+=`<tr><td>${MES[m-1]}</td><td>${g("2023")}</td><td>${g("2024")}</td><td>${g("2025")}</td><td>${fmtBR(med[String(m)],2)}</td><td>R$ ${fmtBR(rs/1e6,2)} mi</td></tr>`;
+  }
+  document.getElementById("t-season").innerHTML=html+"</tbody></table>";
+})();
+
+/* ================= 2. OTO ================= */
+function hbars(svgId,rows,opts){
+  const svg=document.getElementById(svgId);
+  const rowH=27, P={t:8,r:56,b:26,l:opts.labW};
+  const H=P.t+rows.length*rowH+P.b, W=470;
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const iw=W-P.l-P.r;
+  const max=Math.max(...rows.map(r=>r.v))*1.02;
+  if(opts.ref!=null){
+    const rx=P.l+opts.ref/max*iw;
+    el("line",{x1:rx,x2:rx,y1:P.t-2,y2:P.t+rows.length*rowH+2,stroke:cv("--axis"),"stroke-width":1.5,"stroke-dasharray":"4 3"},svg);
+    el("text",{x:rx,y:H-12,"text-anchor":"middle",class:"tick"},svg).textContent=opts.refLab;
+  }
+  rows.forEach((r,i)=>{
+    const yy=P.t+i*rowH;
+    el("text",{x:P.l-10,y:yy+rowH/2+4,"text-anchor":"end",class:"slabel"},svg).textContent=r.k;
+    const w=Math.max(2,r.v/max*iw);
+    const b=el("rect",{x:P.l,y:yy+5,width:w,height:rowH-12,fill:r.color||cv("--s1"),rx:4},svg);
+    // square off the baseline end
+    el("rect",{x:P.l,y:yy+5,width:Math.min(4,w),height:rowH-12,fill:r.color||cv("--s1")},svg);
+    el("text",{x:P.l+w+8,y:yy+rowH/2+4,class:"dlabel"},svg).textContent=opts.fmt(r.v);
+    bindTip(b,`<b>${r.k}</b><br>${r.tip}`);
+    const hit=el("rect",{x:P.l,y:yy,width:iw+P.r,height:rowH,fill:"transparent"},svg);
+    bindTip(hit,`<b>${r.k}</b><br>${r.tip}`);
+  });
+}
+(function(){
+  const b=[...D.oto_boletins].sort((a,x)=>x.ocupacao-a.ocupacao);
+  hbars("c-occ", b.map(r=>({k:r.periodo, v:r.ocupacao,
+    tip:`Ocupação projetada <b>${fmtBR(r.ocupacao,2)}%</b><br><span class="tnum">${fmtBR(r.total)} turistas no período</span><br><span class="tnum">${fmtBR(r.por_dia)} por dia</span>`})),
+    {labW:126, fmt:v=>fmtBR(v,1)+"%", ref:70.79, refLab:"alta de verão"});
+  const c=[...D.oto_boletins].sort((a,x)=>x.por_dia-a.por_dia);
+  hbars("c-day", c.map(r=>({k:r.periodo, v:r.por_dia,
+    tip:`<span class="tnum">${fmtBR(r.por_dia)} turistas/dia</span><br><span class="tnum">${fmtBR(r.hospedados)} em hotel · ${fmtBR(r.rhc)} em casa · ${fmtBR(r.dayuse)} day use</span>`})),
+    {labW:126, fmt:v=>fmtBR(v/1000,1)+" mil"});
+})();
+
+/* ================= 3. SETORES + CAGED ================= */
+(function(){
+  const s=D.pessoal_ocupado_setor_2024;
+  const rows=Object.entries(s)
+    .sort((a,b)=>b[1]-a[1])
+    .sort((a,b)=>(a[0]==="Outros")-(b[0]==="Outros"));
+  const tot=rows.reduce((a,r)=>a+r[1],0);
+  const TUR=["Alojamento e alimentação","Arte, cultura, esporte e lazer"];
+  hbars("c-sector", rows.map(([k,v])=>({k, v,
+    color: TUR.includes(k)?cv("--s2"):cv("--s1"),
+    tip:`<span class="tnum">${fmtBR(v)} pessoas · ${fmtBR(v/tot*100,1)}% do total</span>`+
+        (TUR.includes(k)?"<br><span style='opacity:.75'>cadeia direta do turismo</span>":"")})),
+    {labW:196, fmt:v=>fmtBR(v)});
+  const turTot=TUR.reduce((a,k)=>a+(s[k]||0),0);
+  document.getElementById("turshare").textContent=fmtBR(turTot/tot*100,0)+"%";
+  document.getElementById("lg-sector").innerHTML=
+    `<span><i class="swatch" style="background:${cv("--s2")}"></i>Cadeia direta do turismo</span>`+
+    `<span><i class="swatch" style="background:${cv("--s1")}"></i>Demais setores</span>`;
+})();
+
+(function(){
+  const c=D.caged_2025, meses=Object.keys(c).sort();
+  const svg=document.getElementById("c-caged");
+  const W=980,H=320,P={t:22,r:16,b:44,l:46};
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const iw=W-P.l-P.r, ih=H-P.t-P.b;
+  const grupos=[["saldo_turismo","Turismo",cv("--s2")],["saldo_comercio","Comércio",cv("--s1")]];
+  const vals=meses.flatMap(m=>grupos.map(g=>c[m][g[0]]));
+  const mx=Math.max(...vals.map(Math.abs))*1.2;
+  const y=v=>P.t+ih/2-v/mx*(ih/2);
+  const slot=iw/meses.length, bw=Math.min(17,(slot-10)/2);
+
+  for(const g of [-100,-50,0,50,100]){
+    if(Math.abs(g)>mx) continue;
+    el("line",{x1:P.l,x2:W-P.r,y1:y(g),y2:y(g),stroke:g===0?cv("--axis"):cv("--grid"),"stroke-width":g===0?1.5:1},svg);
+    el("text",{x:P.l-9,y:y(g)+3.5,"text-anchor":"end",class:"tick"},svg).textContent=(g>0?"+":"")+g;
+  }
+  meses.forEach((m,i)=>{
+    const mi=parseInt(m.slice(4)), cx=P.l+slot*(i+0.5);
+    el("text",{x:cx,y:H-24,"text-anchor":"middle",class:"tick"},svg).textContent=MES[mi-1];
+    grupos.forEach(([key,nome,col],gi)=>{
+      const v=c[m][key];
+      const bx=cx-bw-1+gi*(bw+2); // 2px surface gap between adjacent bars
+      const top=v>=0?y(v):y(0), h=Math.max(2,Math.abs(y(v)-y(0)));
+      el("rect",{x:bx,y:top,width:bw,height:h,fill:col,rx:3},svg);
+      el("rect",{x:bx,y:v>=0?y(0)-3:y(0),width:bw,height:3,fill:col},svg); // square the baseline end
+      const hit=el("rect",{x:bx-1,y:P.t,width:bw+2,height:ih,fill:"transparent"},svg);
+      bindTip(hit,`<b>${nome} · ${MES[mi-1]}/2025</b><br><span class="tnum">Saldo ${v>0?"+":""}${v} vagas</span><br><span class="tnum">Mês inteiro: ${c[m].saldo>0?"+":""}${c[m].saldo}</span><br><span class="tnum" style="opacity:.75">salário mediano de admissão R$ ${fmtBR(c[m].salario_mediano_admissao,2)}</span>`);
+    });
+  });
+  // direct labels on the two extremes
+  const jan=c["202501"], nov=c["202511"];
+  const lb=(i,v,txt)=>{const cx=P.l+slot*(i+0.5);
+    const t=el("text",{x:cx,y:v>=0?y(v)-9:y(v)+16,"text-anchor":"middle",class:"dlabel"},svg);t.textContent=txt;};
+  lb(0,jan.saldo_turismo,"−88");
+  lb(10,nov.saldo_turismo,"+60");
+  el("text",{x:P.l,y:H-6,class:"tick"},svg).textContent="saldo de vagas (admissões − desligamentos)";
+
+  document.getElementById("lg-caged").innerHTML=grupos.map(g=>
+    `<span><i class="swatch" style="background:${g[2]}"></i>${g[1]}</span>`).join("");
+  document.getElementById("caged-note").innerHTML=
+    `Admissões menos desligamentos, por mês. Turismo = alojamento, alimentação, arte, cultura e lazer. Ano de 2025 completo, 12 meses.`;
+
+  const constroi=meses.filter(m=>+m.slice(4)>=6&&+m.slice(4)<=11).reduce((a,m)=>a+c[m].saldo_turismo,0);
+  const desmonta=meses.filter(m=>+m.slice(4)<=5||+m.slice(4)===12).reduce((a,m)=>a+c[m].saldo_turismo,0);
+  document.getElementById("tk-caged").innerHTML=
+    `<b>O quadro é montado de junho a novembro e desmontado de dezembro a maio.</b> O turismo soma <b>+${constroi} vagas</b> no semestre de construção — com pico em novembro (+60), antes do verão — e devolve <b>${desmonta}</b> no semestre seguinte. Janeiro sozinho corta 88 vagas: é o mês de maior faturamento e de maior demissão ao mesmo tempo, porque o contrato temporário vence quando as férias acabam. O salário mediano de admissão fica em torno de R$ 2.100 o ano todo.`;
+
+  let html='<table><thead><tr><th>Mês</th><th>Turismo</th><th>Comércio</th><th>Saldo geral</th><th>Sal. mediano adm.</th></tr></thead><tbody>';
+  meses.forEach(m=>{const r=c[m],mi=parseInt(m.slice(4));
+    html+=`<tr><td>${MES[mi-1]}</td><td>${r.saldo_turismo>0?"+":""}${r.saldo_turismo}</td><td>${r.saldo_comercio>0?"+":""}${r.saldo_comercio}</td><td>${r.saldo>0?"+":""}${r.saldo}</td><td>R$ ${fmtBR(r.salario_mediano_admissao,2)}</td></tr>`;});
+  document.getElementById("t-caged").innerHTML=html+"</tbody></table>";
+})();
+
+/* ================= 4. PIB + DOMICÍLIOS ================= */
+(function(){
+  const p=D.pib_per_capita, anos=Object.keys(p).sort();
+  const svg=document.getElementById("c-pib");
+  const W=470,H=250,P={t:18,r:18,b:30,l:52};
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const iw=W-P.l-P.r, ih=H-P.t-P.b;
+  const a0=2010,a1=2023, mx=70000;
+  const x=a=>P.l+(a-a0)/(a1-a0)*iw, y=v=>P.t+ih-v/mx*ih;
+  for(let g=0;g<=70000;g+=17500){
+    el("line",{x1:P.l,x2:W-P.r,y1:y(g),y2:y(g),stroke:cv("--grid")},svg);
+    el("text",{x:P.l-9,y:y(g)+3.5,"text-anchor":"end",class:"tick"},svg).textContent=g?fmtBR(g/1000)+"k":"0";
+  }
+  let d="",area="";
+  anos.forEach((a,i)=>{d+=(i?"L":"M")+x(+a)+" "+y(p[a])+" ";});
+  area=d+`L${x(+anos[anos.length-1])} ${y(0)} L${x(+anos[0])} ${y(0)} Z`;
+  el("path",{d:area,fill:cv("--s1"),opacity:.10},svg);
+  el("path",{d,fill:"none",stroke:cv("--s1"),"stroke-width":2,"stroke-linejoin":"round"},svg);
+  anos.forEach(a=>{
+    const c=el("circle",{cx:x(+a),cy:y(p[a]),r:4,fill:cv("--s1"),stroke:cv("--surface"),"stroke-width":2},svg);
+    bindTip(c,`<b>${a}</b><br><span class="tnum">R$ ${fmtBR(p[a],2)}</span>`);
+    const hit=el("circle",{cx:x(+a),cy:y(p[a]),r:13,fill:"transparent"},svg);
+    bindTip(hit,`<b>${a}</b><br><span class="tnum">R$ ${fmtBR(p[a],2)}</span>`);
+  });
+  [2010,2016,2020,2023].forEach(a=>el("text",{x:x(a),y:H-11,"text-anchor":"middle",class:"tick"},svg).textContent=a);
+  const last=anos[anos.length-1];
+  const t=el("text",{x:x(+last)-6,y:y(p[last])-13,"text-anchor":"end",class:"dlabel"},svg);
+  t.textContent="R$ 64,8 mil";
+})();
+
+(function(){
+  const ib=D.ibge;
+  const parts=[
+    {k:"Ocupados",v:ib.dom_ocupados,c:cv("--s1")},
+    {k:"Uso ocasional",v:ib.dom_uso_ocasional,c:cv("--s2")},
+    {k:"Vagos",v:ib.dom_vagos,c:cv("--s3")},
+  ];
+  const tot=parts.reduce((a,p)=>a+p.v,0);
+  const svg=document.getElementById("c-dom");
+  const W=470,H=126,P={l:0,r:0,t:24};
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  let cx=0;
+  parts.forEach((p,i)=>{
+    const w=p.v/tot*W - (i<parts.length-1?2:0); // 2px surface gap between segments
+    const r=el("rect",{x:cx,y:P.t,width:w,height:40,fill:p.c,rx:3},svg);
+    bindTip(r,`<b>${p.k}</b><br><span class="tnum">${fmtBR(p.v)} domicílios · ${fmtBR(p.v/tot*100,1)}%</span>`);
+    const tx=cx+w/2;
+    if(p.v/tot>0.09){
+      el("text",{x:tx,y:P.t-8,"text-anchor":"middle",class:"dlabel"},svg).textContent=fmtBR(p.v/tot*100,0)+"%";
+      const l=el("text",{x:tx,y:P.t+60,"text-anchor":"middle",class:"slabel"},svg);
+      l.textContent=p.k;
+      const n=el("text",{x:tx,y:P.t+76,"text-anchor":"middle",class:"tick"},svg);
+      n.textContent=fmtBR(p.v);
+    }
+    cx+=p.v/tot*W;
+  });
+})();
+
+/* ================= LISTAS ================= */
+(function(){
+  const v=D.vab_2021, tot=Object.values(v).reduce((a,b)=>a+b,0);
+  document.getElementById("f-vab").innerHTML=Object.entries(v).sort((a,b)=>b[1]-a[1]).map(([k,val])=>
+    `<li><span>${k}<em>R$ ${fmtBR(val/1000,0)} milhões</em></span><span>${fmtBR(val/tot*100,1)}%</span></li>`).join("");
+  const ib=D.ibge;
+  const f=[
+    ["População (Censo 2022)","55.074","57.028 estimados para 2026"],
+    ["Idade mediana","37 anos","índice de envelhecimento 103,6"],
+    ["Salário médio formal","2,6 SM","mediana de admissão R$ 2.124"],
+    ["IDHM","0,773","alto — dado de 2010"],
+    ["Esgotamento sanitário","96,6%","água por rede geral 95,6%"],
+    ["Receita municipal 2025","R$ 472 mi","60,7% vêm de transferências"],
+  ];
+  document.getElementById("f-social").innerHTML=f.map(([k,val,sub])=>
+    `<li><span>${k}<em>${sub}</em></span><span>${val}</span></li>`).join("");
+})();
+
+/* ================= 5. CONTRA-CICLO ================= */
+(function(){
+  const parts=D.base_renda, tot=parts.reduce((a,p)=>a+p.v,0);
+  const cols=[cv("--s1"),cv("--s3"),cv("--s2")];
+  const svg=document.getElementById("c-renda");
+  const W=980,H=138,T=26;
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  let cx=0;
+  parts.forEach((p,i)=>{
+    const full=p.v/tot*W, w=full-(i<parts.length-1?2:0); // 2px surface gap
+    const r=el("rect",{x:cx,y:T,width:w,height:44,fill:cols[i],rx:3},svg);
+    bindTip(r,`<b>${p.k}</b><br><span class="tnum">${fmtBR(p.v)} pessoas ocupadas · ${fmtBR(p.v/tot*100,1)}%</span><br><span style="opacity:.78">${p.det}</span>`);
+    const mid=cx+full/2;
+    el("text",{x:mid,y:T-9,"text-anchor":"middle",class:"dlabel"},svg).textContent=fmtBR(p.v/tot*100,0)+"%";
+    el("text",{x:mid,y:T+64,"text-anchor":"middle",class:"slabel"},svg).textContent=p.k;
+    el("text",{x:mid,y:T+81,"text-anchor":"middle",class:"tick"},svg).textContent=fmtBR(p.v)+" pessoas";
+    cx+=full;
+  });
+  document.getElementById("lg-renda").innerHTML=parts.map((p,i)=>
+    `<span><i class="swatch" style="background:${cols[i]}"></i>${p.k}</span>`).join("");
+})();
+
+(function(){
+  const med=D.iss_indice_medio;
+  const ev={};
+  D.oto_boletins.forEach(b=>{(ev[b.mes]=ev[b.mes]||[]).push(b);});
+  const fracos=[2,3,4,5,6,8,9,11];
+  let html='<thead><tr><th>Mês</th><th>Índice ISS</th><th style="text-align:left">Demanda programada no mês</th></tr></thead><tbody>';
+  fracos.forEach(m=>{
+    const lista=(ev[m]||[]).map(b=>`${b.periodo} <span style="opacity:.65">(${fmtBR(b.ocupacao,1)}%)</span>`).join("<br>") || '<span style="opacity:.6">nenhum evento no calendário do OTO</span>';
+    html+=`<tr><td>${MES[m-1]}</td><td>${fmtBR(med[String(m)],2)}</td><td style="text-align:left;white-space:normal">${lista}</td></tr>`;
+  });
+  document.getElementById("t-vale").innerHTML=html+"</tbody>";
+})();
+
+(function(){
+  const med=D.iss_indice_medio, promo=[5,6,8,9];
+  const svg=document.getElementById("c-promo");
+  const W=980,H=250,P={t:24,r:16,b:52,l:46};
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  const iw=W-P.l-P.r, ih=H-P.t-P.b;
+  const mx=1.65, y=v=>P.t+ih-v/mx*ih;
+  const slot=iw/12, bw=Math.min(46,slot-8);
+  for(const g of [0.5,1.0,1.5]){
+    el("line",{x1:P.l,x2:W-P.r,y1:y(g),y2:y(g),stroke:g===1?cv("--axis"):cv("--grid"),"stroke-width":g===1?1.5:1,"stroke-dasharray":g===1?"4 3":""},svg);
+    el("text",{x:P.l-9,y:y(g)+3.5,"text-anchor":"end",class:"tick"},svg).textContent=fmtBR(g,1);
+  }
+  for(let m=1;m<=12;m++){
+    const v=med[String(m)], cx=P.l+slot*(m-0.5), on=promo.includes(m);
+    const bx=cx-bw/2;
+    el("rect",{x:bx,y:y(v),width:bw,height:P.t+ih-y(v),fill:on?cv("--s2"):cv("--s1"),rx:4},svg);
+    el("rect",{x:bx,y:P.t+ih-4,width:bw,height:4,fill:on?cv("--s2"):cv("--s1")},svg);
+    el("text",{x:cx,y:y(v)-8,"text-anchor":"middle",class:"dlabel"},svg).textContent=fmtBR(v,2);
+    el("text",{x:cx,y:H-32,"text-anchor":"middle",class:"tick"},svg).textContent=MES[m-1];
+    if(on) el("text",{x:cx,y:H-17,"text-anchor":"middle",class:"tick"},svg).textContent="½";
+    const hit=el("rect",{x:bx,y:P.t,width:bw,height:ih,fill:"transparent"},svg);
+    bindTip(hit,`<b>${MES[m-1]}</b><br><span class="tnum">Índice ISS ${fmtBR(v,2)}</span><br>`+
+      (on?`<span class="tnum">Meia entrada para todos, seg–sex</span><br><span class="tnum" style="opacity:.75">efetivo ~R$ 94,50 em vez de R$ 189</span>`
+        :`<span style="opacity:.75">tarifa cheia — R$ 189 online / R$ 199 bilheteria</span>`));
+  }
+  el("text",{x:P.l,y:H-4,class:"tick"},svg).textContent="½ = mês com promoção de meia entrada para todos";
+  document.getElementById("lg-promo").innerHTML=
+    `<span><i class="swatch" style="background:${cv("--s2")}"></i>Mês com meia entrada para todos (seg–sex)</span>`+
+    `<span><i class="swatch" style="background:${cv("--s1")}"></i>Tarifa cheia</span>`;
+})();
+
+/* ---------- table toggles ---------- */
+document.querySelectorAll("[data-table]").forEach(b=>{
+  b.addEventListener("click",()=>{
+    const t=document.getElementById(b.dataset.table);
+    const on=t.classList.toggle("on");
+    b.textContent=on?"Ocultar tabela":"Ver tabela";
+  });
+});
+</script>

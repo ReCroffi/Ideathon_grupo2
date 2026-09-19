@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Olímpia — diagnóstico e colinha de pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900;1,75..125,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+@page { size: 210mm 297mm; margin: 0; }
+
+:root{
+  --ink:#0b0b0b; --ink2:#43423f; --ink3:#77756f;
+  --rule:#d8d7d0; --grid:#e6e5de;
+  --paper:#ffffff; --tint:#f2f1ec; --tintblue:#e9f0fa;
+  --accent:#1c5cab; --s1:#2a78d6; --s2:#eb6834; --bad:#b8332f; --good:#0a6b2e;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+  font-family:"Archivo","DejaVu Sans",sans-serif;font-variation-settings:"wdth" 100;}
+body{font-size:9.4pt;line-height:1.45;-webkit-font-smoothing:antialiased}
+
+.page{width:210mm;height:297mm;padding:15mm 16mm 13mm;position:relative;overflow:hidden;
+  page-break-after:always;display:flex;flex-direction:column}
+.page:last-child{page-break-after:auto}
+
+.runner{position:absolute;left:16mm;right:16mm;bottom:7mm;display:flex;justify-content:space-between;
+  font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-size:6.6pt;color:var(--ink3);
+  letter-spacing:.06em;text-transform:uppercase;border-top:.5pt solid var(--rule);padding-top:2.5mm}
+
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:7pt;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--ink3);margin:0 0 3mm}
+h1{font-size:27pt;font-variation-settings:"wdth" 116,"wght" 800;line-height:.95;
+  letter-spacing:-.02em;margin:0 0 3mm}
+h1 .sub{display:block;font-variation-settings:"wdth" 116,"wght" 300;color:var(--ink2);font-size:19pt}
+h2{font-size:13pt;font-variation-settings:"wdth" 110,"wght" 700;letter-spacing:-.012em;
+  margin:0 0 2mm;padding-top:2mm;border-top:1.4pt solid var(--ink)}
+h3{font-size:9.8pt;font-variation-settings:"wdth" 104,"wght" 700;margin:0 0 1.2mm}
+p{margin:0 0 2.4mm}
+.lead{font-size:10.4pt;color:var(--ink2);margin-bottom:5mm;max-width:150mm}
+b,strong{font-variation-settings:"wdth" 100,"wght" 700}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:.6pt solid var(--rule);margin-bottom:5mm}
+.kpi{padding:2.6mm 3mm;border-right:.6pt solid var(--rule)}
+.kpi:last-child{border-right:none}
+.kpi .l{font-family:"IBM Plex Mono",monospace;font-size:6.4pt;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:1.4mm;line-height:1.3}
+.kpi .v{font-size:16pt;font-variation-settings:"wdth" 106,"wght" 700;line-height:1;
+  font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:8.5pt;font-variation-settings:"wght" 500;color:var(--ink2)}
+
+table{border-collapse:collapse;width:100%;font-size:8.5pt;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:1.7mm 2.4mm;border-bottom:.5pt solid var(--grid);vertical-align:top}
+thead th{font-family:"IBM Plex Mono",monospace;font-size:6.6pt;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink3);font-weight:500;border-bottom:.9pt solid var(--ink)}
+td.num,th.num{text-align:right}
+tr.hl td{font-variation-settings:"wght" 700}
+tbody tr:last-child td{border-bottom:none}
+
+.qa td:first-child{width:38%;font-variation-settings:"wght" 700}
+.qa td:first-child::before{content:"“";color:var(--ink3)}
+.qa td:first-child::after{content:"”";color:var(--ink3)}
+
+.box{border:.6pt solid var(--rule);padding:3mm 3.5mm;background:var(--tint)}
+.box.blue{background:var(--tintblue);border-color:#c3d6ef}
+.box.red{background:#fbecec;border-color:#e8c6c4}
+.box h3{margin-bottom:1.5mm}
+.box p:last-child{margin-bottom:0}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:4mm}
+.stack{display:flex;flex-direction:column;gap:3.5mm}
+.grow{flex:1}
+
+ol.deaths{margin:0;padding-left:0;list-style:none;counter-reset:d}
+ol.deaths li{counter-increment:d;margin-bottom:2.8mm;padding-left:8mm;position:relative}
+ol.deaths li::before{content:counter(d);position:absolute;left:0;top:.2mm;width:5.2mm;height:5.2mm;
+  background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;font-size:7pt;
+  display:flex;align-items:center;justify-content:center}
+ol.deaths li b{display:block;margin-bottom:.6mm}
+
+.claim{border-left:2.2pt solid var(--rule);padding-left:3.5mm;margin-bottom:3.5mm}
+.claim.fail{border-left-color:var(--bad)}
+.claim.ok{border-left-color:var(--good)}
+.verdict{font-family:"IBM Plex Mono",monospace;font-size:6.8pt;letter-spacing:.09em;
+  text-transform:uppercase;padding:.6mm 1.8mm;border:.6pt solid currentColor;margin-left:2mm;white-space:nowrap}
+.v-fail{color:var(--bad)} .v-low{color:#a06000} .v-ok{color:var(--good)}
+
+.note{font-size:7.6pt;color:var(--ink3);line-height:1.4}
+.tick{font-family:"IBM Plex Mono",monospace;font-size:6.4pt;fill:var(--ink3)}
+.dl{font-size:6.9pt;font-weight:700;fill:var(--ink)}
+svg{display:block;width:100%;height:auto}
+</style>
+</head>
+<body>
+
+<!-- ======================= P1 — COLINHA ======================= -->
+<section class="page">
+  <p class="eyebrow">Ideathon · Colinha de pitch · Página 1 de 5</p>
+  <h1>Olímpia<span class="sub">o que dizer quando perguntarem</span></h1>
+  <p class="lead">Os números abaixo estão todos verificados em fonte pública. Se uma pergunta sair daqui, a resposta honesta é “não medimos isso” — e isso pontua melhor que improviso.</p>
+
+  <div class="kpis">
+    <div class="kpi"><div class="l">Pico ÷ vale<br>serviços</div><div class="v">1,96<small>×</small></div></div>
+    <div class="kpi"><div class="l">Jan + Jul<br>do ISS do ano</div><div class="v">26<small>%</small></div></div>
+    <div class="kpi"><div class="l">Mediana de<br>admissão</div><div class="v">2.100<small> R$</small></div></div>
+    <div class="kpi"><div class="l">Renda estável<br>empregos formais</div><div class="v">11.062</div></div>
+  </div>
+
+  <h2>O índice que vocês medem e ninguém mais tem</h2>
+  <p class="note" style="margin-bottom:2mm">ISS mensal do SICONFI, 2023–2025, deslocado para o mês do movimento. Média do ano = 1,00.</p>
+  <svg id="c" viewBox="0 0 900 190" role="img" aria-label="Índice sazonal do ISS por mês"></svg>
+
+  <h2 style="margin-top:4mm">As seis perguntas e as respostas</h2>
+  <table class="qa">
+    <thead><tr><th>Se o jurado perguntar</th><th>Responda</th></tr></thead>
+    <tbody>
+      <tr><td>Vocês têm dado de que o varejo cai na baixa?</td>
+          <td><b>Não, e fomos verificar.</b> A sazonalidade que medimos é de serviços — loja paga ICMS, não ISS. O emprego formal no varejo de Olímpia é plano o ano todo: saldo de −14 vagas em 2025, depois de descontar a abertura de um hipermercado. Por isso nosso alvo não é “salvar o varejo”, é a renda do trabalhador sazonal.</td></tr>
+      <tr><td>Quanto do vale vocês fecham?</td>
+          <td><b>Nada perto de fechar, e quem promete isso está errando a conta.</b> A diferença entre pico e vale é de R$ 67 a 167 milhões de faturamento por mês. Dividido por 20.418 domicílios, daria R$ 3.278 a 8.195 a mais por família por mês. Nosso objetivo é reduzir a amplitude, não eliminá-la.</td></tr>
+      <tr><td>Por que não basta uma placa de 10% na porta?</td>
+          <td>Porque a progressão é por <b>número de lojas diferentes</b> visitadas no mês, não por valor gasto. Isso não existe offline: transforma concorrentes em rede e espalha o movimento em vez de concentrar.</td></tr>
+      <tr><td>E o Nubank, o PicPay, a Stone?</td>
+          <td>Eles têm o app e a maquininha, mas não têm a regra local nem o comerciante de rua que não está em nenhuma dessas bases. Nossa defesa é a camada municipal — e, se eles quiserem entrar, viramos o trilho deles, não o concorrente.</td></tr>
+      <tr><td>Quem paga o desconto?</td>
+          <td>A margem da alta temporada. O crédito é gerado no semestre em que a cidade fatura e só pode ser resgatado no vale. É o que o Thermas já faz: tarifa cheia o ano todo, meia entrada para todos em maio, junho, agosto e setembro, de segunda a sexta.</td></tr>
+      <tr><td>Qual o tamanho do mercado?</td>
+          <td>20.418 domicílios, 1.131 unidades de comércio, 5.858 empresas. É pequeno e nós sabemos: por isso o piloto é de 3 a 5 lojas e uma rua, não a cidade inteira.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="runner"><span>Diagnóstico Olímpia/SP</span><span>Colinha de pitch</span></div>
+</section>
+
+<!-- ======================= P2 — MEDIÇÃO ======================= -->
+<section class="page">
+  <p class="eyebrow">Página 2 de 5 · O que foi medido</p>
+  <h1 style="font-size:21pt">A medição</h1>
+  <p class="lead" style="font-size:9.8pt">Quatro fontes públicas cruzadas. Nenhuma delas exigiu pedido de acesso à informação — tudo é API aberta ou publicação oficial.</p>
+
+  <table style="margin-bottom:5mm">
+    <thead><tr><th>Fonte</th><th>O que entrega</th><th>Recorte</th></tr></thead>
+    <tbody>
+      <tr><td><b>SICONFI / Tesouro Nacional</b><br><span class="note">API, RREO Anexo 03, ente 3533908</span></td><td>ISS recolhido mês a mês</td><td>36 meses, 2023–2025</td></tr>
+      <tr><td><b>Novo CAGED / MTE</b><br><span class="note">microdados, FTP público</span></td><td>Admissões e desligamentos por CNAE</td><td>12 meses de 2025</td></tr>
+      <tr><td><b>IBGE</b><br><span class="note">Censo 2022, CEMPRE 2024, PIB 2023</span></td><td>População, domicílios, emprego, produto</td><td>último disponível</td></tr>
+      <tr><td><b>Observatório do Turismo de Olímpia</b><br><span class="note">boletins de expectativa</span></td><td>Ocupação hoteleira e fluxo por período</td><td>9 períodos de 2026</td></tr>
+    </tbody>
+  </table>
+
+  <h2>O calendário da cidade</h2>
+  <p>O ISS vence no mês seguinte ao serviço prestado, então a série foi deslocada para o mês do movimento. O índice compara cada mês com a média do próprio ano — três anos independentes desenham a mesma curva.</p>
+  <div class="two" style="margin-top:3mm">
+    <table>
+      <thead><tr><th>Mês</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th><th class="num">Média</th></tr></thead>
+      <tbody id="tb1"></tbody>
+    </table>
+    <div class="stack">
+      <div class="box blue">
+        <h3>Dois picos, oito meses abaixo da média</h3>
+        <p>Janeiro (1,51) e julho (1,46) ficam ~50% acima da média. Outubro (1,15) é um terceiro pico menor. O fundo é maio (0,77) e junho (0,78).</p>
+        <p>O <b>mês mediano é 0,92</b> — abaixo da própria média do ano, porque os dois picos puxam a média para cima. Não é “alta temporada quase o ano todo”: é o contrário.</p>
+      </div>
+      <div class="box">
+        <h3>Feriado não conserta mês</h3>
+        <p>O Carnaval é o evento de maior ocupação do ano — 80,6% — e cai em fevereiro, que marca 0,81. Quatro dias cheios não movem trinta. Olímpia responde a <b>duração</b>, não a intensidade: o que faz janeiro e julho é um mês inteiro de férias escolares.</p>
+      </div>
+      <div class="box">
+        <h3>O emprego antecipa o turista</h3>
+        <p>O quadro do turismo é montado de junho a novembro (+205 vagas, pico em novembro) e desmontado de dezembro a maio (−134). Janeiro sozinho corta 88 vagas: é o mês de maior faturamento e de maior demissão ao mesmo tempo.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="runner"><span>Diagnóstico Olímpia/SP</span><span>Medição</span></div>
+</section>
+
+<!-- ======================= P3 — AUDITORIA ======================= -->
+<section class="page">
+  <p class="eyebrow">Página 3 de 5 · Auditoria de evidência</p>
+  <h1 style="font-size:21pt">O que a evidência<br>sustenta — e o que não</h1>
+  <p class="lead" style="font-size:9.8pt">Quatro afirmações que a proposta de cashback carrega, cada uma testada contra o dado disponível.</p>
+
+  <div class="claim fail">
+    <h3>1. “O comércio local sofre na baixa temporada.” <span class="verdict v-fail">não sustentada</span></h3>
+    <p>Toda a sazonalidade medida é de <b>serviços</b>: hotel, parque, agência. Loja paga ICMS, que é estadual e não tem série mensal por município. O índice de 0,77 em maio não descreve a loja da rua.</p>
+    <p>O único indicador de varejo disponível é o emprego formal. Na primeira leitura parecia haver sinal — abril +134 e maio +118 —, mas a composição mostra <b>abertura de hipermercado</b>: a CNAE 4711-3/01 concentra +107 em maio, e 141 das admissões são em estabelecimentos que tinham zero empregados em janeiro. Limpando o evento, o saldo do comércio em 2025 é <b>−14 vagas</b>, oscilando ±40 sem padrão sazonal.</p>
+    <p class="note">Ressalva honesta: loja pequena corta hora e informal antes de carteira assinada, e o CAGED não enxerga isso. Ausência de evidência não é evidência de ausência — mas vocês não podem afirmar o que não mediram.</p>
+  </div>
+
+  <table style="margin:0 0 4mm">
+    <thead><tr><th>Saldo de empregos no comércio, 2025</th><th class="num">Jan</th><th class="num">Fev</th><th class="num">Mar</th><th class="num">Abr</th><th class="num">Mai</th><th class="num">Jun</th><th class="num">Jul</th><th class="num">Ago</th><th class="num">Set</th><th class="num">Out</th><th class="num">Nov</th><th class="num">Dez</th><th class="num">Ano</th></tr></thead>
+    <tbody>
+      <tr><td>Bruto</td><td class="num">−29</td><td class="num">−3</td><td class="num">−12</td><td class="num">+134</td><td class="num">+118</td><td class="num">+32</td><td class="num">−33</td><td class="num">−30</td><td class="num">+17</td><td class="num">−31</td><td class="num">+12</td><td class="num">−19</td><td class="num"><b>+156</b></td></tr>
+      <tr><td>Sem o hipermercado</td><td class="num">−36</td><td class="num">−5</td><td class="num">−16</td><td class="num">+71</td><td class="num">+11</td><td class="num">+20</td><td class="num">−39</td><td class="num">−13</td><td class="num">+19</td><td class="num">−31</td><td class="num">+19</td><td class="num">−14</td><td class="num"><b>−14</b></td></tr>
+    </tbody>
+  </table>
+
+  <div class="claim fail">
+    <h3>2. “Cashback pode preencher o vale.” <span class="verdict v-fail">falsificada</span></h3>
+    <p>A diferença entre o mês de pico e o de vale é de <b>R$ 3,35 milhões de ISS por mês</b>. Convertendo a faturamento com alíquota de 2% a 5%, são <b>R$ 67 a 167 milhões mensais</b>. Divididos pelos 20.418 domicílios ocupados:</p>
+    <div class="box red" style="margin:2mm 0">
+      <p>Fechar o vale exigiria <b>R$ 3.278 a R$ 8.195 a mais por domicílio, por mês</b>. A mediana de admissão em Olímpia é R$ 2.100. Fechar apenas 10% já exigiria R$ 328 a 820 por família.</p>
+    </div>
+    <p>Essa promessa precisa sair do pitch antes que alguém faça a conta no guardanapo.</p>
+  </div>
+
+  <div class="claim fail">
+    <h3>3. “Desconto desloca o consumo do morador para o vale.” <span class="verdict v-low">sem evidência</span></h3>
+    <p>Deslocamento no tempo só funciona sobre consumo <b>adiável</b>. O precedente do Thermas engana: ir ao parque é adiável, por isso a meia entrada de maio funciona. Mercado, farmácia, combustível e padaria não são. Sobre consumo não adiável, desconto não cria demanda — subsidia a que já ia acontecer.</p>
+  </div>
+
+  <div class="claim fail">
+    <h3>4. “O morador é quem some na baixa.” <span class="verdict v-fail">explicação concorrente</span></h3>
+    <p>O morador está na cidade em maio exatamente como em janeiro. Quem some é <b>mais de um milhão de visitantes</b>. O vale não é retração de demanda local — é ausência de população. A proposta mira a população que não mudou de comportamento.</p>
+  </div>
+
+  <div class="runner"><span>Diagnóstico Olímpia/SP</span><span>Auditoria de evidência</span></div>
+</section>
+
+<!-- ======================= P4 — PRÉ-MORTEM + RED TEAM ======================= -->
+<section class="page">
+  <p class="eyebrow">Página 4 de 5 · Modos de falha</p>
+  <h1 style="font-size:21pt">Como isso morre</h1>
+  <p class="lead" style="font-size:9.8pt">É maio de 2028. A plataforma foi desligada. Cinco reconstituições de como chegamos lá.</p>
+
+  <ol class="deaths">
+    <li><b>Irrelevância.</b> Lançaram com 40 lojas e 1.200 cadastros pela ACE. Em seis meses, 80 transações por mês. Oito por cento sobre um ticket de R$ 40 valem R$ 3,20 — ninguém abre um aplicativo por R$ 3,20. Não houve rejeição, houve indiferença.</li>
+    <li><b>Subsídio ao que já ia acontecer.</b> O volume apareceu. No fechamento anual, 85% do desconto foi para compras que ocorreriam de qualquer forma. O custo por venda incremental ficou impagável e o programa caiu na revisão orçamentária.</li>
+    <li><b>Guerra de margem — a morte mais provável.</b> O desconto não trouxe cliente novo: redistribuiu os mesmos moradores entre as lojas cadastradas. Quem ficou de fora perdeu movimento e aderiu. Agora todos dão desconto, ninguém ganhou participação, e a cidade inteira vende mais barato no mês de menos caixa. Em mercado local fechado, desconto generalizado é jogo de soma negativa.</li>
+    <li><b>Jurídico.</b> No modelo híbrido com recurso público: 60,7% da receita de Olímpia vem de transferências. Subsídio a consumo exige lei municipal, licitação da plataforma e prestação de contas ao Tribunal de Contas. Morreu no parecer, antes de rodar.</li>
+    <li><b>Descasamento de público.</b> Desenhado para maio e junho — meses em que 3.801 trabalhadores do turismo estão sendo desligados. Quem tem renda estável não muda comportamento por 8% de desconto; quem mudaria não tem dinheiro. O público-alvo e o público com caixa não se sobrepõem.</li>
+  </ol>
+
+  <h2 style="margin-top:2mm">Red team: quem tem interesse em derrubar</h2>
+  <table>
+    <thead><tr><th>Adversário</th><th>O golpe</th><th>Onde dói</th></tr></thead>
+    <tbody>
+      <tr><td><b>O comerciante cético</b></td><td>“Eu penduro uma placa de 10% amanhã, de graça. O que o app faz que a placa não faz?”</td><td>Se não há resposta de uma frase, não há produto.</td></tr>
+      <tr><td><b>O jurado de negócios</b></td><td>“Qual o take rate e quantas transações pagam um desenvolvedor?”</td><td>2% sobre R$ 500 mil de GMV mensal dá R$ 10 mil. Não sustenta time.</td></tr>
+      <tr><td><b>O incumbente</b></td><td>Nubank, PicPay, Mercado Pago e as maquininhas já fazem cashback, já têm o morador e já estão na loja.</td><td>A Stone liga campanha regional num botão.</td></tr>
+      <tr><td><b>A ACE / CDL</b></td><td>“Faço campanha coletiva de Natal há vinte anos. Por que a sua funciona em maio?”</td><td>Ou vira parceiro, ou vira substituto.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="runner"><span>Diagnóstico Olímpia/SP</span><span>Pré-mortem e red team</span></div>
+</section>
+
+<!-- ======================= P5 — SÍNTESE ======================= -->
+<section class="page">
+  <p class="eyebrow">Página 5 de 5 · Síntese</p>
+  <h1 style="font-size:21pt">O que sobrevive</h1>
+  <p class="lead" style="font-size:9.8pt">Veredito: <b>PIVOTAR</b>. O diagnóstico é o melhor ativo do grupo. O instrumento é que está errado para o problema.</p>
+
+  <div class="box blue" style="margin-bottom:4mm">
+    <h3>Manter: a medição</h3>
+    <p>Abrir o pitch com “Olímpia fatura 26% do seu ano de serviços em dois meses, e nós medimos isso com o ISS mensal do Tesouro” é uma entrada que nenhum outro grupo terá. Diagnóstico medido vale mais que protótipo bonito.</p>
+  </div>
+
+  <h2>Pivô 1 — de estimular consumo para transferir renda no tempo</h2>
+  <p>A dor que o dado mostra não é o morador deixar de gastar em maio. É que <b>3.801 trabalhadores do turismo perdem a renda de dezembro a maio</b>: o quadro é montado de junho a novembro e desmontado no semestre seguinte.</p>
+  <p>Um instrumento que permite ao trabalhador sazonal mover poder de compra do semestre que ganha para o semestre que falta é <b>contracíclico por construção</b>. Tem usuário definido, dor concreta e mensurável, e inverte o financiamento: a margem da alta paga o desconto da baixa. O comerciante vira rede de resgate, não financiador. É exatamente o que o Thermas faz sem anunciar — tarifa cheia o ano todo, meia entrada para todos nos quatro meses de vale, de segunda a sexta.</p>
+
+  <h2 style="margin-top:3mm">Pivô 2 — capturar vazamento, não sazonalidade</h2>
+  <p>O IBGE classifica Olímpia como Centro Sub-regional B, na área de influência de Barretos. Parte do consumo de maior valor do morador vaza para Barretos e São José do Rio Preto. Esse bolo é <b>não sazonal</b>, é mensurável, e uma plataforma local que o capture tem proposta de valor mais clara que estímulo de temporada.</p>
+
+  <h2 style="margin-top:3mm">Se mantiverem o desconto: progressivo por lojas, não por valor</h2>
+  <p>A progressão deve ser por <b>número de lojas diferentes visitadas no mês</b>. É a única coisa que a placa na porta não consegue fazer: espalha o movimento em vez de concentrar, transforma concorrentes em rede, e é a resposta de uma frase para o comerciante cético.</p>
+
+  <div class="box" style="margin-top:4mm">
+    <h3>A premissa mais arriscada, e o experimento de R$ 0</h3>
+    <p>Tudo depende de existir demanda adiável do morador que responde a desconto. Isso é testável antes de escrever uma linha de código:</p>
+    <p>Recrutem <b>3 a 5 comerciantes</b>. Rodem 15% de desconto para morador durante <b>duas semanas de um mês de vale</b>. Comparem com as duas semanas anteriores e com o mesmo período do ano passado, contra um <b>grupo de controle</b> de lojas parecidas que não participam. Registrem a hipótese e o critério de sucesso <i>antes</i> de coletar.</p>
+    <p>Se o movimento não subir, a ideia morre custando zero — e vocês descobriram algo que ninguém em Olímpia sabia. Levar esse experimento desenhado para o palco vale mais que qualquer tela de aplicativo.</p>
+  </div>
+
+  <div class="box red" style="margin-top:4mm">
+    <h3>O limite que nenhuma tática resolve</h3>
+    <p>Olímpia tem 1.131 unidades de comércio para 55 mil moradores — uma a cada 49 habitantes. Essa capacidade foi dimensionada para um fluxo que passa de um milhão de visitantes só no verão, não para a população residente. Na baixa, sobra estrutura instalada por definição. Dá para reduzir a amplitude do vale; não dá para eliminá-lo.</p>
+  </div>
+
+  <div class="runner"><span>Diagnóstico Olímpia/SP · dados públicos, set/2026</span><span>Síntese e pivô</span></div>
+</section>
+
+<script>
+const IDX={1:[1.46,1.54,1.53,1.51],2:[0.81,0.85,0.79,0.81],3:[0.82,0.78,null,0.80],4:[0.82,0.85,1.08,0.92],
+ 5:[0.80,0.75,0.75,0.77],6:[0.73,0.81,0.80,0.78],7:[1.49,1.55,1.34,1.46],8:[0.87,0.88,0.86,0.87],
+ 9:[0.95,0.86,0.93,0.91],10:[1.17,1.27,1.00,1.15],11:[0.98,0.90,0.91,0.93],12:[1.11,0.96,null,1.04]};
+const MES=["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
+const NS="http://www.w3.org/2000/svg";
+function e(t,a,p){const n=document.createElementNS(NS,t);for(const k in a)n.setAttribute(k,a[k]);if(p)p.appendChild(n);return n;}
+(function(){
+  const svg=document.getElementById("c"),W=900,H=190,P={t:16,r:8,b:30,l:34};
+  const iw=W-P.l-P.r, ih=H-P.t-P.b, mx=1.65;
+  const y=v=>P.t+ih-v/mx*ih, slot=iw/12, bw=slot-14;
+  [0.5,1.0,1.5].forEach(g=>{
+    e("line",{x1:P.l,x2:W-P.r,y1:y(g),y2:y(g),stroke:g===1?"#77756f":"#e6e5de","stroke-width":g===1?1.2:.8,"stroke-dasharray":g===1?"4 3":""},svg);
+    e("text",{x:P.l-7,y:y(g)+2.5,"text-anchor":"end",class:"tick"},svg).textContent=g.toFixed(1).replace(".",",");
+  });
+  for(let m=1;m<=12;m++){
+    const v=IDX[m][3], cx=P.l+slot*(m-0.5), hi=v>=1.10;
+    e("rect",{x:cx-bw/2,y:y(v),width:bw,height:P.t+ih-y(v),fill:hi?"#2a78d6":"#9ec5f4",rx:2.5},svg);
+    e("text",{x:cx,y:y(v)-5,"text-anchor":"middle",class:"dl"},svg).textContent=v.toFixed(2).replace(".",",");
+    e("text",{x:cx,y:H-16,"text-anchor":"middle",class:"tick"},svg).textContent=MES[m-1];
+  }
+  e("text",{x:P.l,y:H-4,class:"tick"},svg).textContent="índice sazonal do ISS · média do ano = 1,00 · fonte: SICONFI/Tesouro, 2023–2025";
+  let h="";
+  for(let m=1;m<=12;m++){const r=IDX[m],f=x=>x==null?"—":x.toFixed(2).replace(".",",");
+    const cls=(r[3]>=1.10||r[3]<=0.80)?" class=\"hl\"":"";
+    h+=`<tr${cls}><td>${MES[m-1]}</td><td class="num">${f(r[0])}</td><td class="num">${f(r[1])}</td><td class="num">${f(r[2])}</td><td class="num">${f(r[3])}</td></tr>`;}
+  document.getElementById("tb1").innerHTML=h;
+})();
+</script>
+</body>
+</html>

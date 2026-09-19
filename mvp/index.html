@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sou+Olímpia — Rede de Confiança</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --azul:#0E6FD8; --azul-esc:#0A4C96; --azul-claro:#E7F1FD;
+  --amarelo:#F5C400; --vermelho:#D62718; --verde:#128040; --laranja:#E07A00;
+  --tinta:#10151C; --tinta2:#49535F; --tinta3:#6E7884;
+  --papel:#FFFFFF; --fundo:#F1F4F8; --linha:#D9E0E9; --linha2:#EDF1F6;
+  --ok:#0E7A38; --erro:#C21F12;
+  --foco:#0E6FD8;
+  --mono:"IBM Plex Mono","DejaVu Sans Mono",ui-monospace,monospace;
+  --sans:"Nunito","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--fundo);color:var(--tinta);
+  font-family:var(--sans);font-size:16px;line-height:1.55;
+}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+a{color:var(--azul-esc)}
+:focus-visible{outline:3px solid var(--foco);outline-offset:2px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- header ---------- */
+header.topo{background:var(--papel);border-bottom:1px solid var(--linha)}
+.topo-in{max-width:1220px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.topo img{height:52px;width:auto;display:block}
+.topo .tag{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--tinta3);border-left:1px solid var(--linha);padding-left:18px;line-height:1.5
+}
+.topo .tag b{color:var(--azul-esc);font-weight:600}
+.topo .acoes{margin-left:auto;display:flex;gap:10px}
+
+button{font-family:var(--sans);font-size:15px;cursor:pointer}
+.btn{
+  background:var(--azul);color:#fff;border:2px solid var(--azul);
+  padding:11px 18px;border-radius:10px;font-weight:800;min-height:46px;
+}
+.btn:hover{background:var(--azul-esc);border-color:var(--azul-esc)}
+.btn.sec{background:var(--papel);color:var(--azul-esc)}
+.btn.sec:hover{background:var(--azul-claro)}
+.btn.perigo{background:var(--papel);color:var(--erro);border-color:var(--erro)}
+.btn.perigo:hover{background:#FBEAE8}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.btn.pequeno{font-size:13.5px;padding:8px 13px;min-height:40px;border-radius:8px}
+
+/* ---------- layout ---------- */
+.wrap{max-width:1220px;margin:0 auto;padding:22px 20px 40px}
+.roteiro{
+  background:var(--papel);border:1px solid var(--linha);border-radius:14px;padding:14px 16px;margin-bottom:22px
+}
+.roteiro h2{font-size:13px;font-family:var(--mono);letter-spacing:.09em;text-transform:uppercase;
+  color:var(--tinta3);margin:0 0 10px;font-weight:600}
+.passos{display:flex;gap:8px;flex-wrap:wrap;list-style:none;margin:0;padding:0;counter-reset:p}
+.passos li{
+  counter-increment:p;flex:1 1 150px;border:1px solid var(--linha);border-radius:10px;
+  padding:9px 12px 9px 38px;position:relative;font-size:13.5px;line-height:1.35;background:var(--papel);color:var(--tinta2)
+}
+.passos li::before{
+  content:counter(p);position:absolute;left:10px;top:9px;width:20px;height:20px;border-radius:50%;
+  background:var(--linha);color:var(--tinta2);font-family:var(--mono);font-size:11px;font-weight:600;
+  display:flex;align-items:center;justify-content:center
+}
+.passos li[data-feito="1"]{border-color:var(--ok);background:#EDF7F0;color:var(--tinta)}
+.passos li[data-feito="1"]::before{background:var(--ok);color:#fff;content:"✓"}
+
+.abas{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap}
+.aba{
+  background:var(--papel);border:2px solid var(--linha);color:var(--tinta2);
+  padding:11px 18px;border-radius:10px;font-weight:700;min-height:46px
+}
+.aba[aria-selected="true"]{background:var(--azul);border-color:var(--azul);color:#fff}
+.aba:hover:not([aria-selected="true"]){border-color:var(--azul);color:var(--azul-esc)}
+
+.painel{background:var(--papel);border:1px solid var(--linha);border-radius:14px;padding:20px}
+.painel[hidden]{display:none}
+h1{font-size:0;margin:0}
+h3{font-size:19px;font-weight:900;margin:0 0 4px;letter-spacing:-.01em}
+.sub{color:var(--tinta2);font-size:14.5px;margin:0 0 18px;max-width:72ch}
+h4{font-size:13px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;
+  color:var(--tinta3);margin:22px 0 10px;font-weight:600}
+h4:first-of-type{margin-top:0}
+
+.grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+
+/* ---------- cartões de negócio ---------- */
+.negocio{border:1px solid var(--linha);border-radius:12px;padding:14px;background:var(--papel);position:relative}
+.negocio .cab{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.marca{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;
+  font-weight:900;color:#fff;font-size:15px;flex:none}
+.negocio .nome{font-weight:800;font-size:15.5px;line-height:1.2}
+.negocio .ramo{font-size:12.5px;color:var(--tinta3)}
+.chip{
+  display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;
+  letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:20px;font-weight:600
+}
+.chip.ativo{background:#E6F4EC;color:var(--ok)}
+.chip.revogado{background:#FBEAE8;color:var(--erro)}
+.chave{font-family:var(--mono);font-size:11px;color:var(--tinta3);word-break:break-all;margin-top:8px;line-height:1.5}
+
+/* ---------- carteira ---------- */
+.cartela{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:6px}
+.slot{
+  width:112px;height:112px;border-radius:14px;border:2px dashed var(--linha);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  background:var(--fundo);text-align:center;padding:8px
+}
+.slot.cheio{border-style:solid;border-color:transparent;color:#fff}
+.slot .ico{font-size:22px;line-height:1}
+.slot .lbl{font-size:12px;font-weight:800;line-height:1.2}
+.slot .dt{font-family:var(--mono);font-size:10px;opacity:.85}
+.slot.vazio .lbl{color:var(--tinta3);font-weight:600}
+
+.vale{
+  border:2px solid var(--verde);background:#EDF7F0;border-radius:14px;padding:16px 18px;
+  display:flex;align-items:center;gap:16px;flex-wrap:wrap
+}
+.vale .valor{font-size:34px;font-weight:900;color:var(--verde);line-height:1}
+.vale .info{flex:1;min-width:180px;font-size:14px;color:var(--tinta2)}
+.vale.usado{border-color:var(--linha);background:var(--fundo);opacity:.7}
+.vale.usado .valor{color:var(--tinta3);text-decoration:line-through}
+
+/* ---------- console ---------- */
+.console{background:#0F1720;border-radius:14px;padding:16px 18px;margin-top:22px;color:#D7DEE7}
+.console h4{color:#8FA0B4;margin:0 0 10px}
+.log{font-family:var(--mono);font-size:12.5px;line-height:1.65;max-height:260px;overflow-y:auto;margin:0}
+.log .ln{padding:4px 0;border-bottom:1px solid #1D2733;display:flex;gap:10px}
+.log .ln:last-child{border-bottom:none}
+.log .hora{color:#64748B;flex:none}
+.log .txt{flex:1;word-break:break-word}
+.log .ok{color:#4ADE80;font-weight:600}
+.log .no{color:#FB7185;font-weight:600}
+.log .hx{color:#93C5FD}
+
+.aviso{border-left:4px solid var(--azul);background:var(--azul-claro);padding:13px 16px;border-radius:0 10px 10px 0;font-size:14.5px;margin-top:16px}
+.aviso.alerta{border-left-color:var(--laranja);background:#FDF3E3}
+.aviso strong{font-weight:800}
+
+label{display:block;font-weight:700;font-size:14px;margin-bottom:6px}
+select,input{
+  font-family:var(--sans);font-size:15px;padding:10px 12px;border:2px solid var(--linha);
+  border-radius:9px;background:var(--papel);color:var(--tinta);min-height:46px;width:100%
+}
+select:hover,input:hover{border-color:var(--azul)}
+.campo{margin-bottom:14px}
+.linha-acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--linha2)}
+thead th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta3);font-weight:600}
+.tabela-rolagem{overflow-x:auto}
+
+.rodape{max-width:1220px;margin:0 auto;padding:0 20px 44px;color:var(--tinta2);font-size:13.5px}
+.rodape h4{margin-top:26px}
+.rodape ul{margin:0;padding-left:20px}
+.rodape li{margin-bottom:5px}
+</style>
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-in">
+    <img src="logo.jpg" alt="Sou+Olímpia">
+    <p class="tag"><b>Rede de Confiança</b><br>Protótipo funcional · Desafio 2</p>
+    <div class="acoes">
+      <button class="btn sec pequeno" id="btn-reiniciar" type="button">Reiniciar demonstração</button>
+    </div>
+  </div>
+</header>
+
+<h1>Sou+Olímpia — Rede de Confiança entre negócios locais</h1>
+
+<div class="wrap">
+
+  <section class="roteiro" aria-labelledby="h-roteiro">
+    <h2 id="h-roteiro">Roteiro da demonstração</h2>
+    <ol class="passos" id="passos">
+      <li data-passo="credenciar">A prefeitura credencia os negócios</li>
+      <li data-passo="carimbo1">A Padaria carimba a carteira do morador</li>
+      <li data-passo="verificar">A Farmácia verifica o carimbo da Padaria sozinha</li>
+      <li data-passo="cartela">Três lojas distintas fecham a cartela</li>
+      <li data-passo="resgate">O vale é resgatado uma única vez</li>
+      <li data-passo="fraude">A rede rejeita carimbo adulterado</li>
+    </ol>
+  </section>
+
+  <div class="abas" role="tablist" aria-label="Seções do protótipo">
+    <button class="aba" role="tab" id="t-rede" aria-controls="p-rede" aria-selected="true" type="button">Prefeitura · SMITS</button>
+    <button class="aba" role="tab" id="t-loja" aria-controls="p-loja" aria-selected="false" type="button">Ponto de venda</button>
+    <button class="aba" role="tab" id="t-morador" aria-controls="p-morador" aria-selected="false" type="button">Carteira do morador</button>
+    <button class="aba" role="tab" id="t-seg" aria-controls="p-seg" aria-selected="false" type="button">Segurança e dados</button>
+  </div>
+
+  <!-- ============ REDE ============ -->
+  <section class="painel" role="tabpanel" id="p-rede" aria-labelledby="t-rede" tabindex="0">
+    <h3>Prefeitura · registro de negócios</h3>
+    <p class="sub">A prefeitura não guarda planilha de parcerias e não movimenta dinheiro. Ela faz uma coisa só: assina uma credencial dizendo que um negócio é de Olímpia e está ativo na rede. Com essa assinatura, qualquer negócio consegue verificar qualquer outro sem precisar perguntar a ninguém.</p>
+
+    <h4>Chave-raiz da rede</h4>
+    <p class="chave" id="chave-rede">—</p>
+
+    <h4>Negócios credenciados</h4>
+    <div class="grade" id="lista-negocios"></div>
+
+    <div class="aviso">
+      <strong>Por que isso substitui a planilha:</strong> hoje, para saber se a loja do lado realmente participa da campanha, alguém precisa abrir um arquivo que outra pessoa mantém. Aqui, a prova viaja junto com o dado — e é verificável offline.
+    </div>
+  </section>
+
+  <!-- ============ LOJA ============ -->
+  <section class="painel" role="tabpanel" id="p-loja" aria-labelledby="t-loja" hidden tabindex="0">
+    <h3>Ponto de venda</h3>
+    <p class="sub">A tela que o comerciante usa. Carimba a carteira do cliente e verifica vale — sem consultar as outras lojas.</p>
+
+    <div class="grade" style="align-items:end">
+      <div class="campo">
+        <label for="sel-loja">Estou atendendo como</label>
+        <select id="sel-loja"></select>
+      </div>
+      <div class="campo">
+        <label for="sel-faixa">Faixa de valor da compra</label>
+        <select id="sel-faixa">
+          <option value="ate-50">Até R$ 50</option>
+          <option value="50-150" selected>De R$ 50 a R$ 150</option>
+          <option value="acima-150">Acima de R$ 150</option>
+        </select>
+      </div>
+    </div>
+    <p class="sub" style="margin-top:-6px">Registramos a <strong>faixa</strong>, nunca o valor exato — é o mínimo necessário para validar a compra.</p>
+
+    <div class="linha-acoes">
+      <button class="btn" id="btn-carimbar" type="button">Carimbar a carteira do cliente</button>
+      <button class="btn sec" id="btn-verificar" type="button">Verificar os carimbos que o cliente já tem</button>
+      <button class="btn sec" id="btn-resgatar" type="button">Resgatar vale</button>
+    </div>
+
+    <h4>Resultado</h4>
+    <div id="saida-loja" role="status" aria-live="polite">
+      <p class="sub" style="margin:0">Nenhuma operação ainda.</p>
+    </div>
+  </section>
+
+  <!-- ============ MORADOR ============ -->
+  <section class="painel" role="tabpanel" id="p-morador" aria-labelledby="t-morador" hidden tabindex="0">
+    <h3>Carteira do morador</h3>
+    <p class="sub">Vive no aparelho do morador. A rede não sabe quem ele é — só existe um identificador aleatório, sem nome e sem CPF.</p>
+
+    <h4>Identificador da carteira</h4>
+    <p class="chave" id="id-carteira">—</p>
+
+    <h4>Cartela do mês</h4>
+    <div class="cartela" id="cartela" role="list" aria-label="Carimbos da cartela"></div>
+    <p class="sub" id="cartela-txt" style="margin-top:10px"></p>
+
+    <h4>Vale</h4>
+    <div id="area-vale"></div>
+  </section>
+
+  <!-- ============ SEGURANÇA ============ -->
+  <section class="painel" role="tabpanel" id="p-seg" aria-labelledby="t-seg" hidden tabindex="0">
+    <h3>Segurança de dados e acessibilidade</h3>
+    <p class="sub">Duas coisas que não são enfeite no projeto: o que a rede sabe sobre as pessoas, e quem consegue usar o sistema.</p>
+
+    <h4>O que a rede guarda, e o que ela não guarda</h4>
+    <div class="tabela-rolagem">
+      <table>
+        <thead><tr><th>Dado</th><th>Guardamos?</th><th>Por quê</th></tr></thead>
+        <tbody>
+          <tr><td>Nome do morador</td><td><b>Não</b></td><td>A cartela funciona com um identificador aleatório. Nome não é necessário para carimbar.</td></tr>
+          <tr><td>CPF</td><td><b>Não</b></td><td>Nenhuma regra do programa depende de CPF. Coletar seria excesso.</td></tr>
+          <tr><td>Valor exato da compra</td><td><b>Não</b></td><td>Guardamos só a faixa, que é o suficiente para validar a compra mínima.</td></tr>
+          <tr><td>O que foi comprado</td><td><b>Não</b></td><td>Irrelevante para o programa.</td></tr>
+          <tr><td>Loja, data e faixa de valor</td><td>Sim</td><td>É o que define o carimbo e permite medir circulação.</td></tr>
+          <tr><td>Identificador aleatório da carteira</td><td>Sim</td><td>Liga os carimbos de uma mesma cartela. Descartável: o morador pode gerar outro.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>Como a confiança é garantida</h4>
+    <ul style="margin:0;padding-left:20px;color:var(--tinta2)">
+      <li><strong>Assinatura digital ECDSA P-256</strong> em cada credencial e cada carimbo, gerada no próprio navegador pela Web Crypto API.</li>
+      <li><strong>Verificação offline:</strong> uma loja valida o carimbo de outra usando só a chave pública da rede. Sem servidor no meio, sem planilha compartilhada.</li>
+      <li><strong>Credencial revogável:</strong> a prefeitura tira um negócio da rede e os carimbos dele param de valer na hora.</li>
+      <li><strong>Resgate único:</strong> cada vale tem número de série e fica registrado como usado — a segunda tentativa é recusada.</li>
+      <li><strong>Um carimbo por loja por cartela:</strong> ninguém enche a cartela numa loja só.</li>
+    </ul>
+
+    <h4>Acessibilidade</h4>
+    <ul style="margin:0;padding-left:20px;color:var(--tinta2)">
+      <li>Navegação completa por teclado, com contorno de foco visível em todos os controles.</li>
+      <li>Resultado de cada operação anunciado por leitor de tela através de região <code>aria-live</code>.</li>
+      <li>Contraste conforme WCAG AA: o amarelo e o laranja da marca aparecem só como preenchimento, nunca como texto.</li>
+      <li>Alvos de toque de no mínimo 46 pixels, pensados para uso com uma mão no balcão.</li>
+      <li>Estado nunca comunicado só por cor — todo indicador tem texto ou ícone junto.</li>
+      <li>Animações desligadas para quem configurou redução de movimento no sistema.</li>
+    </ul>
+
+    <div class="aviso alerta">
+      <strong>Limite honesto do protótipo:</strong> as chaves privadas das lojas ficam no navegador para a demonstração funcionar sem servidor. Em produção elas moram no dispositivo de cada comerciante ou num módulo de segurança, e a prefeitura nunca tem acesso a elas.
+    </div>
+  </section>
+
+  <!-- ============ CONSOLE ============ -->
+  <section class="console" aria-labelledby="h-console">
+    <h4 id="h-console">Console de confiança — toda operação criptográfica aparece aqui</h4>
+    <div class="log" id="log" role="log" aria-live="polite" aria-relevant="additions"></div>
+    <div class="linha-acoes">
+      <button class="btn perigo pequeno" id="btn-adulterar" type="button">Simular fraude: adulterar um carimbo</button>
+      <button class="btn perigo pequeno" id="btn-revogar" type="button">Revogar credencial da Padaria</button>
+    </div>
+  </section>
+</div>
+
+<footer class="rodape">
+  <h4>Sobre este protótipo</h4>
+  <p>Demonstração funcional da camada de interoperabilidade do <strong>Sou+Olímpia</strong>, construída para o Desafio 2 do Ideathon OlimpiaLab 2026 pelo Grupo 4. Toda a criptografia roda no navegador, sem servidor e sem conexão — a rede funciona offline por construção.</p>
+  <p>O programa de carimbos é o primeiro caso de uso da rede: a recompensa cresce com o número de <em>lojas diferentes</em> visitadas, não com o valor gasto, para espalhar o movimento em vez de concentrá-lo.</p>
+</footer>
+
+<script>
+"use strict";
+
+/* ============================================================
+   Sou+Olímpia — camada de confiança
+   Credenciais e carimbos assinados com ECDSA P-256 (Web Crypto).
+   Verificação 100% local: nenhuma requisição de rede.
+   ============================================================ */
+
+const CORES = { padaria:"#D62718", farmacia:"#128040", livraria:"#E07A00", mercado:"#0E6FD8" };
+const NEGOCIOS_BASE = [
+  { id:"padaria",  nome:"Padaria Central",    ramo:"Panificação",     ini:"PC" },
+  { id:"farmacia", nome:"Farmácia São Jorge", ramo:"Farmácia",        ini:"FS" },
+  { id:"livraria", nome:"Livraria da Praça",  ramo:"Livros e papelaria", ini:"LP" },
+  { id:"mercado",  nome:"Mercado do Bairro",  ramo:"Alimentos",       ini:"MB" }
+];
+const META_LOJAS = 3;      // lojas distintas para fechar a cartela
+const VALOR_VALE = 30;     // R$, valor fixo — legível para qualquer renda
+
+let S = null;              // estado da aplicação
+
+/* ---------------- utilidades ---------------- */
+const enc = new TextEncoder();
+const $  = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+
+function canonical(o){                       // JSON determinístico para assinar
+  if (o === null || typeof o !== "object") return JSON.stringify(o);
+  if (Array.isArray(o)) return "[" + o.map(canonical).join(",") + "]";
+  return "{" + Object.keys(o).sort().map(k => JSON.stringify(k) + ":" + canonical(o[k])).join(",") + "}";
+}
+const b64 = buf => btoa(String.fromCharCode(...new Uint8Array(buf)));
+const deB64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+const curto = (s, n = 26) => s.length <= n ? s : s.slice(0, n) + "…";
+
+function agora(){
+  const d = new Date();
+  return String(d.getHours()).padStart(2,"0") + ":" + String(d.getMinutes()).padStart(2,"0") + ":" + String(d.getSeconds()).padStart(2,"0");
+}
+function log(txt, tipo){
+  const ln = document.createElement("div");
+  ln.className = "ln";
+  const cls = tipo === "ok" ? "ok" : tipo === "no" ? "no" : "";
+  ln.innerHTML = `<span class="hora">${agora()}</span><span class="txt ${cls}">${txt}</span>`;
+  $("#log").appendChild(ln);
+  $("#log").scrollTop = $("#log").scrollHeight;
+}
+
+/* ---------------- criptografia ---------------- */
+const ALGO = { name:"ECDSA", namedCurve:"P-256" };
+const ASSINA = { name:"ECDSA", hash:"SHA-256" };
+
+async function novoPar(){
+  return crypto.subtle.generateKey(ALGO, true, ["sign","verify"]);
+}
+async function exportar(par){
+  return {
+    pub:  await crypto.subtle.exportKey("jwk", par.publicKey),
+    priv: await crypto.subtle.exportKey("jwk", par.privateKey)
+  };
+}
+async function importarPub(jwk){
+  return crypto.subtle.importKey("jwk", jwk, ALGO, true, ["verify"]);
+}
+async function importarPriv(jwk){
+  return crypto.subtle.importKey("jwk", jwk, ALGO, true, ["sign"]);
+}
+async function assinar(privJwk, objeto){
+  const chave = await importarPriv(privJwk);
+  const sig = await crypto.subtle.sign(ASSINA, chave, enc.encode(canonical(objeto)));
+  return b64(sig);
+}
+async function conferir(pubJwk, objeto, assinatura){
+  try{
+    const chave = await importarPub(pubJwk);
+    return await crypto.subtle.verify(ASSINA, chave, deB64(assinatura), enc.encode(canonical(objeto)));
+  }catch(e){ return false; }
+}
+function impressao(jwk){                      // identificador curto e legível da chave
+  return (jwk.x + jwk.y).replace(/[^A-Za-z0-9]/g,"").slice(0,24).toUpperCase().match(/.{1,4}/g).join(" ");
+}
+
+/* ---------------- estado ---------------- */
+async function iniciar(){
+  log("Gerando chave-raiz da rede (ECDSA P-256)…");
+  const raiz = await exportar(await novoPar());
+
+  const negocios = {};
+  for (const n of NEGOCIOS_BASE){
+    const par = await exportar(await novoPar());
+    // credencial de negócio: a prefeitura atesta identidade e adesão
+    const corpo = {
+      tipo:"credencial-negocio", negocio:n.id, nome:n.nome, ramo:n.ramo,
+      municipio:"3533908", programa:"sou-mais-olimpia", chave:par.pub, emitida:new Date().toISOString().slice(0,10)
+    };
+    negocios[n.id] = { ...n, chaves:par, credencial:{ corpo, assinatura: await assinar(raiz.priv, corpo) }, revogado:false };
+    log(`Credencial assinada para <b>${n.nome}</b> · impressão <span class="hx">${impressao(par.pub)}</span>`, "ok");
+  }
+
+  S = {
+    raiz, negocios,
+    carteira:{ id:"olm-" + crypto.randomUUID().slice(0,18), carimbos:[] },
+    vale:null, gastos:[], passos:{ credenciar:true }
+  };
+  log(`Carteira do morador criada — identificador aleatório, sem nome e sem CPF`, "ok");
+  desenhar();
+}
+
+/* ---------------- operações ---------------- */
+async function carimbar(){
+  const id = $("#sel-loja").value;
+  const loja = S.negocios[id];
+
+  if (loja.revogado) return mostrar(false, `${loja.nome} está com a credencial revogada. Carimbo recusado.`);
+  if (S.carteira.carimbos.some(c => c.corpo.negocio === id))
+    return mostrar(false, `A carteira já tem um carimbo da ${loja.nome}. Cada loja carimba uma vez por cartela — é assim que a cartela obriga a circular.`);
+
+  const corpo = {
+    tipo:"carimbo", negocio:id, carteira:S.carteira.id,
+    faixa:$("#sel-faixa").value, data:new Date().toISOString().slice(0,10),
+    nonce: crypto.randomUUID()
+  };
+  const assinatura = await assinar(loja.chaves.priv, corpo);
+  S.carteira.carimbos.push({ corpo, assinatura });
+  S.passos.carimbo1 = true;
+  if (S.carteira.carimbos.length >= META_LOJAS) S.passos.cartela = true;
+
+  log(`<b>${loja.nome}</b> assinou um carimbo · <span class="hx">${curto(assinatura, 30)}</span>`, "ok");
+  mostrar(true, `Carimbo da ${loja.nome} registrado na carteira. Guardamos a faixa de valor, não o valor exato.`);
+  desenhar();
+}
+
+async function verificarTudo(){
+  const idAtual = $("#sel-loja").value;
+  if (!S.carteira.carimbos.length) return mostrar(false, "A carteira deste cliente ainda não tem nenhum carimbo.");
+
+  log(`<b>${S.negocios[idAtual].nome}</b> vai verificar os carimbos sem consultar as outras lojas…`);
+  const linhas = [];
+  let todosOk = true;
+
+  for (const c of S.carteira.carimbos){
+    const emissor = S.negocios[c.corpo.negocio];
+    // 1) a credencial do emissor foi mesmo assinada pela prefeitura?
+    const credOk = await conferir(S.raiz.pub, emissor.credencial.corpo, emissor.credencial.assinatura);
+    // 2) o carimbo foi assinado pela chave que a credencial declara?
+    const carimboOk = await conferir(emissor.credencial.corpo.chave, c.corpo, c.assinatura);
+    const ativo = !emissor.revogado;
+    const ok = credOk && carimboOk && ativo;
+    if (!ok) todosOk = false;
+
+    const motivo = !credOk ? "credencial do negócio inválida"
+                 : !carimboOk ? "assinatura do carimbo não confere — dado adulterado"
+                 : !ativo ? "credencial revogada pela prefeitura"
+                 : "credencial válida e assinatura confere";
+    linhas.push({ nome:emissor.nome, ok, motivo });
+    log(`${ok ? "✓" : "✗"} ${emissor.nome} — ${motivo}`, ok ? "ok" : "no");
+  }
+
+  S.passos.verificar = true;
+  const distintas = new Set(S.carteira.carimbos.map(c => c.corpo.negocio)).size;
+
+  $("#saida-loja").innerHTML = `
+    <div class="tabela-rolagem"><table>
+      <thead><tr><th>Carimbo de</th><th>Situação</th><th>Motivo</th></tr></thead>
+      <tbody>${linhas.map(l => `<tr><td>${l.nome}</td>
+        <td><span class="chip ${l.ok?"ativo":"revogado"}">${l.ok?"✓ válido":"✗ inválido"}</span></td>
+        <td>${l.motivo}</td></tr>`).join("")}</tbody>
+    </table></div>
+    <div class="aviso" style="margin-top:14px">
+      <strong>${distintas} de ${META_LOJAS} lojas distintas.</strong>
+      A verificação aconteceu inteira neste aparelho, usando só a chave pública da prefeitura.
+      Nenhuma loja precisou ser consultada, e nenhuma planilha foi aberta.
+    </div>`;
+  desenhar();
+  return todosOk;
+}
+
+async function emitirVale(){
+  const distintas = new Set(S.carteira.carimbos.map(c => c.corpo.negocio)).size;
+  if (distintas < META_LOJAS || S.vale) return;
+  const corpo = {
+    tipo:"vale", carteira:S.carteira.id, valor:VALOR_VALE,
+    serie:"V-" + crypto.randomUUID().slice(0,8).toUpperCase(),
+    validade:"mês seguinte", emitido:new Date().toISOString().slice(0,10)
+  };
+  S.vale = { corpo, assinatura: await assinar(S.raiz.priv, corpo), usado:false, onde:null };
+  log(`Cartela fechada com ${distintas} lojas. Vale <b>${corpo.serie}</b> de R$ ${VALOR_VALE} assinado pela rede.`, "ok");
+}
+
+async function resgatar(){
+  const id = $("#sel-loja").value;
+  const loja = S.negocios[id];
+  if (!S.vale) return mostrar(false, "Este cliente ainda não tem vale. A cartela precisa de três lojas diferentes.");
+
+  const valido = await conferir(S.raiz.pub, S.vale.corpo, S.vale.assinatura);
+  if (!valido){
+    log(`Vale ${S.vale.corpo.serie} — assinatura inválida`, "no");
+    return mostrar(false, "Vale inválido: a assinatura da rede não confere.");
+  }
+  if (S.gastos.includes(S.vale.corpo.serie)){
+    log(`Vale ${S.vale.corpo.serie} — RESGATE DUPLO recusado (série já consta como usada)`, "no");
+    return mostrar(false, `Vale ${S.vale.corpo.serie} já foi resgatado em ${S.vale.onde}. Cada série vale uma vez só.`);
+  }
+
+  S.gastos.push(S.vale.corpo.serie);
+  S.vale.usado = true; S.vale.onde = loja.nome;
+  S.passos.resgate = true;
+  log(`Vale ${S.vale.corpo.serie} resgatado na <b>${loja.nome}</b> · série registrada como usada`, "ok");
+  mostrar(true, `Vale de R$ ${VALOR_VALE} aceito na ${loja.nome}. Tente resgatar de novo para ver a rede recusar.`);
+  desenhar();
+}
+
+function mostrar(ok, msg){
+  $("#saida-loja").innerHTML =
+    `<div class="aviso ${ok ? "" : "alerta"}"><strong>${ok ? "✓" : "⚠"}</strong> ${msg}</div>`;
+}
+
+async function adulterar(){
+  if (!S.carteira.carimbos.length) return mostrar(false, "Carimbe alguma coisa antes de tentar fraudar.");
+  const alvo = S.carteira.carimbos[0];
+  alvo.corpo.faixa = "acima-150";                       // mexe no dado sem refazer a assinatura
+  log(`FRAUDE SIMULADA: faixa de valor do carimbo da ${S.negocios[alvo.corpo.negocio].nome} alterada à força`, "no");
+  S.passos.fraude = true;
+  $("#t-loja").click();
+  await verificarTudo();
+}
+
+async function revogar(){
+  S.negocios.padaria.revogado = !S.negocios.padaria.revogado;
+  log(S.negocios.padaria.revogado
+      ? "Prefeitura REVOGOU a credencial da Padaria Central"
+      : "Prefeitura reativou a credencial da Padaria Central",
+      S.negocios.padaria.revogado ? "no" : "ok");
+  $("#btn-revogar").textContent = S.negocios.padaria.revogado
+    ? "Reativar credencial da Padaria" : "Revogar credencial da Padaria";
+  desenhar();
+}
+
+/* ---------------- desenho ---------------- */
+function desenhar(){
+  $("#chave-rede").textContent = "Impressão da chave pública: " + impressao(S.raiz.pub);
+  $("#id-carteira").textContent = S.carteira.id;
+
+  $("#lista-negocios").innerHTML = Object.values(S.negocios).map(n => `
+    <div class="negocio">
+      <div class="cab">
+        <span class="marca" style="background:${CORES[n.id]}" aria-hidden="true">${n.ini}</span>
+        <span><span class="nome">${n.nome}</span><br><span class="ramo">${n.ramo}</span></span>
+      </div>
+      <span class="chip ${n.revogado ? "revogado" : "ativo"}">${n.revogado ? "✗ revogado" : "✓ credenciado"}</span>
+      <p class="chave">Impressão: ${impressao(n.chaves.pub)}</p>
+    </div>`).join("");
+
+  const sel = $("#sel-loja");
+  if (sel.options.length !== Object.keys(S.negocios).length){
+    sel.innerHTML = Object.values(S.negocios).map(n => `<option value="${n.id}">${n.nome}</option>`).join("");
+  }
+
+  const slots = [];
+  for (let i = 0; i < META_LOJAS; i++){
+    const c = S.carteira.carimbos[i];
+    if (c){
+      const n = S.negocios[c.corpo.negocio];
+      slots.push(`<div class="slot cheio" style="background:${CORES[n.id]}" role="listitem">
+        <span class="ico" aria-hidden="true">✓</span><span class="lbl">${n.nome}</span><span class="dt">${c.corpo.data}</span></div>`);
+    } else {
+      slots.push(`<div class="slot vazio" role="listitem"><span class="lbl">Espaço ${i+1}<br>livre</span></div>`);
+    }
+  }
+  $("#cartela").innerHTML = slots.join("");
+
+  const distintas = new Set(S.carteira.carimbos.map(c => c.corpo.negocio)).size;
+  $("#cartela-txt").textContent = distintas >= META_LOJAS
+    ? `Cartela completa: ${distintas} lojas diferentes. O vale foi liberado.`
+    : `${distintas} de ${META_LOJAS} lojas diferentes. Faltam ${META_LOJAS - distintas} — e precisa ser em lojas que ainda não carimbaram.`;
+
+  $("#area-vale").innerHTML = S.vale
+    ? `<div class="vale ${S.vale.usado ? "usado" : ""}">
+         <span class="valor">R$ ${S.vale.corpo.valor}</span>
+         <span class="info"><strong>Série ${S.vale.corpo.serie}</strong><br>
+         ${S.vale.usado ? "Já resgatado em " + S.vale.onde : "Válido em qualquer negócio da rede, no mês seguinte"}</span>
+       </div>`
+    : `<p class="sub" style="margin:0">Nenhum vale ainda. Junte carimbos de ${META_LOJAS} lojas diferentes.</p>`;
+
+  $$("#passos li").forEach(li => {
+    li.dataset.feito = S.passos[li.dataset.passo] ? "1" : "0";
+  });
+}
+
+/* ---------------- ligação da interface ---------------- */
+$$(".aba").forEach(aba => aba.addEventListener("click", () => {
+  $$(".aba").forEach(a => {
+    const sel = a === aba;
+    a.setAttribute("aria-selected", sel ? "true" : "false");
+    document.getElementById(a.getAttribute("aria-controls")).hidden = !sel;
+  });
+}));
+// navegação por setas entre abas, como manda a prática de acessibilidade
+$(".abas").addEventListener("keydown", ev => {
+  const abas = $$(".aba");
+  const i = abas.indexOf(document.activeElement);
+  if (i < 0) return;
+  let j = null;
+  if (ev.key === "ArrowRight") j = (i + 1) % abas.length;
+  if (ev.key === "ArrowLeft")  j = (i - 1 + abas.length) % abas.length;
+  if (j !== null){ ev.preventDefault(); abas[j].focus(); abas[j].click(); }
+});
+
+$("#btn-carimbar").addEventListener("click", async () => { await carimbar(); await emitirVale(); desenhar(); });
+$("#btn-verificar").addEventListener("click", verificarTudo);
+$("#btn-resgatar").addEventListener("click", resgatar);
+$("#btn-adulterar").addEventListener("click", adulterar);
+$("#btn-revogar").addEventListener("click", revogar);
+$("#btn-reiniciar").addEventListener("click", () => { $("#log").innerHTML = ""; iniciar(); });
+
+if (!window.crypto || !crypto.subtle){
+  document.querySelector(".wrap").insertAdjacentHTML("afterbegin",
+    `<div class="aviso alerta"><strong>Atenção:</strong> este navegador não expõe a Web Crypto API. Abra em Chrome ou Firefox atualizado.</div>`);
+} else {
+  iniciar();
+}
+</script>
+</body>
+</html>
