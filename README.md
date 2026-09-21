@@ -11,7 +11,7 @@ Integrantes
 - Alan
 - Naisa
 - Renan
-- Alan
+- Emerson
 - Eduardo
 
 ## Desafio 2 — Olímpia Conecta (Mundo Lógico)
